@@ -14,3 +14,51 @@
   --gray: #aaa5a5;
   --dark-gray: #959494;
 }
+
+button {
+  cursor: pointer;
+}
+
+& .header {
+  font-family: "Keania One";
+  color: var(--darker-beige);
+}
+
+& .text-btn {
+  width: 225px;
+  font-size: 40px;
+  font-weight: bold;
+  font-family: "Stick No Bills";
+  color: var(--darker-beige);
+  background-color: var(--dark-beige);
+  border: none;
+  border-radius: 15px;
+  padding: 5px 40px;
+  text-wrap: nowrap;
+
+  &:hover {
+    box-shadow: 5px 5px 5px var(--darker-beige);
+  }
+
+  &:active {
+    box-shadow: inset 5px 5px 5px var(--darker-beige);
+  }
+}
+
+body {
+  background-color: var(--light-beige);
+  text-align: center;
+
+  & .home-menu {
+    & .header {
+      font-size: 100px;
+      margin: 250px 0 50px;
+    }
+
+    & .menu-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 100px;
+    }
+  }
+}
