@@ -1,5 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Keania+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Stick+No+Bills:wght@200..800&display=swap");
+
 :root {
-  --light-beige: #faf5c7 --dark-beige: #dbd6ac --darker-beige: #aba789
-    --ocean-blue: #9bb7ff --dark-blue: #145fbb --ship-border-color: #414141
-    --ship-color: #dad8d8 --red: #ff0000 --dark-red: #b51414;
+  --light-beige: #faf5c7;
+  --dark-beige: #dbd6ac;
+  --darker-beige: #aba789;
+  --ocean-blue: #9bb7ff;
+  --dark-blue: #145fbb;
+  --ship-border-color: #414141;
+  --ship-color: #dad8d8;
+  --red: #ff0000;
+  --dark-red: #b51414;
+  --gray: #aaa5a5;
+  --dark-gray: #959494;
 }
