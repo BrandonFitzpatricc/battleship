@@ -1,3 +1,5 @@
-body {
-  background-color: blue;
+:root {
+  --light-beige: #faf5c7 --dark-beige: #dbd6ac --darker-beige: #aba789
+    --ocean-blue: #9bb7ff --dark-blue: #145fbb --ship-border-color: #414141
+    --ship-color: #dad8d8 --red: #ff0000 --dark-red: #b51414;
 }
