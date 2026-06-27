@@ -53,15 +53,30 @@ button {
 .icon {
   height: auto;
 
-  &.option {
+  &.option,
+  &.player {
     filter: brightness(0) saturate(100%) invert(78%) sepia(12%) saturate(559%)
       hue-rotate(15deg) brightness(85%) contrast(82%);
   }
 }
 
+.player-icon-container {
+  width: 90px;
+  border: 2px solid var(--darker-beige);
+  border-radius: 50px;
+  padding: 12px;
+}
+
+.ship {
+  background-color: var(--ship-color);
+  border: 1px solid var(--ship-border-color);
+  cursor: pointer;
+}
+
 body {
   background-color: var(--light-beige);
   text-align: center;
+  padding: 10px;
 
   & .home-menu {
     & .header {
@@ -114,6 +129,98 @@ body {
     & .text-btn {
       display: block;
       margin: 50px auto;
+    }
+  }
+
+  & .ship-placement-menu {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 25px;
+
+    & .header {
+      grid-column: 1 / -1;
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      font-size: 55px;
+      min-width: 720px;
+      text-wrap: nowrap;
+    }
+
+    & .ship-container {
+      justify-self: end;
+      width: 200px;
+      height: 750px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 60px;
+      flex-flow: column wrap;
+
+      & .carrier {
+        width: 75px;
+        height: 375px;
+      }
+
+      & .battleship {
+        width: 75px;
+        height: 300px;
+      }
+
+      & .destroyer,
+      & .submarine {
+        width: 75px;
+        height: 225px;
+      }
+
+      & .patrol-boat {
+        width: 75px;
+        height: 150px;
+      }
+    }
+
+    & .game-board {
+      width: 752px;
+      height: 752px;
+      margin: 0 auto;
+      border: 1px solid var(--dark-blue);
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+
+      & .square {
+        width: 75px;
+        height: 75px;
+        background-color: var(--ocean-blue);
+        border: 1px solid var(--dark-blue);
+      }
+    }
+
+    & .option-btns {
+      display: grid;
+      margin-left: -40px;
+
+      & .option-btn {
+        width: 145px;
+        height: 145px;
+        background-color: var(--dark-beige);
+        border: none;
+        border-radius: 15px;
+        padding: 15px;
+
+        &.hidden {
+          position: static;
+        }
+
+        &:hover {
+          box-shadow: 5px 5px 5px var(--darker-beige);
+        }
+
+        &:active {
+          box-shadow: inset 5px 5px 5px var(--darker-beige);
+        }
+      }
     }
   }
 }
