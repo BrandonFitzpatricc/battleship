@@ -165,10 +165,9 @@ body {
       width: 200px;
       height: 750px;
       display: flex;
-      justify-content: center;
-      align-items: flex-end;
-      gap: 60px;
       flex-flow: column wrap;
+      justify-content: center;
+      gap: 60px;
 
       & .carrier {
         width: 75px;
