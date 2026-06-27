@@ -1,0 +1,40 @@
+.icon-select-menu {
+  & .header {
+    font-size: 80px;
+    margin: 100px 0 40px;
+  }
+
+  & .selection-btn {
+    background-color: transparent;
+    border: 2px solid var(--darker-beige);
+    padding: 25px;
+    border-radius: 80px;
+
+    & .icon {
+      width: 100px;
+    }
+
+    &.random {
+      margin-top: 50px;
+    }
+
+    &:hover {
+      background-color: var(--dark-beige);
+    }
+  }
+
+  & .icon-selection-btns {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+
+    & .selection-btn.selected {
+      border-width: 7px;
+    }
+  }
+
+  & .text-btn {
+    display: block;
+    margin: 50px auto;
+  }
+}

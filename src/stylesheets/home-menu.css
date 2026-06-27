@@ -1,0 +1,12 @@
+.home-menu {
+  & .header {
+    font-size: 100px;
+    margin: 250px 0 50px;
+  }
+
+  & .menu-btns {
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+  }
+}
