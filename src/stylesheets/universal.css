@@ -15,6 +15,12 @@
   --dark-gray: #959494;
 }
 
+body {
+  background-color: var(--light-beige);
+  text-align: center;
+  padding: 10px 25px;
+}
+
 .hidden {
   visibility: hidden;
   position: absolute;
@@ -82,10 +88,4 @@ button {
   background-color: var(--ship-color);
   border: 1px solid var(--ship-border-color);
   cursor: pointer;
-}
-
-body {
-  background-color: var(--light-beige);
-  text-align: center;
-  padding: 10px;
 }
