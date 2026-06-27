@@ -50,6 +50,17 @@ button {
   }
 }
 
+& .game-board {
+  border: 1px solid var(--dark-blue);
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+
+  & .square {
+    background-color: var(--ocean-blue);
+    border: 1px solid var(--dark-blue);
+  }
+}
+
 .icon {
   height: auto;
 
@@ -185,15 +196,10 @@ body {
       width: 752px;
       height: 752px;
       margin: 0 auto;
-      border: 1px solid var(--dark-blue);
-      display: grid;
-      grid-template-columns: repeat(10, 1fr);
 
       & .square {
         width: 75px;
         height: 75px;
-        background-color: var(--ocean-blue);
-        border: 1px solid var(--dark-blue);
       }
     }
 
