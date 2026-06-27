@@ -4,12 +4,74 @@
     <title>Battleship</title>
   </head>
   <body>
-    <div class="home-menu">
+    <div id="home-menu" class="home-menu hidden">
       <div class="header">Battleship</div>
       <ul class="menu-buttons" role="list">
-        <button class="text-btn">1 Player</button>
-        <button class="text-btn">2 Players</button>
+        <li><button id="one-player" class="text-btn">1 Player</button></li>
+        <li><button id="two-player" class="text-btn">2 Players</button></li>
       </ul>
+    </div>
+
+    <div id="icon-select-menu" class="icon-select-menu hidden">
+      <div class="header">Choose Your Icon</div>
+
+      <ul class="icon-selections" role="list">
+        <li>
+          <button id="boxing-glove" class="selection-btn">
+            <img
+              class="icon option"
+              src="icons/player-icons/boxing-glove.svg"
+              alt="icon of a boxing glove"
+            />
+          </button>
+        </li>
+        <li>
+          <button id="butterfly" class="selection-btn">
+            <img
+              class="icon option"
+              src="icons/player-icons/butterfly.svg"
+              alt="icon of a butterfly"
+            />
+          </button>
+        </li>
+        <li>
+          <button id="brain" class="selection-btn selected">
+            <img
+              class="icon option"
+              src="icons/player-icons/brain.svg"
+              alt="icon of a brain"
+            />
+          </button>
+        </li>
+        <li>
+          <button id="bullseye" class="selection-btn">
+            <img
+              class="icon option"
+              src="icons/player-icons/bullseye.svg"
+              alt="icon of a bullseye"
+            />
+          </button>
+        </li>
+        <li>
+          <button id="heart" class="selection-btn">
+            <img
+              class="icon option"
+              src="icons/player-icons/heart.svg"
+              alt="icon of a heart"
+            />
+          </button>
+        </li>
+      </ul>
+
+      <button id="random-icon" class="random selection-btn">
+        <img
+          class="icon option"
+          src="icons/button-icons/randomize.svg"
+          alt="icon of shuffle arrows"
+        />
+      </button>
+
+      <button id="confirm-icon" class="text-btn">Confirm</button>
     </div>
   </body>
 </html>
