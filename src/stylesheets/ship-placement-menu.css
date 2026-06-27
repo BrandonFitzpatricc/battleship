@@ -13,6 +13,16 @@
     font-size: 55px;
     min-width: 720px;
     text-wrap: nowrap;
+
+    & .player-icon-container {
+      width: 90px;
+      border-radius: 50px;
+      padding: 12px;
+
+      & .icon {
+        width: 60px;
+      }
+    }
   }
 
   & .ship-container {
@@ -96,6 +106,10 @@
       border: none;
       border-radius: 15px;
       padding: 15px;
+
+      & .icon {
+        width: 120px;
+      }
 
       &.hidden {
         position: static;
