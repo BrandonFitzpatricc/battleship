@@ -6,8 +6,6 @@
   --dark-beige: #dbd6ac;
   --darker-beige: #aba789;
   --ocean-blue: #9bb7ff;
-  --dark-blue: #145fbb;
-  --ship-border-color: #414141;
   --ship-color: #dad8d8;
   --red: #ff0000;
   --dark-red: #b51414;
@@ -57,13 +55,18 @@ button {
 }
 
 & .game-board {
-  border: 1px solid var(--dark-blue);
+  border: 1px solid var(--dark-gray);
   display: grid;
   grid-template-columns: repeat(10, 1fr);
 
   & .square {
     background-color: var(--ocean-blue);
-    border: 1px solid var(--dark-blue);
+    border: 1px solid var(--dark-gray);
+
+    &.ship {
+      background-color: var(--ship-color);
+      border-color: rgb(from var(--dark-gray) r g b / 25%);
+    }
   }
 }
 
@@ -84,6 +87,6 @@ button {
 
 .ship {
   background-color: var(--ship-color);
-  border: 1px solid var(--ship-border-color);
+  border: 1px solid var(--dark-gray);
   cursor: pointer;
 }
