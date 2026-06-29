@@ -89,5 +89,4 @@ button {
 .ship {
   background-color: var(--ship-color);
   border: 1px solid var(--dark-gray);
-  cursor: pointer;
 }

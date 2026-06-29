@@ -95,6 +95,10 @@
     }
   }
 
+  & .ship {
+    cursor: pointer;
+  }
+
   & .option-btns {
     display: grid;
     margin-left: -40px;
