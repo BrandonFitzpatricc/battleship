@@ -116,6 +116,14 @@
           background-repeat: no-repeat;
           background-position: center center;
         }
+
+        &.miss {
+          background-color: rgb(from var(--gray) r g b / 60%);
+          background-image: url(../icons/game-board-icons/missed-attack.svg);
+          background-size: 30px;
+          background-repeat: no-repeat;
+          background-position: center center;
+        }
       }
     }
   }
