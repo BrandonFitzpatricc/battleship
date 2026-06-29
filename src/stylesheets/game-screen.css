@@ -4,12 +4,12 @@
 
   & .header {
     grid-column: 1 / -1;
-    margin-top: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 15px;
     font-size: 55px;
+    margin-top: 5px;
 
     & .player-icon-container {
       width: 90px;
@@ -41,7 +41,7 @@
     }
 
     & .player-status {
-      margin: 25px;
+      margin: 45px 0 10px 0;
       display: flex;
       align-items: center;
 
@@ -54,7 +54,14 @@
         position: relative;
         z-index: 1;
 
-        & .icon {
+        & .player-crown {
+          position: absolute;
+          top: -72px;
+          left: 16px;
+          width: 75px;
+        }
+
+        & .player.icon {
           width: 85px;
         }
 

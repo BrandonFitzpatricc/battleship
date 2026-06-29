@@ -75,7 +75,8 @@ button {
   height: auto;
 
   &.option,
-  &.player {
+  &.player,
+  &.player-crown {
     filter: brightness(0) saturate(100%) invert(78%) sepia(12%) saturate(559%)
       hue-rotate(15deg) brightness(85%) contrast(82%);
   }
