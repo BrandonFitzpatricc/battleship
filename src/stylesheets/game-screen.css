@@ -108,6 +108,10 @@
         outline: 3px solid var(--dark-gray);
       }
 
+      &.inactive {
+        filter: grayscale(75%);
+      }
+
       & .square {
         &.hit {
           background-color: rgb(from var(--red) r g b / 60%);
