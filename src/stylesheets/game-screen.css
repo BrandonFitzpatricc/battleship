@@ -104,7 +104,7 @@
       width: 675px;
       height: 675px;
 
-      &.selected {
+      &.active {
         outline: 3px solid var(--dark-gray);
       }
 
