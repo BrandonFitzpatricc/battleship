@@ -106,6 +106,10 @@
 
       &.active {
         outline: 3px solid var(--dark-gray);
+
+        & .square {
+          cursor: pointer;
+        }
       }
 
       &.inactive {
