@@ -19,7 +19,7 @@
         <li>
           <button id="boxing-glove" class="selection-btn">
             <img
-              class="icon option"
+              class="option icon"
               src="icons/player-icons/boxing-glove.svg"
               alt="icon of a boxing glove"
               width="100"
@@ -30,7 +30,7 @@
         <li>
           <button id="butterfly" class="selection-btn">
             <img
-              class="icon option"
+              class="option icon"
               src="icons/player-icons/butterfly.svg"
               alt="icon of a butterfly"
               width="100"
@@ -41,7 +41,7 @@
         <li>
           <button id="brain" class="selection-btn selected">
             <img
-              class="icon option"
+              class="option icon"
               src="icons/player-icons/brain.svg"
               alt="icon of a brain"
               width="100"
@@ -52,7 +52,7 @@
         <li>
           <button id="bullseye" class="selection-btn">
             <img
-              class="icon option"
+              class="option icon"
               src="icons/player-icons/bullseye.svg"
               alt="icon of a bullseye"
               width="100"
@@ -63,7 +63,7 @@
         <li>
           <button id="heart" class="selection-btn">
             <img
-              class="icon option"
+              class="option icon"
               src="icons/player-icons/heart.svg"
               alt="icon of a heart"
               width="100"
@@ -75,7 +75,7 @@
 
       <button id="random-icon" class="random selection-btn">
         <img
-          class="icon option"
+          class="option icon"
           src="icons/button-icons/randomize.svg"
           alt="icon of shuffle arrows"
           width="100"
@@ -86,11 +86,11 @@
       <button id="confirm-icon" class="text-btn">Confirm</button>
     </div>
 
-    <div id="ship-placement-menu" class="ship-placement-menu">
+    <div id="ship-placement-menu" class="ship-placement-menu hidden">
       <div class="header">
         <div class="player-icon-container">
           <img
-            class="icon player"
+            class="player icon"
             src="./icons/player-icons/boxing-glove.svg"
             alt="icon of a boxing glove"
             width="60"
@@ -101,14 +101,14 @@
       </div>
 
       <div class="ship-container">
-        <div id="carrier" class="ship carrier vertical"></div>
-        <div id="battleship" class="ship battleship vertical"></div>
-        <div id="destroyer" class="ship destroyer vertical"></div>
-        <div id="submarine" class="ship submarine vertical"></div>
-        <div id="patrol-boat" class="ship patrol-boat vertical"></div>
+        <div class="ship carrier vertical"></div>
+        <div class="ship battleship vertical"></div>
+        <div class="ship destroyer vertical"></div>
+        <div class="ship submarine vertical"></div>
+        <div class="ship patrol-boat vertical"></div>
       </div>
 
-      <div id="ship-placement-board" class="game-board">
+      <div class="game-board">
         <div class="square"></div>
         <div class="square"></div>
         <div class="square"></div>
@@ -237,8 +237,8 @@
             class="option icon"
             src="/src/icons/button-icons/rotate.svg"
             alt="icon of rotation arrows"
-            width="145"
-            height="145"
+            width="120"
+            height="120"
           />
         </button>
 
@@ -252,6 +252,271 @@
           />
         </button>
       </ul>
+    </div>
+
+    <div class="game-screen">
+      <div class="header">
+        <div class="player-icon-container selected">
+          <img
+            class="player icon"
+            src="./icons/player-icons/boxing-glove.svg"
+            alt="icon of a boxing glove"
+            width="60"
+            height="60"
+          />
+        </div>
+        Is Firing...
+      </div>
+
+      <div id="player-one" class="player-display one">
+        <div class="player-status">
+          <div class="player-icon-container selected">
+            <img
+              class="player icon"
+              src="./icons/player-icons/boxing-glove.svg"
+              alt="icon of a boxing glove"
+              width="70"
+              height="70"
+            />
+          </div>
+
+          <div class="ships-remaining">
+            <div class="ship carrier"></div>
+            <div class="ship battleship"></div>
+            <div class="ship destroyer"></div>
+            <div class="ship submarine"></div>
+            <div class="ship patrol-boat"></div>
+          </div>
+        </div>
+
+        <div class="game-board">
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+        </div>
+      </div>
+
+      <div id="player-two" class="player-display two">
+        <div class="player-status">
+          <div class="player-icon-container">
+            <img
+              class="player icon"
+              src="./icons/player-icons/butterfly.svg"
+              alt="icon of a butterfly"
+              width="85"
+              height="85"
+            />
+          </div>
+
+          <div class="ships-remaining">
+            <div class="ship carrier"></div>
+            <div class="ship battleship"></div>
+            <div class="ship destroyer"></div>
+            <div class="ship submarine"></div>
+            <div class="ship patrol-boat"></div>
+          </div>
+        </div>
+
+        <div class="game-board">
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
+        </div>
+      </div>
     </div>
   </body>
 </html>

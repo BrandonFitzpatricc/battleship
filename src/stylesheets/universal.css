@@ -78,10 +78,8 @@ button {
 }
 
 .player-icon-container {
-  width: 90px;
+  background-color: var(--light-beige);
   border: 2px solid var(--darker-beige);
-  border-radius: 50px;
-  padding: 12px;
 }
 
 .ship {
