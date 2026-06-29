@@ -103,6 +103,10 @@
     & .game-board {
       width: 675px;
       height: 675px;
+
+      &.selected {
+        outline: 3px solid var(--dark-gray);
+      }
     }
   }
 }
