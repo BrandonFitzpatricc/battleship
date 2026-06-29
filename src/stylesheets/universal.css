@@ -55,6 +55,7 @@ button {
 }
 
 & .game-board {
+  background-color: var(--ocean-blue);
   border: 1px solid var(--dark-gray);
   display: grid;
   grid-template-columns: repeat(10, 1fr);

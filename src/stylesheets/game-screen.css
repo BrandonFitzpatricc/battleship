@@ -107,6 +107,16 @@
       &.selected {
         outline: 3px solid var(--dark-gray);
       }
+
+      & .square {
+        &.hit {
+          background-color: rgb(from var(--red) r g b / 60%);
+          background-image: url(../icons/game-board-icons/successful-attack.svg);
+          background-size: 45px;
+          background-repeat: no-repeat;
+          background-position: center center;
+        }
+      }
     }
   }
 }
