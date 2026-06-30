@@ -1,8 +1,10 @@
 .game-screen {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 
   & .header {
+    position: relative;
     grid-column: 1 / -1;
     display: flex;
     justify-content: center;
@@ -22,6 +24,20 @@
 
       &.selected {
         border-width: 5px;
+      }
+    }
+
+    & .text-btn {
+      width: 290px;
+      position: absolute;
+      top: -5px;
+
+      &.back-to-menu {
+        left: 2px;
+      }
+
+      &.play-again {
+        right: 2px;
       }
     }
   }
