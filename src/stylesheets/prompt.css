@@ -12,12 +12,20 @@
   & .content {
     position: relative;
     width: 450px;
-    height: 430px;
+    height: 415px;
     margin: auto;
     background-color: var(--light-beige);
     border: 2px solid var(--darker-beige);
-    padding: 50px;
+    padding: 40px;
     border-radius: 10px;
+
+    & .prompt-text {
+      font-size: 40px;
+      color: var(--darker-beige);
+      font-family: "Stick No Bills";
+      font-weight: bold;
+      margin-bottom: 25px;
+    }
 
     & .text-btn {
       width: 300px;
