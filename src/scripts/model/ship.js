@@ -21,6 +21,10 @@ class Ship {
     return this.#name;
   }
 
+  get length() {
+    return this.#length;
+  }
+
   hit() {
     this.#hitCount++;
   }
