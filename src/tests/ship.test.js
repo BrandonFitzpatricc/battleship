@@ -1,15 +1,20 @@
 import { Ship } from "../scripts/model/ship.js";
 
-test("A ship of length 4 that has been hit 4 times is sunk", () => {
-  const ship = new Ship(4);
+test("Ship objects are successfully created with the specified name", () => {
+  const ship = new Ship("battleship");
+  expect(ship.name).toBe("battleship");
+});
+
+test("A battleship (length 4) that has been hit 4 times is sunk", () => {
+  const ship = new Ship("battleship");
   for (let i = 0; i < 4; i++) {
     ship.hit();
   }
   expect(ship.isSunk()).toBe(true);
 });
 
-test("A ship of length 5 that has been hit 4 times is not sunk", () => {
-  const ship = new Ship(5);
+test("A carrier (length 5) that has been hit 4 times is not sunk", () => {
+  const ship = new Ship("carrier");
   for (let i = 0; i < 4; i++) {
     ship.hit();
   }
