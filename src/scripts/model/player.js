@@ -1,6 +1,6 @@
 import { GameBoard } from "./game-board.js";
 
-class RealPlayer {
+class Player {
   #gameBoard;
 
   constructor() {
@@ -9,6 +9,12 @@ class RealPlayer {
 
   get gameBoard() {
     return this.#gameBoard;
+  }
+}
+
+class RealPlayer extends Player {
+  constructor() {
+    super();
   }
 }
 
