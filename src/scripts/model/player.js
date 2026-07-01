@@ -18,4 +18,10 @@ class RealPlayer extends Player {
   }
 }
 
-export { RealPlayer };
+class ComputerPlayer extends Player {
+  constructor() {
+    super();
+  }
+}
+
+export { RealPlayer, ComputerPlayer };
