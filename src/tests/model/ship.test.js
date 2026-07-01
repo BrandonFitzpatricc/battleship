@@ -1,4 +1,4 @@
-import { Ship } from "../scripts/model/ship.js";
+import { Ship } from "../../scripts/model/ship.js";
 
 describe("Test ship object instantiation", () => {
   test("Ship objects are successfully created with the specified name and length", () => {

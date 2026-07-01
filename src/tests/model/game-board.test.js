@@ -1,5 +1,5 @@
-import { GameBoard } from "../scripts/model/game-board.js";
-import { Position } from "../scripts/model/position.js";
+import { GameBoard } from "../../scripts/model/game-board.js";
+import { Position } from "../../scripts/model/position.js";
 
 let gameBoard;
 beforeEach(() => {
