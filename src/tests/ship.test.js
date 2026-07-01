@@ -1,9 +1,10 @@
 import { Ship } from "../scripts/model/ship.js";
 
 describe("Test ship object instantiation", () => {
-  test("Ship objects are successfully created with the specified name", () => {
+  test("Ship objects are successfully created with the specified name and length", () => {
     const ship = new Ship("battleship");
     expect(ship.name).toBe("battleship");
+    expect(ship.length).toBe(4);
   });
 });
 

@@ -20,6 +20,7 @@ describe("Test game board object instantiation", () => {
       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     ]);
+    expect(gameBoard.ships).toEqual([]);
   });
 });
 
