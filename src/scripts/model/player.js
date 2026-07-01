@@ -1,10 +1,8 @@
-import { GameBoard } from "./game-board.js";
-
 class Player {
   #gameBoard;
 
-  constructor() {
-    this.#gameBoard = new GameBoard();
+  constructor(gameBoard) {
+    this.#gameBoard = gameBoard;
   }
 
   get gameBoard() {
@@ -13,14 +11,14 @@ class Player {
 }
 
 class RealPlayer extends Player {
-  constructor() {
-    super();
+  constructor(gameBoard) {
+    super(gameBoard);
   }
 }
 
 class ComputerPlayer extends Player {
-  constructor() {
-    super();
+  constructor(gameBoard) {
+    super(gameBoard);
   }
 }
 
