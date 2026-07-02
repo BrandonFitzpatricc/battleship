@@ -9,14 +9,6 @@ export default defineConfig([
     plugins: { js },
     extends: ["js/recommended"],
     languageOptions: { globals: globals.browser },
-    overrides: [
-      {
-        files: ["**/*.spec.js", "**/*.spec.jsx"],
-        env: {
-          jest: true,
-        },
-      },
-    ],
   },
   eslintConfigPrettier,
 ]);
