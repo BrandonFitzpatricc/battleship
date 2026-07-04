@@ -60,21 +60,22 @@ class GameBoard {
   }
 
   #invalidPlacement(ship, headPosition, orientation) {
+    let invalidPlacement;
+
     for (let i = 0; i < ship.length; i++) {
       if (orientation === "horizontal") {
-        const invalidPlacement =
+        invalidPlacement =
           headPosition.column + ship.length - 1 > 9 ||
           typeof this.#board[headPosition.row][headPosition.column + i] ===
             "object";
-        if (invalidPlacement) return true;
         //prettier-ignore
       } else if (orientation === "vertical") {
-        const invalidPlacement =
+        invalidPlacement =
           headPosition.row + ship.length - 1 > 9 ||
           typeof this.#board[headPosition.row + i][headPosition.column] ===
             "object";
-        if (invalidPlacement) return true;
       }
+      if (invalidPlacement) return true;
     }
     return false;
   }
