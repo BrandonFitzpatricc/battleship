@@ -99,12 +99,12 @@ class GameBoard {
   }
 
   // A position with no ship that has been targeted will be marked as 1
-  receiveAttack(position) {
-    const target = this.#board[position.row][position.column];
+  receiveAttack(row, column) {
+    const target = this.#board[row][column];
     if (target === 1) return false;
 
     if (target === 0) {
-      this.#board[position.row][position.column] = 1;
+      this.#board[row][column] = 1;
     } else if (typeof target === "object") {
       target.hit();
     }

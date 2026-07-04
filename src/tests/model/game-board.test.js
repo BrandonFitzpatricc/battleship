@@ -55,35 +55,35 @@ describe("Test placeShip method", () => {
 describe("Test placeShip + receiveAttack methods", () => {
   test("A battleship placed horizontally at [0, 0] is sunk after [0, 0], [0, 1], [0, 2], and [0, 3] are targeted", () => {
     gameBoard.placeShipHorizontally("battleship", new Position(0, 0));
-    gameBoard.receiveAttack(new Position(0, 0));
-    gameBoard.receiveAttack(new Position(0, 1));
-    gameBoard.receiveAttack(new Position(0, 2));
-    gameBoard.receiveAttack(new Position(0, 3));
+    gameBoard.receiveAttack(0, 0);
+    gameBoard.receiveAttack(0, 1);
+    gameBoard.receiveAttack(0, 2);
+    gameBoard.receiveAttack(0, 3);
     expect(gameBoard.ships[0].isSunk()).toBe(true);
   });
 
   test("A battleship placed vertically at [0, 0] is sunk after [0, 0], [1, 0], [2, 0] and [3, 0] are targeted", () => {
     gameBoard.placeShipVertically("battleship", new Position(0, 0));
-    gameBoard.receiveAttack(new Position(0, 0));
-    gameBoard.receiveAttack(new Position(1, 0));
-    gameBoard.receiveAttack(new Position(2, 0));
-    gameBoard.receiveAttack(new Position(3, 0));
+    gameBoard.receiveAttack(0, 0);
+    gameBoard.receiveAttack(1, 0);
+    gameBoard.receiveAttack(2, 0);
+    gameBoard.receiveAttack(3, 0);
     expect(gameBoard.ships[0].isSunk()).toBe(true);
   });
 
   test("A battleship placed horizontally at [0, 0] is not sunk after [0, 0], [1, 0], [2, 0] and [3, 0] are targeted", () => {
     gameBoard.placeShipHorizontally("battleship", new Position(0, 0));
-    gameBoard.receiveAttack(new Position(0, 0));
-    gameBoard.receiveAttack(new Position(1, 0));
-    gameBoard.receiveAttack(new Position(2, 0));
-    gameBoard.receiveAttack(new Position(3, 0));
+    gameBoard.receiveAttack(0, 0);
+    gameBoard.receiveAttack(1, 0);
+    gameBoard.receiveAttack(2, 0);
+    gameBoard.receiveAttack(3, 0);
     expect(gameBoard.ships[0].isSunk()).toBe(false);
   });
 
   test("An attack at positions with no ship will change their values to 1", () => {
-    gameBoard.receiveAttack(new Position(0, 0));
-    gameBoard.receiveAttack(new Position(4, 5));
-    gameBoard.receiveAttack(new Position(7, 2));
+    gameBoard.receiveAttack(0, 0);
+    gameBoard.receiveAttack(4, 5);
+    gameBoard.receiveAttack(7, 2);
     expect(gameBoard.board).toEqual([
       [1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -99,8 +99,8 @@ describe("Test placeShip + receiveAttack methods", () => {
   });
 
   test("An attack at a position that has already been attacked will return false", () => {
-    expect(gameBoard.receiveAttack(new Position(0, 0))).toBe(true);
-    expect(gameBoard.receiveAttack(new Position(0, 0))).toBe(false);
+    expect(gameBoard.receiveAttack(0, 0)).toBe(true);
+    expect(gameBoard.receiveAttack(0, 0)).toBe(false);
   });
 
   test("Ship placement and attacking works as expected with multiple ships on the board", () => {
@@ -110,21 +110,21 @@ describe("Test placeShip + receiveAttack methods", () => {
     gameBoard.placeShipHorizontally("submarine", new Position(0, 3));
     gameBoard.placeShipHorizontally("patrol-boat", new Position(9, 7));
 
-    gameBoard.receiveAttack(new Position(2, 1));
-    gameBoard.receiveAttack(new Position(3, 1));
-    gameBoard.receiveAttack(new Position(4, 1));
-    gameBoard.receiveAttack(new Position(5, 1));
+    gameBoard.receiveAttack(2, 1);
+    gameBoard.receiveAttack(3, 1);
+    gameBoard.receiveAttack(4, 1);
+    gameBoard.receiveAttack(5, 1);
 
-    gameBoard.receiveAttack(new Position(8, 3));
-    gameBoard.receiveAttack(new Position(8, 4));
-    gameBoard.receiveAttack(new Position(8, 5));
+    gameBoard.receiveAttack(8, 3);
+    gameBoard.receiveAttack(8, 4);
+    gameBoard.receiveAttack(8, 5);
 
-    gameBoard.receiveAttack(new Position(3, 7));
-    gameBoard.receiveAttack(new Position(9, 7));
-    gameBoard.receiveAttack(new Position(0, 6));
+    gameBoard.receiveAttack(3, 7);
+    gameBoard.receiveAttack(9, 7);
+    gameBoard.receiveAttack(0, 6);
 
-    gameBoard.receiveAttack(new Position(5, 2));
-    gameBoard.receiveAttack(new Position(2, 0));
+    gameBoard.receiveAttack(5, 2);
+    gameBoard.receiveAttack(2, 0);
 
     expect(
       gameBoard.ships.filter((ship) => ship.isSunk()).map((ship) => ship.name),
@@ -181,21 +181,21 @@ describe("Test isSunk method", () => {
     gameBoard.placeShipHorizontally("submarine", new Position(0, 3));
     gameBoard.placeShipHorizontally("patrol-boat", new Position(9, 7));
 
-    gameBoard.receiveAttack(new Position(2, 1));
-    gameBoard.receiveAttack(new Position(3, 1));
-    gameBoard.receiveAttack(new Position(4, 1));
-    gameBoard.receiveAttack(new Position(5, 1));
+    gameBoard.receiveAttack(2, 1);
+    gameBoard.receiveAttack(3, 1);
+    gameBoard.receiveAttack(4, 1);
+    gameBoard.receiveAttack(5, 1);
 
-    gameBoard.receiveAttack(new Position(8, 3));
-    gameBoard.receiveAttack(new Position(8, 4));
-    gameBoard.receiveAttack(new Position(8, 5));
+    gameBoard.receiveAttack(8, 3);
+    gameBoard.receiveAttack(8, 4);
+    gameBoard.receiveAttack(8, 5);
 
-    gameBoard.receiveAttack(new Position(3, 7));
-    gameBoard.receiveAttack(new Position(9, 7));
-    gameBoard.receiveAttack(new Position(0, 6));
+    gameBoard.receiveAttack(3, 7);
+    gameBoard.receiveAttack(9, 7);
+    gameBoard.receiveAttack(0, 6);
 
-    gameBoard.receiveAttack(new Position(5, 2));
-    gameBoard.receiveAttack(new Position(2, 0));
+    gameBoard.receiveAttack(5, 2);
+    gameBoard.receiveAttack(2, 0);
 
     expect(gameBoard.allShipsSunk()).toBe(false);
   });
@@ -207,27 +207,27 @@ describe("Test isSunk method", () => {
     gameBoard.placeShipHorizontally("submarine", new Position(0, 3));
     gameBoard.placeShipHorizontally("patrol-boat", new Position(9, 7));
 
-    gameBoard.receiveAttack(new Position(2, 1));
-    gameBoard.receiveAttack(new Position(3, 1));
-    gameBoard.receiveAttack(new Position(4, 1));
-    gameBoard.receiveAttack(new Position(5, 1));
+    gameBoard.receiveAttack(2, 1);
+    gameBoard.receiveAttack(3, 1);
+    gameBoard.receiveAttack(4, 1);
+    gameBoard.receiveAttack(5, 1);
 
-    gameBoard.receiveAttack(new Position(2, 7));
-    gameBoard.receiveAttack(new Position(3, 7));
-    gameBoard.receiveAttack(new Position(4, 7));
-    gameBoard.receiveAttack(new Position(5, 7));
-    gameBoard.receiveAttack(new Position(6, 7));
+    gameBoard.receiveAttack(2, 7);
+    gameBoard.receiveAttack(3, 7);
+    gameBoard.receiveAttack(4, 7);
+    gameBoard.receiveAttack(5, 7);
+    gameBoard.receiveAttack(6, 7);
 
-    gameBoard.receiveAttack(new Position(8, 3));
-    gameBoard.receiveAttack(new Position(8, 4));
-    gameBoard.receiveAttack(new Position(8, 5));
+    gameBoard.receiveAttack(8, 3);
+    gameBoard.receiveAttack(8, 4);
+    gameBoard.receiveAttack(8, 5);
 
-    gameBoard.receiveAttack(new Position(0, 3));
-    gameBoard.receiveAttack(new Position(0, 4));
-    gameBoard.receiveAttack(new Position(0, 5));
+    gameBoard.receiveAttack(0, 3);
+    gameBoard.receiveAttack(0, 4);
+    gameBoard.receiveAttack(0, 5);
 
-    gameBoard.receiveAttack(new Position(9, 7));
-    gameBoard.receiveAttack(new Position(9, 8));
+    gameBoard.receiveAttack(9, 7);
+    gameBoard.receiveAttack(9, 8);
 
     expect(gameBoard.allShipsSunk()).toBe(true);
   });
