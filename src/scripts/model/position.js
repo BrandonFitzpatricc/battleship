@@ -1,3 +1,5 @@
+// This class provides an easy, more readable way to pass game board coordinates
+// into a method with multiple parameters.
 class Position {
   #row;
   #column;
