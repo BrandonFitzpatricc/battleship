@@ -10,17 +10,19 @@ class GameBoard {
   }
 
   clearBoard() {
+    // Every bucket in the board contains a number (0 if the position has not been attacked,
+    // 1 if it has), and a ship object IF that position contains a ship.
     this.#board = [
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
+      [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
+      [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
+      [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
+      [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
+      [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
+      [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
+      [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
+      [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
+      [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
     ];
 
     this.#ships = [];
@@ -49,10 +51,10 @@ class GameBoard {
     if (this.#invalidPlacement(ship, headPosition, orientation)) return false;
     for (let i = 0; i < ship.length; i++) {
       if (orientation === "horizontal") {
-        this.#board[headPosition.row][headPosition.column + i] = ship;
+        this.#board[headPosition.row][headPosition.column + i].push(ship);
         //prettier-ignore
       } else if (orientation === "vertical") {
-        this.#board[headPosition.row + i][headPosition.column] = ship;
+        this.#board[headPosition.row + i][headPosition.column].push(ship);
       }
     }
     this.#ships.push(ship);
@@ -66,14 +68,12 @@ class GameBoard {
       if (orientation === "horizontal") {
         invalidPlacement =
           headPosition.column + ship.length - 1 > 9 ||
-          typeof this.#board[headPosition.row][headPosition.column + i] ===
-            "object";
+          this.#board[headPosition.row][headPosition.column + i].length > 1;
         //prettier-ignore
       } else if (orientation === "vertical") {
         invalidPlacement =
           headPosition.row + ship.length - 1 > 9 ||
-          typeof this.#board[headPosition.row + i][headPosition.column] ===
-            "object";
+          this.#board[headPosition.row + i][headPosition.column].length > 1;
       }
       if (invalidPlacement) return true;
     }
@@ -98,16 +98,17 @@ class GameBoard {
     );
   }
 
-  // A position with no ship that has been targeted will be marked as 1
   receiveAttack(row, column) {
     const target = this.#board[row][column];
-    if (target === 1) return false;
+    if (target[0] === 1) return false;
 
-    if (target === 0) {
-      this.#board[row][column] = 1;
-    } else if (typeof target === "object") {
-      target.hit();
+    // might need to be this.#board[row][column][0] - not sure rn
+    if (target[0] === 0) {
+      target[0] = 1;
+
+      if (target.length > 1) target[1].hit();
     }
+
     return true;
   }
 
