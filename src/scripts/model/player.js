@@ -3,19 +3,29 @@ import { SuccessfulAttack } from "./successful-attack.js";
 
 class Player {
   #gameBoard;
+  #isActive;
 
-  constructor(gameBoard) {
+  constructor(gameBoard, isActive) {
     this.#gameBoard = gameBoard;
+    this.#isActive = isActive;
   }
 
   get gameBoard() {
     return this.#gameBoard;
   }
+
+  get isActive() {
+    return this.#isActive;
+  }
+
+  set isActive(value) {
+    this.#isActive = value;
+  }
 }
 
 class RealPlayer extends Player {
-  constructor(gameBoard) {
-    super(gameBoard);
+  constructor(gameBoard, isActive) {
+    super(gameBoard, isActive);
   }
 }
 
@@ -27,8 +37,8 @@ class ComputerPlayer extends Player {
   // another, each of the two ships will be destroyed one at a time.
   #damagedShips = [];
 
-  constructor(gameBoard) {
-    super(gameBoard);
+  constructor(gameBoard, isActive) {
+    super(gameBoard, isActive);
   }
 
   attack(gameBoard) {

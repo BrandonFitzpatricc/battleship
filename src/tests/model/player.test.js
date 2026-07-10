@@ -5,8 +5,8 @@ import { Position } from "../../scripts/model/position.js";
 let realPlayer;
 let computerPlayer;
 beforeEach(() => {
-  realPlayer = new RealPlayer(new GameBoard());
-  computerPlayer = new ComputerPlayer(new GameBoard());
+  realPlayer = new RealPlayer(new GameBoard(), true);
+  computerPlayer = new ComputerPlayer(new GameBoard(), false);
 });
 
 describe("test player object instantiation", () => {
@@ -23,6 +23,7 @@ describe("test player object instantiation", () => {
       [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
       [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
     ]);
+    expect(realPlayer.isActive).toBe(true);
   });
 
   test("Computer player objects are successfully created", () => {
@@ -38,6 +39,7 @@ describe("test player object instantiation", () => {
       [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
       [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
     ]);
+    expect(computerPlayer.isActive).toBe(false);
   });
 });
 
