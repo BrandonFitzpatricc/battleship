@@ -16,6 +16,10 @@ class Position {
   get column() {
     return this.#column;
   }
+
+  getPosition() {
+    return [this.#row, this.#column];
+  }
 }
 
 export { Position };

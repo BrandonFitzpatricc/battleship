@@ -5,5 +5,6 @@ describe("Test position object instantiation", () => {
     const position = new Position(4, 3);
     expect(position.row).toBe(4);
     expect(position.column).toBe(3);
+    expect(position.getPosition()).toEqual([4, 3]);
   });
 });
