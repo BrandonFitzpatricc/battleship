@@ -65,11 +65,12 @@ class GameBoard {
     let invalidPlacement;
 
     for (let i = 0; i < ship.length; i++) {
+      //prettier-ignore
       if (orientation === "horizontal") {
         invalidPlacement =
           headPosition.column + ship.length - 1 > 9 ||
           this.#board[headPosition.row][headPosition.column + i].length > 1;
-        //prettier-ignore
+          
       } else if (orientation === "vertical") {
         invalidPlacement =
           headPosition.row + ship.length - 1 > 9 ||
@@ -102,7 +103,6 @@ class GameBoard {
     const target = this.#board[row][column];
     if (target[0] === 1) return false;
 
-    // might need to be this.#board[row][column][0] - not sure rn
     if (target[0] === 0) {
       target[0] = 1;
 
