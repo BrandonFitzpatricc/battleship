@@ -19,20 +19,37 @@ const createTextElement = (type, className, textContent, ...attributes) => {
 
 const createIconBtn = (className, id, src, alt, dimensions) => {
   const btn = createElement("button", className, new Attribute("id", id));
+  btn.appendChild(createIcon("option icon", src, alt, dimensions));
+  return btn;
+};
 
-  const iconElement = createElement(
+const createPlayerIcon = (src, alt, dimensions) => {
+  const playerIconContainer = createElement("div", "player-icon-container");
+  // prettier-ignore
+  playerIconContainer.appendChild(createIcon("player icon", src, alt, dimensions));
+  return playerIconContainer;
+};
+
+const createGameBoard = () => {
+  const gameBoard = createElement("div", "game-board");
+
+  for (let i = 0; i < 100; i++) {
+    gameBoard.appendChild();
+  }
+};
+
+function createIcon(className, src, alt, dimensions) {
+  const icon = createElement(
     "img",
-    "option icon",
+    className,
     new Attribute("src", src),
     new Attribute("alt", alt),
     new Attribute("width", dimensions),
     new Attribute("height", dimensions),
   );
 
-  btn.appendChild(iconElement);
-
-  return btn;
-};
+  return icon;
+}
 
 class Attribute {
   #name;
@@ -52,4 +69,10 @@ class Attribute {
   }
 }
 
-export { createElement, createTextElement, createIconBtn, Attribute };
+export {
+  createElement,
+  createTextElement,
+  createIconBtn,
+  createPlayerIcon,
+  Attribute,
+};
