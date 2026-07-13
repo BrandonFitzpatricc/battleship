@@ -5,9 +5,7 @@ import {
   Attribute,
 } from "./element-factory";
 
-import { playerIcons } from "./player-icon-manager";
-
-import randomize from "../../icons/button-icons/randomize.svg";
+import { playerIcons, buttonIcons } from "./icon-manager";
 
 const loadIconSelectMenu = () => {
   document.body.textContent = "";
@@ -20,8 +18,8 @@ const loadIconSelectMenu = () => {
   const randomBtn = createIconBtn(
     "random selection-btn",
     "random-icon",
-    randomize,
-    "icon of shuffle arrows",
+    buttonIcons["randomize"].src,
+    buttonIcons["randomize"].alt,
     100,
   );
 
