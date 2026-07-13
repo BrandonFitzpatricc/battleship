@@ -6,6 +6,14 @@ const loadHomeMenu = () => {
   const mainContainer = createElement("div", "home-menu");
 
   const header = createTextElement("div", "header", "Battleship");
+  const menuBtns = loadMenuBtns();
+
+  mainContainer.append(header, menuBtns);
+
+  document.body.appendChild(mainContainer);
+};
+
+function loadMenuBtns() {
   // prettier-ignore
   const menuBtns = createElement("ul", "menu-btns", new Attribute("role", "list"));
 
@@ -26,9 +34,7 @@ const loadHomeMenu = () => {
     menuBtns.appendChild(listItem);
   }
 
-  mainContainer.append(header, menuBtns);
-
-  document.body.appendChild(mainContainer);
-};
+  return menuBtns;
+}
 
 export { loadHomeMenu };
