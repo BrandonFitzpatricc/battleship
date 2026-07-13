@@ -9,14 +9,18 @@ const loadHomeMenu = () => {
 
   for (let i = 1; i <= 2; i++) {
     const number = i == 1 ? "one" : "two";
+
     const listItem = createElement("li", "");
+
     const btn = createElement(
       "div",
       "text-btn",
       `${i} Player`,
       new Attribute("id", `${number}-player`),
     );
+
     listItem.appendChild(btn);
+
     menuBtns.appendChild(listItem);
   }
 
