@@ -17,6 +17,23 @@ const createTextElement = (type, className, textContent, ...attributes) => {
   return element;
 };
 
+const createIconBtn = (className, id, src, alt, dimensions) => {
+  const btn = createElement("button", className, new Attribute("id", id));
+
+  const iconElement = createElement(
+    "img",
+    "option icon",
+    new Attribute("src", src),
+    new Attribute("alt", alt),
+    new Attribute("width", dimensions),
+    new Attribute("height", dimensions),
+  );
+
+  btn.appendChild(iconElement);
+
+  return btn;
+};
+
 class Attribute {
   #name;
   #value;
@@ -35,4 +52,4 @@ class Attribute {
   }
 }
 
-export { createElement, createTextElement, Attribute };
+export { createElement, createTextElement, createIconBtn, Attribute };
