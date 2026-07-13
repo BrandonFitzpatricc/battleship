@@ -1,6 +1,8 @@
 import { createElement, createTextElement, Attribute } from "./element-factory";
 
 const loadHomeMenu = () => {
+  document.body.textContent = "";
+
   const mainContainer = createElement("div", "home-menu");
 
   const header = createTextElement("div", "header", "Battleship");
