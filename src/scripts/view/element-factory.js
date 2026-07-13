@@ -1,4 +1,13 @@
-const createElement = (type, className, textContent, ...attributes) => {
+const createElement = (type, className, ...attributes) => {
+  const element = document.createElement(type);
+  element.className = className;
+  attributes.forEach((attribute) => {
+    element.setAttribute(attribute.name, attribute.value);
+  });
+  return element;
+};
+
+const createTextElement = (type, className, textContent, ...attributes) => {
   const element = document.createElement(type);
   element.className = className;
   element.textContent = textContent;
@@ -26,4 +35,4 @@ class Attribute {
   }
 }
 
-export { createElement, Attribute };
+export { createElement, createTextElement, Attribute };
