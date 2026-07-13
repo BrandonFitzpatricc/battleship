@@ -55,8 +55,6 @@ function loadIconSelectionBtns() {
       100,
     );
 
-    if (iconName === "boxing-glove") btn.className += " selected";
-
     listItem.appendChild(btn);
 
     iconSelectionBtns.appendChild(listItem);
