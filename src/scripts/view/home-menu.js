@@ -13,7 +13,7 @@ const loadHomeMenu = () => {
     const listItem = createElement("li", "");
 
     const btn = createElement(
-      "div",
+      "button",
       "text-btn",
       `${i} Player`,
       new Attribute("id", `${number}-player`),
