@@ -32,10 +32,10 @@ const createPlayerIcon = (src, alt, dimensions) => {
 
 const createGameBoard = () => {
   const gameBoard = createElement("div", "game-board");
-
   for (let i = 0; i < 100; i++) {
-    gameBoard.appendChild();
+    gameBoard.appendChild(createElement("div", "square"));
   }
+  return gameBoard;
 };
 
 function createIcon(className, src, alt, dimensions) {
@@ -74,5 +74,6 @@ export {
   createTextElement,
   createIconBtn,
   createPlayerIcon,
+  createGameBoard,
   Attribute,
 };
