@@ -15,6 +15,29 @@ const loadIconSelectMenu = () => {
   const mainContainer = createElement("div", "icon-select-menu");
 
   const header = createTextElement("div", "header", "Choose Your Icon");
+  const iconSelectionBtns = loadIconSelectionBtns();
+
+  const randomBtn = createIconBtn(
+    "random selection-btn",
+    "random-icon",
+    randomize,
+    "icon of shuffle arrows",
+    100,
+  );
+
+  const confirmBtn = createTextElement(
+    "button",
+    "text-btn",
+    "Confirm",
+    new Attribute("id", "confirm"),
+  );
+
+  mainContainer.append(header, iconSelectionBtns, randomBtn, confirmBtn);
+
+  document.body.appendChild(mainContainer);
+};
+
+function loadIconSelectionBtns() {
   const iconSelectionBtns = createElement(
     "ul",
     "icon-selection-btns",
@@ -41,24 +64,7 @@ const loadIconSelectMenu = () => {
     iconSelectionBtns.appendChild(listItem);
   }
 
-  const randomBtn = createIconBtn(
-    "random selection-btn",
-    "random-icon",
-    randomize,
-    "icon of shuffle arrows",
-    100,
-  );
-
-  const confirmBtn = createTextElement(
-    "button",
-    "text-btn",
-    "Confirm",
-    new Attribute("id", "confirm"),
-  );
-
-  mainContainer.append(header, iconSelectionBtns, randomBtn, confirmBtn);
-
-  document.body.appendChild(mainContainer);
-};
+  return iconSelectionBtns;
+}
 
 export { loadIconSelectMenu };
