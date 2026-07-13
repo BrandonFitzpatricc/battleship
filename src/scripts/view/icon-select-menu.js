@@ -5,11 +5,7 @@ import {
   Attribute,
 } from "./element-factory";
 
-import boxingGlove from "../../icons/player-icons/boxing-glove.svg";
-import butterfly from "../../icons/player-icons/butterfly.svg";
-import brain from "../../icons/player-icons/brain.svg";
-import bullseye from "../../icons/player-icons/bullseye.svg";
-import heart from "../../icons/player-icons/heart.svg";
+import { playerIcons } from "./player-icon-manager";
 
 import randomize from "../../icons/button-icons/randomize.svg";
 
@@ -62,15 +58,7 @@ const loadIconSelectMenu = () => {
 
   mainContainer.append(header, iconSelectionBtns, randomBtn, confirmBtn);
 
-  document.body.append(mainContainer);
-};
-
-const playerIcons = {
-  "boxing-glove": { src: boxingGlove, alt: "icon of a boxing glove" },
-  butterfly: { src: butterfly, alt: "icon of a butterfly" },
-  brain: { src: brain, alt: "icon of a brain" },
-  bullseye: { src: bullseye, alt: "icon of a bullseye" },
-  heart: { src: heart, alt: "icon of a heart" },
+  document.body.appendChild(mainContainer);
 };
 
 export { loadIconSelectMenu };

@@ -28,7 +28,7 @@ const loadHomeMenu = () => {
 
   mainContainer.append(header, menuBtns);
 
-  document.body.append(mainContainer);
+  document.body.appendChild(mainContainer);
 };
 
 export { loadHomeMenu };
