@@ -1,5 +1,4 @@
 import { Position } from "./position.js";
-import { SuccessfulAttack } from "./successful-attack.js";
 
 class Player {
   #gameBoard;
@@ -272,6 +271,26 @@ class ComputerPlayer extends Player {
       if (couldNotBePlaced) return false;
     }
     return true;
+  }
+}
+
+// This class is used by computer players to help determine subsequent attacks
+// after hitting a ship.
+class SuccessfulAttack {
+  #position;
+  #orientation;
+
+  constructor(position, orientation) {
+    this.#position = position;
+    this.#orientation = orientation;
+  }
+
+  get position() {
+    return this.#position;
+  }
+
+  get orientation() {
+    return this.#orientation;
   }
 }
 
