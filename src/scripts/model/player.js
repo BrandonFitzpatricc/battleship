@@ -2,16 +2,24 @@ import { Position } from "./position.js";
 import { SuccessfulAttack } from "./successful-attack.js";
 
 class Player {
+  #icon;
   #gameBoard;
   #isActive;
 
-  constructor(gameBoard, isActive) {
-    this.#gameBoard = gameBoard;
-    this.#isActive = isActive;
+  get icon() {
+    return this.#icon;
+  }
+
+  set icon(value) {
+    this.#icon = value;
   }
 
   get gameBoard() {
     return this.#gameBoard;
+  }
+
+  set gameBoard(value) {
+    this.#gameBoard = value;
   }
 
   get isActive() {

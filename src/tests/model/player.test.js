@@ -5,8 +5,13 @@ import { Position } from "../../scripts/model/position.js";
 let realPlayer;
 let computerPlayer;
 beforeEach(() => {
-  realPlayer = new RealPlayer(new GameBoard(), true);
-  computerPlayer = new ComputerPlayer(new GameBoard(), false);
+  realPlayer = new RealPlayer();
+  realPlayer.gameBoard = new GameBoard();
+  realPlayer.isActive = true;
+
+  computerPlayer = new ComputerPlayer();
+  computerPlayer.gameBoard = new GameBoard();
+  computerPlayer.isActive = false;
 });
 
 describe("test player object instantiation", () => {
