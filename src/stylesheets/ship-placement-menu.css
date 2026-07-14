@@ -34,6 +34,10 @@
     justify-content: center;
     gap: 60px;
 
+    & .ship {
+      pointer-events: auto;
+    }
+
     & .carrier {
       &.vertical {
         width: 75px;
