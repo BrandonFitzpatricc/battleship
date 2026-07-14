@@ -6,6 +6,6 @@ import "../stylesheets/ship-placement-menu.css";
 import "../stylesheets/game-screen.css";
 import "../stylesheets/prompt.css";
 
-import { loadHomeMenu } from "./view/home-menu.js";
+import { initializeHomeMenu } from "./controller/home-menu-controller.js";
 
-loadHomeMenu();
+initializeHomeMenu();
