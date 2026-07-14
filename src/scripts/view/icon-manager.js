@@ -9,19 +9,21 @@ import trash from "../../icons/button-icons/trash.svg";
 import rotate from "../../icons/button-icons/rotate.svg";
 import play from "../../icons/button-icons/play.svg";
 
+import { Icon } from "./icon";
+
 const playerIcons = {
-  "boxing-glove": { src: boxingGlove, alt: "icon of a boxing glove" },
-  butterfly: { src: butterfly, alt: "icon of a butterfly" },
-  brain: { src: brain, alt: "icon of a brain" },
-  bullseye: { src: bullseye, alt: "icon of a bullseye" },
-  heart: { src: heart, alt: "icon of a heart" },
+  "boxing-glove": new Icon(boxingGlove, "icon of a boxing glove"),
+  butterfly: new Icon(butterfly, "icon of a butterfly"),
+  brain: new Icon(brain, "icon of a brain"),
+  bullseye: new Icon(bullseye, "icon of a bullseye"),
+  heart: new Icon(heart, "icon of a heart"),
 };
 
 const buttonIcons = {
-  randomize: { src: randomize, alt: "icon of shuffle arrows" },
-  trash: { src: trash, alt: "icon of a trash can" },
-  rotate: { src: rotate, alt: "icon of rotation arrows" },
-  play: { src: play, alt: "play icon" },
+  randomize: new Icon(randomize, "icon of shuffle arrows"),
+  trash: new Icon(trash, "icon of a trash can"),
+  rotate: new Icon(rotate, "icon of rotation arrows"),
+  play: new Icon(play, "play icon"),
 };
 
 export { playerIcons, buttonIcons };
