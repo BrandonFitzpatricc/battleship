@@ -55,14 +55,14 @@ function loadShipContainer() {
 function loadOptionBtns() {
   const optionBtns = createElement("ul", "option-btns");
 
-  ["randomize", "trash", "rotate", "play"].forEach((iconName) => {
+  for (const iconName in buttonIcons) {
     const icon = buttonIcons[iconName];
 
     // prettier-ignore
     const iconBtn = createIconBtn("option-btn", iconName, icon.src, icon.alt, 120);
 
     optionBtns.append(iconBtn);
-  });
+  }
 
   return optionBtns;
 }
