@@ -1,4 +1,5 @@
-import { createElement, createTextElement, Attribute } from "./element-factory";
+import { createElement, createTextElement } from "./element-factory";
+import { Attribute } from "./attribute";
 
 const loadHomeMenu = () => {
   document.body.textContent = "";

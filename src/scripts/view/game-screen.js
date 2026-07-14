@@ -2,9 +2,10 @@ import {
   createElement,
   createTextElement,
   createPlayerIcon,
-  Attribute,
   createGameBoard,
 } from "./element-factory.js";
+
+import { Attribute } from "./attribute.js";
 
 import { playerIcons } from "./icon-manager.js";
 

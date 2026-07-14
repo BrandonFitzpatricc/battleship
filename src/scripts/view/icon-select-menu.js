@@ -2,8 +2,9 @@ import {
   createElement,
   createTextElement,
   createIconBtn,
-  Attribute,
 } from "./element-factory";
+
+import { Attribute } from "./attribute";
 
 import { playerIcons, buttonIcons } from "./icon-manager";
 

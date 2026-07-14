@@ -1,3 +1,5 @@
+import { Attribute } from "./attribute";
+
 const createElement = (type, className, ...attributes) => {
   const element = document.createElement(type);
   element.className = className;
@@ -51,29 +53,10 @@ function createIcon(className, src, alt, dimensions) {
   return icon;
 }
 
-class Attribute {
-  #name;
-  #value;
-
-  constructor(name, value) {
-    this.#name = name;
-    this.#value = value;
-  }
-
-  get name() {
-    return this.#name;
-  }
-
-  get value() {
-    return this.#value;
-  }
-}
-
 export {
   createElement,
   createTextElement,
   createIconBtn,
   createPlayerIcon,
   createGameBoard,
-  Attribute,
 };

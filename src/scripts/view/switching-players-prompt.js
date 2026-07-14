@@ -1,8 +1,5 @@
-import {
-  createElement,
-  createTextElement,
-  Attribute,
-} from "./element-factory.js";
+import { createElement, createTextElement } from "./element-factory.js";
+import { Attribute } from "./attribute.js";
 
 const loadSwitchingPlayersPrompt = () => {
   const switchingPlayersPrompt = createElement("div", "prompt");
