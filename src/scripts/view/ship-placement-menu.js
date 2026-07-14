@@ -6,14 +6,14 @@ import {
   createGameBoard,
 } from "./element-factory.js";
 
-import { playerIcons, buttonIcons } from "./icon-manager.js";
+import { buttonIcons } from "./icon-manager.js";
 
 const loadShipPlacementMenu = (player) => {
   document.body.textContent = "";
 
   const mainContainer = createElement("div", "ship-placement-menu");
 
-  const header = loadHeader();
+  const header = loadHeader(player);
   const shipContainer = loadShipContainer();
   const gameBoard = createGameBoard();
   const optionBtns = loadOptionBtns();
@@ -23,10 +23,10 @@ const loadShipPlacementMenu = (player) => {
   document.body.appendChild(mainContainer);
 };
 
-function loadHeader() {
+function loadHeader(player) {
   const header = createTextElement("div", "header");
 
-  const playerIcon = createPlayerIcon(playerIcons["boxing-glove"], 60);
+  const playerIcon = createPlayerIcon(player.icon, 60);
   // prettier-ignore
   const shipPlacementMessage = createTextElement("div", "", " - Place Your Ships")
 
