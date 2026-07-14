@@ -8,7 +8,7 @@ import {
 
 import { playerIcons, buttonIcons } from "./icon-manager.js";
 
-const loadShipPlacementMenu = () => {
+const loadShipPlacementMenu = (player) => {
   document.body.textContent = "";
 
   const mainContainer = createElement("div", "ship-placement-menu");
@@ -26,11 +26,7 @@ const loadShipPlacementMenu = () => {
 function loadHeader() {
   const header = createTextElement("div", "header");
 
-  const playerIcon = createPlayerIcon(
-    playerIcons["boxing-glove"].src,
-    playerIcons["boxing-glove"].alt,
-    60,
-  );
+  const playerIcon = createPlayerIcon(playerIcons["boxing-glove"], 60);
   // prettier-ignore
   const shipPlacementMessage = createTextElement("div", "", " - Place Your Ships")
 
@@ -59,7 +55,7 @@ function loadOptionBtns() {
     const icon = buttonIcons[iconName];
 
     // prettier-ignore
-    const iconBtn = createIconBtn("option-btn", iconName, icon.src, icon.alt, 120);
+    const iconBtn = createIconBtn("option-btn", iconName, icon, 120);
 
     optionBtns.append(iconBtn);
   }

@@ -19,16 +19,16 @@ const createTextElement = (type, className, textContent, ...attributes) => {
   return element;
 };
 
-const createIconBtn = (className, id, src, alt, dimensions) => {
+const createIconBtn = (className, id, icon, dimensions) => {
   const btn = createElement("button", className, new Attribute("id", id));
-  btn.appendChild(createIcon("option icon", src, alt, dimensions));
+  btn.appendChild(createIcon("option icon", icon.src, icon.alt, dimensions));
   return btn;
 };
 
-const createPlayerIcon = (src, alt, dimensions) => {
+const createPlayerIcon = (icon, dimensions) => {
   const playerIconContainer = createElement("div", "player-icon-container");
   // prettier-ignore
-  playerIconContainer.appendChild(createIcon("player icon", src, alt, dimensions));
+  playerIconContainer.appendChild(createIcon("player icon", icon.src, icon.alt, dimensions));
   return playerIconContainer;
 };
 

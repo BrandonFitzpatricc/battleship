@@ -19,8 +19,7 @@ const loadIconSelectMenu = () => {
   const randomBtn = createIconBtn(
     "random selection-btn",
     "random-icon",
-    buttonIcons["randomize"].src,
-    buttonIcons["randomize"].alt,
+    buttonIcons["randomize"],
     100,
   );
 
@@ -48,13 +47,7 @@ function loadIconSelectionBtns() {
 
     const listItem = createElement("li", "");
 
-    const btn = createIconBtn(
-      "selection-btn",
-      iconName,
-      icon.src,
-      icon.alt,
-      100,
-    );
+    const btn = createIconBtn("selection-btn", iconName, icon, 100);
 
     listItem.appendChild(btn);
 
