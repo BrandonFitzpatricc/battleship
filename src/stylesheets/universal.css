@@ -13,6 +13,10 @@
   --dark-gray: #959494;
 }
 
+* {
+  pointer-events: none;
+}
+
 body {
   height: 100%;
   background-color: var(--light-beige);
@@ -25,8 +29,12 @@ body {
   position: absolute;
 }
 
-button:not(.square) {
-  cursor: pointer;
+button {
+  pointer-events: auto;
+
+  &:not(.square) {
+    cursor: pointer;
+  }
 }
 
 & .header {
