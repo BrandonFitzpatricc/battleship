@@ -6,6 +6,8 @@ import {
   createGameBoard,
 } from "./element-factory.js";
 
+import { Attribute } from "./attribute.js";
+
 import { buttonIcons } from "./icon-manager.js";
 
 const loadShipPlacementMenu = (player) => {
@@ -40,7 +42,11 @@ function loadShipContainer() {
 
   ["carrier", "battleship", "destroyer", "submarine", "patrol-boat"].forEach(
     (shipName) => {
-      const ship = createElement("div", `ship ${shipName} vertical`);
+      const ship = createElement(
+        "div",
+        `ship ${shipName} vertical`,
+        new Attribute("draggable", "true"),
+      );
       shipContainer.appendChild(ship);
     },
   );
