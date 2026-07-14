@@ -31,12 +31,6 @@ class Player {
   }
 }
 
-class RealPlayer extends Player {
-  constructor(gameBoard, isActive) {
-    super(gameBoard, isActive);
-  }
-}
-
 class ComputerPlayer extends Player {
   // This array will function similarly to a queue. When the computer player hits a ship for
   // the first time, it will be pushed into the queue. The computer player will target
@@ -283,4 +277,4 @@ class ComputerPlayer extends Player {
   }
 }
 
-export { RealPlayer, ComputerPlayer };
+export { Player, ComputerPlayer };

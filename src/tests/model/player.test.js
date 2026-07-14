@@ -1,11 +1,11 @@
-import { RealPlayer, ComputerPlayer } from "../../scripts/model/player.js";
+import { Player, ComputerPlayer } from "../../scripts/model/player.js";
 import { GameBoard } from "../../scripts/model/game-board.js";
 import { Position } from "../../scripts/model/position.js";
 
 let realPlayer;
 let computerPlayer;
 beforeEach(() => {
-  realPlayer = new RealPlayer();
+  realPlayer = new Player();
   realPlayer.gameBoard = new GameBoard();
   realPlayer.isActive = true;
 
