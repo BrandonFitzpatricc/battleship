@@ -4,6 +4,8 @@ import { playerIcons } from "../view/icon-manager.js";
 
 import { initializeShipPlacementMenu } from "./ship-placement-menu-controller.js";
 
+import { GameBoard } from "../model/game-board.js";
+
 const initializeIconSelectMenu = (players) => {
   loadIconSelectMenu();
 
@@ -22,7 +24,7 @@ const initializeIconSelectMenu = (players) => {
 
   document.querySelector("#confirm").addEventListener("click", () => {
     players[0].icon = selectedIcon;
-    initializeShipPlacementMenu(players);
+    initializeShipPlacementMenu(players, new GameBoard());
   });
 
   function selectIcon(icon) {
