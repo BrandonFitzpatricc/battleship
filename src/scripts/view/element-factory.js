@@ -32,12 +32,24 @@ const createPlayerIcon = (icon, dimensions) => {
   return playerIconContainer;
 };
 
-const createGameBoard = () => {
-  const gameBoard = createElement("div", "game-board");
-  for (let i = 0; i < 100; i++) {
-    gameBoard.appendChild(createElement("div", "square"));
+const createGameBoardDisplay = (gameBoard) => {
+  const board = gameBoard.board;
+
+  const gameBoardDisplay = createElement("div", "game-board");
+  for (let i = 0; i < board.length; i++) {
+    for (let j = 0; j < board[i].length; j++) {
+      const square = createElement(
+        "div",
+        "square",
+        new Attribute("data-row", i),
+        new Attribute("data-column", j),
+      );
+      if (board[i][j].length > 1) square.className += " ship";
+      gameBoardDisplay.appendChild(square);
+    }
   }
-  return gameBoard;
+
+  return gameBoardDisplay;
 };
 
 function createIcon(className, src, alt, dimensions) {
@@ -58,5 +70,5 @@ export {
   createTextElement,
   createIconBtn,
   createPlayerIcon,
-  createGameBoard,
+  createGameBoardDisplay,
 };
