@@ -3,24 +3,24 @@ import {
   createTextElement,
   createIconBtn,
   createPlayerIcon,
-  createGameBoard,
+  createGameBoardDisplay,
 } from "./element-factory.js";
 
 import { Attribute } from "./attribute.js";
 
 import { buttonIcons } from "./icon-manager.js";
 
-const loadShipPlacementMenu = (player) => {
+const loadShipPlacementMenu = (player, gameBoard) => {
   document.body.textContent = "";
 
   const mainContainer = createElement("div", "ship-placement-menu");
 
   const header = loadHeader(player);
-  const shipContainer = loadShipContainer();
-  const gameBoard = createGameBoard();
+  const shipContainer = loadShipContainer(gameBoard.ships);
+  const gameBoardDisplay = createGameBoardDisplay(gameBoard);
   const optionBtns = loadOptionBtns();
 
-  mainContainer.append(header, shipContainer, gameBoard, optionBtns);
+  mainContainer.append(header, shipContainer, gameBoardDisplay, optionBtns);
 
   document.body.appendChild(mainContainer);
 };
@@ -37,7 +37,7 @@ function loadHeader(player) {
   return header;
 }
 
-function loadShipContainer() {
+function loadShipContainer(placedShips) {
   const shipContainer = createElement("div", "ship-container");
 
   ["carrier", "battleship", "destroyer", "submarine", "patrol-boat"].forEach(
@@ -48,6 +48,8 @@ function loadShipContainer() {
         new Attribute("id", shipName),
         new Attribute("draggable", "true"),
       );
+      // prettier-ignore
+      if (placedShips.find(ship => ship.name === shipName)) ship.className += " hidden";
       shipContainer.appendChild(ship);
     },
   );
