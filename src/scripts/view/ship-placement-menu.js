@@ -45,6 +45,7 @@ function loadShipContainer() {
       const ship = createElement(
         "div",
         `ship ${shipName} vertical`,
+        new Attribute("id", shipName),
         new Attribute("draggable", "true"),
       );
       shipContainer.appendChild(ship);

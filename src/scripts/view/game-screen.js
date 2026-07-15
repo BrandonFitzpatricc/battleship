@@ -87,7 +87,8 @@ function loadPlayerStatus() {
 
   ["carrier", "battleship", "destroyer", "submarine", "patrol-boat"].forEach(
     (shipName) => {
-      const ship = createElement("div", `ship ${shipName}`);
+      // prettier-ignore
+      const ship = createElement("div", `ship ${shipName}`, new Attribute("id", shipName));
       shipsRemaining.appendChild(ship);
     },
   );
