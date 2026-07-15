@@ -92,11 +92,11 @@
     width: 752px;
     height: 752px;
     margin: 0 auto;
-    pointer-events: auto;
 
     & .square {
       width: 75px;
       height: 75px;
+      pointer-events: auto;
     }
   }
 
