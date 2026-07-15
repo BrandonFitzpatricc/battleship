@@ -26,7 +26,6 @@ body {
 
 .hidden {
   visibility: hidden;
-  position: absolute;
 }
 
 button {
