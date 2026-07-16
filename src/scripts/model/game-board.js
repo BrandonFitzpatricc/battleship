@@ -36,19 +36,20 @@ class GameBoard {
     return this.#ships;
   }
 
-  placeShipHorizontally(name, headPosition) {
-    return this.#placeShip(name, headPosition, "horizontal");
+  placeShipHorizontally(name, headPosition, isRandom) {
+    return this.#placeShip(name, headPosition, "horizontal", isRandom);
   }
 
-  placeShipVertically(name, headPosition) {
-    return this.#placeShip(name, headPosition, "vertical");
+  placeShipVertically(name, headPosition, isRandom) {
+    return this.#placeShip(name, headPosition, "vertical", isRandom);
   }
 
   // headPosition is the leftmost ship position if the orientation is horizontal, or the topmost
   // ship position if the orientation is vertical
-  #placeShip(name, headPosition, orientation) {
+  #placeShip(name, headPosition, orientation, isRandom) {
     const ship = new Ship(name);
-    if (this.#invalidPlacement(ship, headPosition, orientation)) return false;
+    if (this.#invalidPlacement(ship, headPosition, orientation, isRandom))
+      return false;
     for (let i = 0; i < ship.length; i++) {
       if (orientation === "horizontal") {
         this.#board[headPosition.row][headPosition.column + i].push(ship);
@@ -61,22 +62,74 @@ class GameBoard {
     return true;
   }
 
-  #invalidPlacement(ship, headPosition, orientation) {
+  // Note: Additional constraints are added to randomly placed ships to prevent two or
+  // more ships from being placed directly next to each other
+  #invalidPlacement(ship, headPosition, orientation, isRandom) {
     let invalidPlacement;
 
     for (let i = 0; i < ship.length; i++) {
-      //prettier-ignore
       if (orientation === "horizontal") {
         invalidPlacement =
           headPosition.column + ship.length - 1 > 9 ||
           this.#board[headPosition.row][headPosition.column + i].length > 1;
-          
+
+        if (invalidPlacement) return true;
+
+        if (isRandom) {
+          //prettier-ignore
+          const leftOfHead = this.#board[headPosition.row][headPosition.column - 1];
+          if (leftOfHead) {
+            if (leftOfHead.length > 1) return true;
+          }
+          //prettier-ignore
+          const rightOfTail = this.#board[headPosition.row][headPosition.column + ship.length]
+          if (rightOfTail) {
+            if (rightOfTail.length > 1) return true;
+          }
+
+          for (let j = -1; j <= 1; j = j + 2) {
+            if (this.#board[headPosition.row + j]) {
+              invalidPlacement =
+                this.#board[headPosition.row + j][headPosition.column + i]
+                  .length > 1;
+              if (invalidPlacement) return true;
+            }
+          }
+        }
       } else if (orientation === "vertical") {
         invalidPlacement =
           headPosition.row + ship.length - 1 > 9 ||
           this.#board[headPosition.row + i][headPosition.column].length > 1;
+
+        if (invalidPlacement) return true;
+
+        if (isRandom) {
+          if (this.#board[headPosition.row - 1]) {
+            // prettier-ignore
+            const aboveHead = this.#board[headPosition.row - 1][headPosition.column];
+            if (aboveHead) {
+              if (aboveHead.length > 1) return true;
+            }
+          }
+
+          if (this.#board[headPosition.row + ship.length]) {
+            // prettier-ignore
+            const belowTail = this.#board[headPosition.row + ship.length][headPosition.column]
+            if (belowTail) {
+              if (belowTail.length > 1) return true;
+            }
+          }
+
+          for (let j = -1; j <= 1; j = j + 2) {
+            const adjacentPosition =
+              this.#board[headPosition.row + i][headPosition.column + j];
+            if (adjacentPosition) {
+              invalidPlacement = adjacentPosition.length > 1;
+              if (invalidPlacement) return true;
+            }
+          }
+        }
       }
-      if (invalidPlacement) return true;
     }
     return false;
   }
@@ -93,7 +146,8 @@ class GameBoard {
         while (true) {
           const row = Math.floor(Math.random() * 10);
           const column = Math.floor(Math.random() * 10);
-          if (this.placeShipFn(shipName, new Position(row, column))) break;
+          // prettier-ignore
+          if (this.placeShipFn(shipName, new Position(row, column), true)) break;
         }
       },
     );
