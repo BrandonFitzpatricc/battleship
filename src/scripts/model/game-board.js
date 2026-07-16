@@ -48,15 +48,13 @@ class GameBoard {
   // ship position if the orientation is vertical
   #placeShip(name, headPosition, orientation, isRandom) {
     const ship = new Ship(name);
-    if (this.#invalidPlacement(ship, headPosition, orientation, isRandom))
-      return false;
+    // prettier-ignore
+    if (this.#invalidPlacement(ship, headPosition, orientation, isRandom)) return false;
+    // prettier-ignore
     for (let i = 0; i < ship.length; i++) {
-      if (orientation === "horizontal") {
-        this.#board[headPosition.row][headPosition.column + i].push(ship);
-        //prettier-ignore
-      } else if (orientation === "vertical") {
-        this.#board[headPosition.row + i][headPosition.column].push(ship);
-      }
+      const row = orientation === "horizontal" ? headPosition.row : headPosition.row + i;
+      const column = orientation === "vertical" ? headPosition.column : headPosition.column + i;
+      this.#board[row][column].push(ship)
     }
     this.#ships.push(ship);
     return true;
@@ -65,33 +63,37 @@ class GameBoard {
   // Note: Additional constraints are added to randomly placed ships to prevent two or
   // more ships from being placed directly next to each other
   #invalidPlacement(ship, headPosition, orientation, isRandom) {
-    let invalidPlacement;
-
     for (let i = 0; i < ship.length; i++) {
+      // prettier-ignore
+      const row = orientation === "horizontal" ? headPosition.row : headPosition.row + i;
+      // prettier-ignore
+      const column = orientation === "vertical" ? headPosition.column: headPosition.column + i;
+
+      let invalidPlacement;
+
       if (orientation === "horizontal") {
         invalidPlacement =
           headPosition.column + ship.length - 1 > 9 ||
-          this.#board[headPosition.row][headPosition.column + i].length > 1;
+          this.#board[row][column].length > 1;
 
         if (invalidPlacement) return true;
 
         if (isRandom) {
           //prettier-ignore
-          const leftOfHead = this.#board[headPosition.row][headPosition.column - 1];
+          const leftOfHead = this.#board[row][headPosition.column - 1];
           if (leftOfHead) {
             if (leftOfHead.length > 1) return true;
           }
           //prettier-ignore
-          const rightOfTail = this.#board[headPosition.row][headPosition.column + ship.length]
+          const rightOfTail = this.#board[row][headPosition.column + ship.length]
           if (rightOfTail) {
             if (rightOfTail.length > 1) return true;
           }
 
           for (let j = -1; j <= 1; j = j + 2) {
-            if (this.#board[headPosition.row + j]) {
-              invalidPlacement =
-                this.#board[headPosition.row + j][headPosition.column + i]
-                  .length > 1;
+            const adjacentRowPresent = Boolean(this.#board[row + j]);
+            if (adjacentRowPresent) {
+              invalidPlacement = this.#board[row + j][column].length > 1;
               if (invalidPlacement) return true;
             }
           }
@@ -99,30 +101,27 @@ class GameBoard {
       } else if (orientation === "vertical") {
         invalidPlacement =
           headPosition.row + ship.length - 1 > 9 ||
-          this.#board[headPosition.row + i][headPosition.column].length > 1;
+          this.#board[row][column].length > 1;
 
         if (invalidPlacement) return true;
 
         if (isRandom) {
-          if (this.#board[headPosition.row - 1]) {
+          const rowAbove = Boolean(this.#board[headPosition.row - 1]);
+          if (rowAbove) {
             // prettier-ignore
-            const aboveHead = this.#board[headPosition.row - 1][headPosition.column];
-            if (aboveHead) {
-              if (aboveHead.length > 1) return true;
-            }
+            const aboveHead = this.#board[headPosition.row - 1][column];
+            if (aboveHead.length > 1) return true;
           }
 
-          if (this.#board[headPosition.row + ship.length]) {
+          const rowBelow = Boolean(this.#board[headPosition.row + ship.length]);
+          if (rowBelow) {
             // prettier-ignore
-            const belowTail = this.#board[headPosition.row + ship.length][headPosition.column]
-            if (belowTail) {
-              if (belowTail.length > 1) return true;
-            }
+            const belowTail = this.#board[headPosition.row + ship.length][column]
+            if (belowTail.length > 1) return true;
           }
 
           for (let j = -1; j <= 1; j = j + 2) {
-            const adjacentPosition =
-              this.#board[headPosition.row + i][headPosition.column + j];
+            const adjacentPosition = this.#board[row][column + j];
             if (adjacentPosition) {
               invalidPlacement = adjacentPosition.length > 1;
               if (invalidPlacement) return true;
