@@ -14,7 +14,7 @@ beforeEach(() => {
   computerPlayer.isActive = false;
 });
 
-describe("test player object instantiation", () => {
+describe("Test player object instantiation", () => {
   test("Real player objects are successfully created", () => {
     expect(realPlayer.gameBoard.board).toEqual([
       [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
@@ -48,8 +48,8 @@ describe("test player object instantiation", () => {
   });
 });
 
-describe("test attack methods of the computer player object", () => {
-  describe("test regular attacks", () => {
+describe("Test attack methods of the computer player object", () => {
+  describe("Test regular attacks", () => {
     beforeEach(() => {
       // prettier-ignore
       realPlayer.gameBoard.placeShipVertically("battleship", new Position(2, 1));
@@ -134,7 +134,7 @@ describe("test attack methods of the computer player object", () => {
     });
   });
 
-  describe("test attacks against damaged ships", () => {
+  describe("Test attacks against damaged ships", () => {
     beforeEach(() => {
       // prettier-ignore
       realPlayer.gameBoard.placeShipVertically("carrier", new Position(2, 9));
@@ -259,7 +259,7 @@ describe("test attack methods of the computer player object", () => {
     });
   });
 
-  describe("test computer attack stability", () => {
+  describe("Test computer attack stability", () => {
     test("The computer is able to destroy every ship in a game board of spread out ships", () => {
       // prettier-ignore
       realPlayer.gameBoard.placeShipVertically("carrier", new Position(2, 9));
