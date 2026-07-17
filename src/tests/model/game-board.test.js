@@ -173,6 +173,48 @@ describe("Test placeShipsRandomly method", () => {
   });
 });
 
+describe("Test removeShip method", () => {
+  test("All ships on a populated game board can be removed successfully", () => {
+    gameBoard.removeShip("battleship");
+    gameBoard.removeShip("carrier");
+    gameBoard.removeShip("destroyer");
+    gameBoard.removeShip("submarine");
+    gameBoard.removeShip("patrol-boat");
+
+    expect(gameBoard.board).toEqual([
+      [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
+      [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
+      [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
+      [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
+      [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
+      [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
+      [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
+      [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
+      [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
+      [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
+    ]);
+    expect(gameBoard.ships).toEqual([]);
+  });
+
+  test("Trying to remove a ship that isn't on the game board doesn't break the method", () => {
+    gameBoard.removeShip("carrier");
+
+    expect(gameBoard.board).toEqual([
+      [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
+      [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
+      [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
+      [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
+      [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
+      [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
+      [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
+      [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
+      [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
+      [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
+    ]);
+    expect(gameBoard.ships).toEqual([]);
+  });
+});
+
 describe("Test isSunk method", () => {
   test("isSunk returns false when there are still active ships", () => {
     gameBoard.placeShipVertically("battleship", new Position(2, 1));

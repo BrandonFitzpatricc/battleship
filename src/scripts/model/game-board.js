@@ -154,6 +154,23 @@ class GameBoard {
     );
   }
 
+  removeShip(shipName) {
+    const board = this.#board;
+    for (let i = 0; i < board.length; i++) {
+      for (let j = 0; j < board[i].length; j++) {
+        if (board[i][j].length > 1) {
+          if (board[i][j][1].name === shipName) {
+            board[i][j] = [0];
+          }
+        }
+      }
+    }
+
+    const ships = this.#ships;
+    // prettier-ignore
+    ships.splice(ships.findIndex(ship => ship.name === shipName), 1);
+  }
+
   receiveAttack(row, column) {
     const target = this.#board[row][column];
     if (target[0] === 1) return false;
