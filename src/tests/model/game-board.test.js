@@ -216,13 +216,15 @@ describe("Test removeShip method", () => {
 });
 
 describe("Test isSunk method", () => {
-  test("isSunk returns false when there are still active ships", () => {
+  beforeEach(() => {
     gameBoard.placeShipVertically("battleship", new Position(2, 1));
     gameBoard.placeShipVertically("carrier", new Position(2, 7));
     gameBoard.placeShipHorizontally("destroyer", new Position(8, 3));
     gameBoard.placeShipHorizontally("submarine", new Position(0, 3));
     gameBoard.placeShipHorizontally("patrol-boat", new Position(9, 7));
+  });
 
+  test("isSunk returns false when there are still active ships", () => {
     gameBoard.receiveAttack(2, 1);
     gameBoard.receiveAttack(3, 1);
     gameBoard.receiveAttack(4, 1);
@@ -243,12 +245,6 @@ describe("Test isSunk method", () => {
   });
 
   test("isSunk returns true when every ship has been sunk", () => {
-    gameBoard.placeShipVertically("battleship", new Position(2, 1));
-    gameBoard.placeShipVertically("carrier", new Position(2, 7));
-    gameBoard.placeShipHorizontally("destroyer", new Position(8, 3));
-    gameBoard.placeShipHorizontally("submarine", new Position(0, 3));
-    gameBoard.placeShipHorizontally("patrol-boat", new Position(9, 7));
-
     gameBoard.receiveAttack(2, 1);
     gameBoard.receiveAttack(3, 1);
     gameBoard.receiveAttack(4, 1);
