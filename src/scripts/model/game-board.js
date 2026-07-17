@@ -55,6 +55,8 @@ class GameBoard {
       const row = orientation === "horizontal" ? headPosition.row : headPosition.row + i;
       const column = orientation === "vertical" ? headPosition.column : headPosition.column + i;
       this.#board[row][column].push(ship)
+      // The head of the ship is marked to allow for it to be rotated after placement.
+      if(i === 0) this.#board[row][column].push("head");
     }
     this.#ships.push(ship);
     return true;
