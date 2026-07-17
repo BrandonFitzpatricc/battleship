@@ -36,6 +36,10 @@
 
     & .ship {
       pointer-events: auto;
+
+      &.dragged {
+        opacity: 0.01;
+      }
     }
 
     & .carrier {
