@@ -1,6 +1,7 @@
 class Ship {
   #name;
   #length;
+  #orientation;
   #hitCount;
 
   static #shipLengths = {
@@ -11,8 +12,9 @@ class Ship {
     "patrol-boat": 2,
   };
 
-  constructor(name) {
+  constructor(name, orientation) {
     this.#name = name;
+    this.#orientation = orientation;
     this.#length = Ship.#shipLengths[name];
     this.#hitCount = 0;
   }
@@ -23,6 +25,14 @@ class Ship {
 
   get length() {
     return this.#length;
+  }
+
+  get orientation() {
+    return this.#orientation;
+  }
+
+  set orientation(value) {
+    this.#orientation = value;
   }
 
   hit() {
