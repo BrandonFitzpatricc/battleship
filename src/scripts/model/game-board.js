@@ -63,6 +63,8 @@ class GameBoard {
   // Note: Additional constraints are added to randomly placed ships to prevent two or
   // more ships from being placed directly next to each other
   #invalidPlacement(ship, headPosition, orientation, isRandom) {
+    if (headPosition.row < 0 || headPosition.column < 0) return true;
+
     for (let i = 0; i < ship.length; i++) {
       // prettier-ignore
       const row = orientation === "horizontal" ? headPosition.row : headPosition.row + i;
