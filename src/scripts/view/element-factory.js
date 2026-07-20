@@ -44,7 +44,11 @@ const createGameBoardDisplay = (gameBoard) => {
         new Attribute("data-row", i),
         new Attribute("data-column", j),
       );
-      if (board[i][j].length > 1) square.className += " ship";
+      // prettier-ignore
+      const position = board[i][j];
+      if (position.length > 1) {
+        square.className += ` ship ${position[1].name} ${position[1].orientation}`;
+      }
       gameBoardDisplay.appendChild(square);
     }
   }
