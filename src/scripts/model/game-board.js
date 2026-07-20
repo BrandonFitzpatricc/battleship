@@ -47,7 +47,7 @@ class GameBoard {
   // headPosition is the leftmost ship position if the orientation is horizontal, or the topmost
   // ship position if the orientation is vertical
   #placeShip(name, headPosition, orientation, isRandom) {
-    const ship = new Ship(name);
+    const ship = new Ship(name, orientation);
     // prettier-ignore
     if (this.#invalidPlacement(ship, headPosition, orientation, isRandom)) return false;
     // prettier-ignore
@@ -154,12 +154,12 @@ class GameBoard {
     );
   }
 
-  removeShip(shipName) {
+  removeShip(ship) {
     const board = this.#board;
     for (let i = 0; i < board.length; i++) {
       for (let j = 0; j < board[i].length; j++) {
         if (board[i][j].length > 1) {
-          if (board[i][j][1].name === shipName) {
+          if (board[i][j][1] === ship) {
             board[i][j] = [0];
           }
         }
@@ -168,7 +168,43 @@ class GameBoard {
 
     const ships = this.#ships;
     // prettier-ignore
-    ships.splice(ships.findIndex(ship => ship.name === shipName), 1);
+    ships.splice(ships.findIndex(placedShip => placedShip === ship), 1);
+  }
+
+  rotateShip(ship) {
+    const board = this.#board;
+
+    for (let i = 0; i < board.length; i++) {
+      for (let j = 0; j < board[i].length; j++) {
+        if (board[i][j].length > 1) {
+          if (board[i][j][1] === ship) {
+            this.removeShip(ship);
+
+            const newHeadOffset = ship.name === "carrier" ? 2 : 1;
+
+            const newHeadRow =
+              ship.orientation === "vertical"
+                ? i + newHeadOffset
+                : i - newHeadOffset;
+
+            const newHeadColumn =
+              ship.orientation === "horizontal"
+                ? j + newHeadOffset
+                : j - newHeadOffset;
+
+            this.placeShipFn =
+              ship.orientation === "vertical"
+                ? this.placeShipHorizontally
+                : this.placeShipVertically;
+
+            // prettier-ignore
+            this.placeShipFn(ship.name, new Position(newHeadRow, newHeadColumn));
+
+            return;
+          }
+        }
+      }
+    }
   }
 
   receiveAttack(row, column) {
