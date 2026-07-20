@@ -215,6 +215,14 @@ describe("Test removeShip method", () => {
   });
 });
 
+describe("Test getHeadPosition method", () => {
+  test("The head position of a ship on the game board is successfully returned", () => {
+    gameBoard.placeShipVertically("battleship", new Position(2, 1));
+    // prettier-ignore
+    expect(gameBoard.getHeadPosition("battleship").getPosition()).toEqual([2, 1]);
+  });
+});
+
 describe("Test isSunk method", () => {
   beforeEach(() => {
     gameBoard.placeShipVertically("battleship", new Position(2, 1));
