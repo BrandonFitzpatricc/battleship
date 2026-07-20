@@ -172,35 +172,40 @@ class GameBoard {
   }
 
   rotateShip(ship) {
-    const board = this.#board;
+    const currentHead = this.getHeadPosition(ship);
 
+    if (currentHead) {
+      this.removeShip(ship);
+
+      const newHeadOffset = ship.name === "carrier" ? 2 : 1;
+
+      const newHeadRow =
+        ship.orientation === "vertical"
+          ? currentHead.row + newHeadOffset
+          : currentHead.row - newHeadOffset;
+
+      const newHeadColumn =
+        ship.orientation === "horizontal"
+          ? currentHead.column + newHeadOffset
+          : currentHead.column - newHeadOffset;
+
+      this.placeShipFn =
+        ship.orientation === "vertical"
+          ? this.placeShipHorizontally
+          : this.placeShipVertically;
+
+      // prettier-ignore
+      this.placeShipFn(ship.name, new Position(newHeadRow, newHeadColumn));
+    }
+  }
+
+  getHeadPosition(ship) {
+    const board = this.#board;
     for (let i = 0; i < board.length; i++) {
       for (let j = 0; j < board[i].length; j++) {
         if (board[i][j].length > 1) {
           if (board[i][j][1] === ship) {
-            this.removeShip(ship);
-
-            const newHeadOffset = ship.name === "carrier" ? 2 : 1;
-
-            const newHeadRow =
-              ship.orientation === "vertical"
-                ? i + newHeadOffset
-                : i - newHeadOffset;
-
-            const newHeadColumn =
-              ship.orientation === "horizontal"
-                ? j + newHeadOffset
-                : j - newHeadOffset;
-
-            this.placeShipFn =
-              ship.orientation === "vertical"
-                ? this.placeShipHorizontally
-                : this.placeShipVertically;
-
-            // prettier-ignore
-            this.placeShipFn(ship.name, new Position(newHeadRow, newHeadColumn));
-
-            return;
+            return new Position(i, j);
           }
         }
       }
