@@ -154,12 +154,12 @@ class GameBoard {
     );
   }
 
-  removeShip(ship) {
+  removeShip(shipName) {
     const board = this.#board;
     for (let i = 0; i < board.length; i++) {
       for (let j = 0; j < board[i].length; j++) {
         if (board[i][j].length > 1) {
-          if (board[i][j][1] === ship) {
+          if (board[i][j][1].name === shipName) {
             board[i][j] = [0];
           }
         }
@@ -168,14 +168,14 @@ class GameBoard {
 
     const ships = this.#ships;
     // prettier-ignore
-    ships.splice(ships.findIndex(placedShip => placedShip === ship), 1);
+    ships.splice(ships.findIndex(placedShip => placedShip.name === shipName), 1);
   }
 
   rotateShip(ship) {
-    const currentHead = this.getHeadPosition(ship);
+    const currentHead = this.getHeadPosition(ship.name);
 
     if (currentHead) {
-      this.removeShip(ship);
+      this.removeShip(ship.name);
 
       const newHeadOffset = ship.name === "carrier" ? 2 : 1;
 
@@ -199,12 +199,12 @@ class GameBoard {
     }
   }
 
-  getHeadPosition(ship) {
+  getHeadPosition(shipName) {
     const board = this.#board;
     for (let i = 0; i < board.length; i++) {
       for (let j = 0; j < board[i].length; j++) {
         if (board[i][j].length > 1) {
-          if (board[i][j][1] === ship) {
+          if (board[i][j][1].name === shipName) {
             return new Position(i, j);
           }
         }
