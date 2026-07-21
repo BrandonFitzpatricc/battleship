@@ -22,6 +22,7 @@ describe("Test game board object instantiation", () => {
     ]);
     expect(gameBoard.unplacedShips.length).toBe(5);
     expect(gameBoard.placedShips).toEqual([]);
+    expect(gameBoard.selectedShip).toEqual(null);
   });
 });
 

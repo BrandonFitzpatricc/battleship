@@ -36,6 +36,8 @@ class GameBoard {
     ];
 
     this.#placedShips = [];
+
+    this.#selectedShip = null;
   }
 
   get board() {
