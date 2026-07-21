@@ -102,6 +102,10 @@
       width: 75px;
       height: 75px;
       pointer-events: auto;
+
+      &.selected {
+        background-color: var(--selected-ship-color);
+      }
     }
   }
 
