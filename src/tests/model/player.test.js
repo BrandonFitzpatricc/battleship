@@ -182,7 +182,7 @@ describe("Test attack methods of the computer player object", () => {
         turns++;
         computerPlayer.attack(realPlayer.gameBoard);
         //prettier-ignore
-        if(realPlayer.gameBoard.ships.find(ship => ship.name === "battleship").isSunk()) break;
+        if(realPlayer.gameBoard.placedShips.find(ship => ship.name === "battleship").isSunk()) break;
       }
       expect(turns).toBeLessThanOrEqual(4);
     });
@@ -198,7 +198,7 @@ describe("Test attack methods of the computer player object", () => {
         turns++;
         computerPlayer.attack(realPlayer.gameBoard);
         //prettier-ignore
-        if(realPlayer.gameBoard.ships.find(ship => ship.name === "battleship").isSunk()) break;
+        if(realPlayer.gameBoard.placedShips.find(ship => ship.name === "battleship").isSunk()) break;
       }
       expect(turns).toBeLessThanOrEqual(4);
     });
@@ -214,7 +214,7 @@ describe("Test attack methods of the computer player object", () => {
         turns++;
         computerPlayer.attack(realPlayer.gameBoard);
         //prettier-ignore
-        if(realPlayer.gameBoard.ships.find(ship => ship.name === "battleship").isSunk()) break;
+        if(realPlayer.gameBoard.placedShips.find(ship => ship.name === "battleship").isSunk()) break;
       }
       expect(turns).toBeLessThanOrEqual(4);
     });
@@ -230,7 +230,7 @@ describe("Test attack methods of the computer player object", () => {
         turns++;
         computerPlayer.attack(realPlayer.gameBoard);
         //prettier-ignore
-        if(realPlayer.gameBoard.ships.find(ship => ship.name === "battleship").isSunk()) break;
+        if(realPlayer.gameBoard.placedShips.find(ship => ship.name === "battleship").isSunk()) break;
       }
       expect(turns).toBeLessThanOrEqual(4);
     });
@@ -246,10 +246,10 @@ describe("Test attack methods of the computer player object", () => {
         turns++;
         computerPlayer.attack(realPlayer.gameBoard);
         if (
-          realPlayer.gameBoard.ships
+          realPlayer.gameBoard.placedShips
             .find((ship) => ship.name === "battleship")
             .isSunk() &&
-          realPlayer.gameBoard.ships
+          realPlayer.gameBoard.placedShips
             .find((ship) => ship.name === "submarine")
             .isSunk()
         )

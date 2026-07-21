@@ -3,7 +3,7 @@ import { Position } from "./position.js";
 
 class GameBoard {
   #board;
-  #ships;
+  #placedShips;
   #selectedShip;
 
   constructor() {
@@ -26,15 +26,15 @@ class GameBoard {
       [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
     ];
 
-    this.#ships = [];
+    this.#placedShips = [];
   }
 
   get board() {
     return this.#board;
   }
 
-  get ships() {
-    return this.#ships;
+  get placedShips() {
+    return this.#placedShips;
   }
 
   get selectedShip() {
@@ -65,7 +65,7 @@ class GameBoard {
       const column = orientation === "vertical" ? headPosition.column : headPosition.column + i;
       this.#board[row][column].push(ship)
     }
-    this.#ships.push(ship);
+    this.#placedShips.push(ship);
     this.#selectedShip = ship; // THIS LINE WILL BE DELETED
     return true;
   }
@@ -176,9 +176,9 @@ class GameBoard {
       }
     }
 
-    const ships = this.#ships;
+    const placedShips = this.#placedShips;
     // prettier-ignore
-    ships.splice(ships.findIndex(placedShip => placedShip.name === shipName), 1);
+    placedShips.splice(placedShips.findIndex(placedShip => placedShip.name === shipName), 1);
   }
 
   rotateShip(ship) {
@@ -236,7 +236,7 @@ class GameBoard {
   }
 
   allShipsSunk() {
-    return this.#ships.filter((ship) => ship.isSunk()).length === 5;
+    return this.#placedShips.filter((ship) => ship.isSunk()).length === 5;
   }
 }
 

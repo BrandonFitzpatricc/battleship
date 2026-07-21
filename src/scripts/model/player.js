@@ -218,7 +218,8 @@ class ComputerPlayer extends Player {
     ];
     const board = gameBoard.board;
 
-    const remainingShips = gameBoard.ships.filter((ship) => !ship.isSunk());
+    // prettier-ignore
+    const remainingShips = gameBoard.placedShips.filter((ship) => !ship.isSunk());
     remainingShips.forEach((ship) => {
       for (let i = 0; i < board.length; i++) {
         for (let j = 0; j < board[i].length; j++) {

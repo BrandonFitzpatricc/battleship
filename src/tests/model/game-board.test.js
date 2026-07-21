@@ -20,14 +20,14 @@ describe("Test game board object instantiation", () => {
       [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
       [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
     ]);
-    expect(gameBoard.ships).toEqual([]);
+    expect(gameBoard.placedShips).toEqual([]);
   });
 });
 
 describe("Test placeShip method", () => {
   test("A ship that's placed on the game board is successfully saved", () => {
     gameBoard.placeShipHorizontally("battleship", new Position(0, 0));
-    expect(gameBoard.ships[0].name).toBe("battleship");
+    expect(gameBoard.placedShips[0].name).toBe("battleship");
   });
 
   test("Placing a ship successfully will return true", () => {
@@ -59,7 +59,7 @@ describe("Test placeShip + receiveAttack methods", () => {
     gameBoard.receiveAttack(0, 1);
     gameBoard.receiveAttack(0, 2);
     gameBoard.receiveAttack(0, 3);
-    expect(gameBoard.ships[0].isSunk()).toBe(true);
+    expect(gameBoard.placedShips[0].isSunk()).toBe(true);
   });
 
   test("A battleship placed vertically at [0, 0] is sunk after [0, 0], [1, 0], [2, 0] and [3, 0] are targeted", () => {
@@ -68,7 +68,7 @@ describe("Test placeShip + receiveAttack methods", () => {
     gameBoard.receiveAttack(1, 0);
     gameBoard.receiveAttack(2, 0);
     gameBoard.receiveAttack(3, 0);
-    expect(gameBoard.ships[0].isSunk()).toBe(true);
+    expect(gameBoard.placedShips[0].isSunk()).toBe(true);
   });
 
   test("A battleship placed horizontally at [0, 0] is not sunk after [0, 0], [1, 0], [2, 0] and [3, 0] are targeted", () => {
@@ -77,7 +77,7 @@ describe("Test placeShip + receiveAttack methods", () => {
     gameBoard.receiveAttack(1, 0);
     gameBoard.receiveAttack(2, 0);
     gameBoard.receiveAttack(3, 0);
-    expect(gameBoard.ships[0].isSunk()).toBe(false);
+    expect(gameBoard.placedShips[0].isSunk()).toBe(false);
   });
 
   test("An attack at positions with no ship will change their values to 1", () => {
@@ -127,7 +127,9 @@ describe("Test placeShip + receiveAttack methods", () => {
     gameBoard.receiveAttack(2, 0);
 
     expect(
-      gameBoard.ships.filter((ship) => ship.isSunk()).map((ship) => ship.name),
+      gameBoard.placedShips
+        .filter((ship) => ship.isSunk())
+        .map((ship) => ship.name),
     ).toEqual(["battleship", "destroyer"]);
   });
 });
@@ -153,7 +155,7 @@ describe("Test clearBoard method", () => {
       [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
       [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
     ]);
-    expect(gameBoard.ships).toEqual([]);
+    expect(gameBoard.placedShips).toEqual([]);
   });
 });
 
@@ -169,7 +171,7 @@ describe("Test placeShipsRandomly method", () => {
     }
 
     expect(shipSquares).toBe(17);
-    expect(gameBoard.ships.length).toBe(5);
+    expect(gameBoard.placedShips.length).toBe(5);
   });
 });
 
@@ -193,7 +195,7 @@ describe("Test removeShip method", () => {
       [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
       [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
     ]);
-    expect(gameBoard.ships).toEqual([]);
+    expect(gameBoard.placedShips).toEqual([]);
   });
 
   test("Trying to remove a ship that isn't on the game board doesn't break the method", () => {
@@ -211,7 +213,7 @@ describe("Test removeShip method", () => {
       [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
       [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
     ]);
-    expect(gameBoard.ships).toEqual([]);
+    expect(gameBoard.placedShips).toEqual([]);
   });
 });
 
