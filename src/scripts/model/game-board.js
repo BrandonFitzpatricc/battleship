@@ -3,6 +3,7 @@ import { Position } from "./position.js";
 
 class GameBoard {
   #board;
+  #unplacedShips;
   #placedShips;
   #selectedShip;
 
@@ -26,11 +27,23 @@ class GameBoard {
       [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
     ];
 
+    this.#unplacedShips = [
+      new Ship("carrier", "vertical"),
+      new Ship("battleship", "vertical"),
+      new Ship("destroyer", "vertical"),
+      new Ship("submarine", "vertical"),
+      new Ship("patrol-boat", "vertical"),
+    ];
+
     this.#placedShips = [];
   }
 
   get board() {
     return this.#board;
+  }
+
+  get unplacedShips() {
+    return this.#unplacedShips;
   }
 
   get placedShips() {
@@ -56,7 +69,8 @@ class GameBoard {
   // headPosition is the leftmost ship position if the orientation is horizontal, or the topmost
   // ship position if the orientation is vertical
   #placeShip(name, headPosition, orientation, isRandom) {
-    const ship = new Ship(name, orientation);
+    const ship = this.#unplacedShips.find((ship) => ship.name === name);
+    ship.orientation = orientation;
     // prettier-ignore
     if (this.#invalidPlacement(ship, headPosition, orientation, isRandom)) return false;
     // prettier-ignore
@@ -65,8 +79,11 @@ class GameBoard {
       const column = orientation === "vertical" ? headPosition.column : headPosition.column + i;
       this.#board[row][column].push(ship)
     }
+
+    this.#unplacedShips.splice(this.#unplacedShips.indexOf(ship), 1);
     this.#placedShips.push(ship);
     this.#selectedShip = ship; // THIS LINE WILL BE DELETED
+
     return true;
   }
 
@@ -170,6 +187,7 @@ class GameBoard {
       for (let j = 0; j < board[i].length; j++) {
         if (board[i][j].length > 1) {
           if (board[i][j][1].name === shipName) {
+            this.#unplacedShips.push(board[i][j][1]);
             board[i][j] = [0];
           }
         }

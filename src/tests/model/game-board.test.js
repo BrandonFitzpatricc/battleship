@@ -20,6 +20,7 @@ describe("Test game board object instantiation", () => {
       [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
       [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
     ]);
+    expect(gameBoard.unplacedShips.length).toBe(5);
     expect(gameBoard.placedShips).toEqual([]);
   });
 });
@@ -27,6 +28,7 @@ describe("Test game board object instantiation", () => {
 describe("Test placeShip method", () => {
   test("A ship that's placed on the game board is successfully saved", () => {
     gameBoard.placeShipHorizontally("battleship", new Position(0, 0));
+    expect(gameBoard.unplacedShips.length).toBe(4);
     expect(gameBoard.placedShips[0].name).toBe("battleship");
   });
 
@@ -155,6 +157,7 @@ describe("Test clearBoard method", () => {
       [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
       [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
     ]);
+    expect(gameBoard.unplacedShips.length).toBe(5);
     expect(gameBoard.placedShips).toEqual([]);
   });
 });
@@ -171,6 +174,7 @@ describe("Test placeShipsRandomly method", () => {
     }
 
     expect(shipSquares).toBe(17);
+    expect(gameBoard.unplacedShips.length).toBe(0);
     expect(gameBoard.placedShips.length).toBe(5);
   });
 });
@@ -195,6 +199,7 @@ describe("Test removeShip method", () => {
       [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
       [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
     ]);
+    expect(gameBoard.unplacedShips.length).toBe(5);
     expect(gameBoard.placedShips).toEqual([]);
   });
 
@@ -213,6 +218,7 @@ describe("Test removeShip method", () => {
       [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
       [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
     ]);
+    expect(gameBoard.unplacedShips.length).toBe(5);
     expect(gameBoard.placedShips).toEqual([]);
   });
 });
