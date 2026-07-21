@@ -16,9 +16,9 @@ const loadShipPlacementMenu = (player, gameBoard) => {
   const mainContainer = createElement("div", "ship-placement-menu");
 
   const header = loadHeader(player);
-  const shipContainer = loadShipContainer(gameBoard.ships);
+  const shipContainer = loadShipContainer(gameBoard.placedShips);
   const gameBoardDisplay = createGameBoardDisplay(gameBoard);
-  const optionBtns = loadOptionBtns(gameBoard.ships);
+  const optionBtns = loadOptionBtns(gameBoard.placedShips);
 
   mainContainer.append(header, shipContainer, gameBoardDisplay, optionBtns);
 
