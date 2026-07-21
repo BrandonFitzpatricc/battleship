@@ -4,6 +4,7 @@ import { Position } from "./position.js";
 class GameBoard {
   #board;
   #ships;
+  #selectedShip;
 
   constructor() {
     this.clearBoard();
@@ -36,6 +37,14 @@ class GameBoard {
     return this.#ships;
   }
 
+  get selectedShip() {
+    return this.#selectedShip;
+  }
+
+  set selectedShip(value) {
+    this.#selectedShip = value;
+  }
+
   placeShipHorizontally(name, headPosition, isRandom) {
     return this.#placeShip(name, headPosition, "horizontal", isRandom);
   }
@@ -57,6 +66,7 @@ class GameBoard {
       this.#board[row][column].push(ship)
     }
     this.#ships.push(ship);
+    this.#selectedShip = ship; // THIS LINE WILL BE DELETED
     return true;
   }
 
