@@ -47,7 +47,7 @@ const createGameBoardDisplay = (gameBoard) => {
       // prettier-ignore
       const position = board[i][j];
       if (position.length > 1) {
-        square.className += ` ship ${position[1].name} ${position[1].orientation}`;
+        square.className += ` ship ${position[1].name}`;
       }
       gameBoardDisplay.appendChild(square);
     }
