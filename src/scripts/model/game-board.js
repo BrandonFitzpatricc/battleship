@@ -70,9 +70,9 @@ class GameBoard {
   // ship position if the orientation is vertical
   #placeShip(name, headPosition, orientation, isRandom) {
     const ship = this.#unplacedShips.find((ship) => ship.name === name);
-    ship.orientation = orientation;
     // prettier-ignore
     if (this.#invalidPlacement(ship, headPosition, orientation, isRandom)) return false;
+    ship.orientation = orientation;
     // prettier-ignore
     for (let i = 0; i < ship.length; i++) {
       const row = orientation === "horizontal" ? headPosition.row : headPosition.row + i;
@@ -82,7 +82,6 @@ class GameBoard {
 
     this.#unplacedShips.splice(this.#unplacedShips.indexOf(ship), 1);
     this.#placedShips.push(ship);
-    this.#selectedShip = ship; // THIS LINE WILL BE DELETED
 
     return true;
   }
