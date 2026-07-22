@@ -18,7 +18,7 @@ const loadShipPlacementMenu = (player, gameBoard) => {
   const header = loadHeader(player);
   const shipContainer = loadShipContainer(gameBoard.placedShips);
   const gameBoardDisplay = createGameBoardDisplay(gameBoard);
-  const optionBtns = loadOptionBtns(gameBoard.placedShips);
+  const optionBtns = loadOptionBtns(gameBoard);
 
   mainContainer.append(header, shipContainer, gameBoardDisplay, optionBtns);
 
@@ -57,7 +57,7 @@ function loadShipContainer(placedShips) {
   return shipContainer;
 }
 
-function loadOptionBtns(placedShips) {
+function loadOptionBtns(gameBoard) {
   const optionBtns = createElement("ul", "option-btns");
 
   for (const iconName in buttonIcons) {
@@ -67,8 +67,9 @@ function loadOptionBtns(placedShips) {
     const iconBtn = createIconBtn("option-btn", iconName, icon, 120);
 
     const unusableButton =
-      (iconName === "rotate" && placedShips.length === 0) ||
-      (iconName === "play" && placedShips.length < 5);
+      (iconName === "rotate" &&
+        (gameBoard.placedShips.length === 0 || !gameBoard.selectedShip)) ||
+      (iconName === "play" && gameBoard.placedShips.length < 5);
 
     if (unusableButton) {
       iconBtn.className += " hidden";
