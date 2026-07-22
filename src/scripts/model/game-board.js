@@ -225,7 +225,14 @@ class GameBoard {
           : this.placeShipVertically;
 
       // prettier-ignore
-      this.placeShipFn(ship.name, new Position(newHeadRow, newHeadColumn));
+      if (!this.placeShipFn(ship.name, new Position(newHeadRow, newHeadColumn))) {
+        this.placeShipFn =
+          ship.orientation === "vertical"
+            ? this.placeShipVertically
+            : this.placeShipHorizontally;
+
+        this.placeShipFn(ship.name, currentHead);
+      }
     }
   }
 
