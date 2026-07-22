@@ -188,7 +188,7 @@ class GameBoard {
       for (let j = 0; j < board[i].length; j++) {
         if (board[i][j].length > 1) {
           if (board[i][j][1].name === shipName) {
-            this.#unplacedShips.push(board[i][j][1]);
+            // this.#unplacedShips.push(board[i][j][1]);
             board[i][j] = [0];
           }
         }
@@ -197,7 +197,8 @@ class GameBoard {
 
     const placedShips = this.#placedShips;
     // prettier-ignore
-    placedShips.splice(placedShips.findIndex(placedShip => placedShip.name === shipName), 1);
+    const ship = placedShips.splice(placedShips.findIndex(placedShip => placedShip.name === shipName), 1);
+    this.#unplacedShips.push(ship[0]);
   }
 
   rotateShip(ship) {
