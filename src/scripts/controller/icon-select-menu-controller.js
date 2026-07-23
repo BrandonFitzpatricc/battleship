@@ -15,12 +15,12 @@ const initializeIconSelectMenu = (players) => {
   const iconSelectionBtns = document.querySelector(".icon-selection-btns");
 
   iconSelectionBtns.addEventListener("click", (event) => {
-    selectIcon(event.target);
+    selectedIcon = selectIcon(event.target);
   });
 
-  document
-    .querySelector("#random-icon")
-    .addEventListener("click", selectRandomIcon);
+  document.querySelector("#random-icon").addEventListener("click", () => {
+    selectedIcon = selectRandomIcon();
+  });
 
   document.querySelector("#confirm").addEventListener("click", () => {
     players[0].icon = selectedIcon;
@@ -28,14 +28,14 @@ const initializeIconSelectMenu = (players) => {
   });
 
   function selectIcon(icon) {
-    selectedIcon = playerIcons[icon.id];
     clearSelectedIcon();
     icon.className += " selected";
+    return playerIcons[icon.id];
   }
 
   function selectRandomIcon() {
     const icons = iconSelectionBtns.querySelectorAll(".selection-btn");
-    selectIcon(icons[Math.floor(Math.random() * icons.length)]);
+    return selectIcon(icons[Math.floor(Math.random() * icons.length)]);
   }
 
   function clearSelectedIcon() {
