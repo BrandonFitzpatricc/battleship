@@ -66,6 +66,10 @@ function createGameBoardDisplay(gameBoard, boardType) {
       // prettier-ignore
       const position = board[i][j];
 
+      if (position.length > 2) {
+        square.className += ` ${position[1].orientation}-${position[2]}`;
+      }
+
       if (boardType === "placement") {
         if (position.length > 1) {
           if (gameBoard.selectedShip) {
@@ -76,7 +80,6 @@ function createGameBoardDisplay(gameBoard, boardType) {
           square.className += ` ship ${position[1].name}`;
         }
       } else if (boardType === "attacking") {
-        square.className = "square";
         if (position.length === 0) {
           if (position[0] === 1) square.className += " miss";
         } else if (position.length > 1) {

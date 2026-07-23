@@ -34,6 +34,7 @@
     & .ship {
       pointer-events: auto;
       position: absolute;
+      border-radius: 50px;
 
       &.dragged {
         opacity: 0.01;

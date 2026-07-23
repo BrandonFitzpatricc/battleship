@@ -72,10 +72,28 @@ button {
   & .square {
     background-color: var(--ocean-blue);
     border: 1px solid var(--dark-gray);
+    outline: 1px solid var(--dark-gray);
 
     &.ship {
       background-color: var(--ship-color);
       border-color: rgb(from var(--dark-gray) r g b / 25%);
+      outline-color: rgb(from var(--dark-gray) r g b / 25%);
+
+      &.vertical-head {
+        border-radius: 50px 50px 0 0;
+      }
+
+      &.horizontal-head {
+        border-radius: 50px 0 0 50px;
+      }
+
+      &.vertical-tail {
+        border-radius: 0 0 50px 50px;
+      }
+
+      &.horizontal-tail {
+        border-radius: 0 50px 50px 0;
+      }
     }
   }
 }
