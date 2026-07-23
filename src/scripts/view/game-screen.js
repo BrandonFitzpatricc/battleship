@@ -48,8 +48,7 @@ function loadHeader(attackingPlayer) {
   const activeMessage = createTextElement(
     "div",
     "",
-    "Is Firing...",
-    new Attribute("id", "active-message"),
+    !GameHandler.isGameOver() ? "Is Firing..." : "Wins!",
   );
 
   header.append(backToMenuBtn, playAgainBtn, playerIcon, activeMessage);
