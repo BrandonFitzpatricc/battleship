@@ -48,7 +48,7 @@ const createPlacementGameBoard = (gameBoard) => {
 };
 
 const createAttackingGameBoard = (gameBoard) => {
-  return createGameBoardDisplay(gameBoard, "placement");
+  return createGameBoardDisplay(gameBoard, "attacking");
 };
 
 function createGameBoardDisplay(gameBoard, boardType) {
@@ -80,7 +80,7 @@ function createGameBoardDisplay(gameBoard, boardType) {
           square.className += ` ship ${position[1].name}`;
         }
       } else if (boardType === "attacking") {
-        if (position.length === 0) {
+        if (position.length === 1) {
           if (position[0] === 1) square.className += " miss";
         } else if (position.length > 1) {
           square.className += " ship";
