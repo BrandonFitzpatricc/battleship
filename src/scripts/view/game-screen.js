@@ -67,6 +67,8 @@ function loadPlayerDisplay(player, number) {
   const playerStatus = loadPlayerStatus(player);
 
   const gameBoard = createAttackingGameBoard(player.gameBoard);
+  gameBoard.className +=
+    player === GameHandler.getTargetedPlayer() ? " active" : " inactive";
 
   playerDisplay.append(playerStatus, gameBoard);
 
