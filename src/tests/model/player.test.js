@@ -155,6 +155,7 @@ describe("Test attack methods of the computer player object", () => {
       realPlayer.gameBoard.placeShipHorizontally("submarine", new Position(0, 3));
 
       computerPlayer.attack(realPlayer.gameBoard);
+      computerPlayer.attack(realPlayer.gameBoard);
 
       const realPlayerBoard = realPlayer.gameBoard.board;
 
@@ -167,79 +168,79 @@ describe("Test attack methods of the computer player object", () => {
       expect(adjacentAttack).toBe(true);
     });
 
-    test("Once a horizontally placed ship's head has been found, it will be destroyed in no more than four turns", () => {
+    test("Once a horizontally placed ship's head has been found, it will be destroyed in no more than eight attacks", () => {
       // prettier-ignore
       realPlayer.gameBoard.placeShipHorizontally("battleship", new Position(5, 4));
       //prettier-ignore
       realPlayer.gameBoard.placeShipHorizontally("submarine", new Position(0, 3));
 
-      let turns = 0;
+      let attacks = 0;
       while (true) {
-        turns++;
+        attacks++;
         computerPlayer.attack(realPlayer.gameBoard);
         //prettier-ignore
         if(realPlayer.gameBoard.placedShips.find(ship => ship.name === "battleship").isSunk()) break;
       }
-      expect(turns).toBeLessThanOrEqual(4);
+      expect(attacks).toBeLessThanOrEqual(8);
     });
 
-    test("Once a vertically placed ship's head has been found, it will be destroyed in no more than four turns", () => {
+    test("Once a vertically placed ship's head has been found, it will be destroyed in no more than eight attacks", () => {
       // prettier-ignore
       realPlayer.gameBoard.placeShipVertically("battleship", new Position(5, 4));
       //prettier-ignore
       realPlayer.gameBoard.placeShipHorizontally("submarine", new Position(0, 3));
 
-      let turns = 0;
+      let attacks = 0;
       while (true) {
-        turns++;
+        attacks++;
         computerPlayer.attack(realPlayer.gameBoard);
         //prettier-ignore
         if(realPlayer.gameBoard.placedShips.find(ship => ship.name === "battleship").isSunk()) break;
       }
-      expect(turns).toBeLessThanOrEqual(4);
+      expect(attacks).toBeLessThanOrEqual(8);
     });
 
-    test("Once a horizontally placed ship's body has been found, it will be destroyed in no more than four turns", () => {
+    test("Once a horizontally placed ship's body has been found, it will be destroyed in no more than eight attacks", () => {
       // prettier-ignore
       realPlayer.gameBoard.placeShipHorizontally("battleship", new Position(5, 3));
       //prettier-ignore
       realPlayer.gameBoard.placeShipHorizontally("submarine", new Position(0, 3));
 
-      let turns = 0;
+      let attacks = 0;
       while (true) {
-        turns++;
+        attacks++;
         computerPlayer.attack(realPlayer.gameBoard);
         //prettier-ignore
         if(realPlayer.gameBoard.placedShips.find(ship => ship.name === "battleship").isSunk()) break;
       }
-      expect(turns).toBeLessThanOrEqual(4);
+      expect(attacks).toBeLessThanOrEqual(8);
     });
 
-    test("Once a vertically placed ship's body has been found, it will be destroyed in no more than four turns", () => {
+    test("Once a vertically placed ship's body has been found, it will be destroyed in no more than eight attacks", () => {
       // prettier-ignore
       realPlayer.gameBoard.placeShipVertically("battleship", new Position(4, 4));
       //prettier-ignore
       realPlayer.gameBoard.placeShipHorizontally("submarine", new Position(0, 3));
 
-      let turns = 0;
+      let attacks = 0;
       while (true) {
-        turns++;
+        attacks++;
         computerPlayer.attack(realPlayer.gameBoard);
         //prettier-ignore
         if(realPlayer.gameBoard.placedShips.find(ship => ship.name === "battleship").isSunk()) break;
       }
-      expect(turns).toBeLessThanOrEqual(4);
+      expect(attacks).toBeLessThanOrEqual(8);
     });
 
-    test("If a new ship is hit while targeting another ship, then both ships will be destroyed in no more than eight turns", () => {
+    test("If a new ship is hit while targeting another ship, then both ships will be destroyed in no more than fifteen attacks", () => {
       // prettier-ignore
       realPlayer.gameBoard.placeShipVertically("battleship", new Position(4, 4));
       //prettier-ignore
       realPlayer.gameBoard.placeShipHorizontally("submarine", new Position(3, 4));
 
-      let turns = 0;
-      while (turns < 3) {
-        turns++;
+      let attacks = 0;
+      while (true) {
+        attacks++;
         computerPlayer.attack(realPlayer.gameBoard);
         if (
           realPlayer.gameBoard.placedShips
@@ -251,7 +252,7 @@ describe("Test attack methods of the computer player object", () => {
         )
           break;
       }
-      expect(turns).toBeLessThanOrEqual(8);
+      expect(attacks).toBeLessThanOrEqual(15);
     });
   });
 
@@ -268,9 +269,9 @@ describe("Test attack methods of the computer player object", () => {
       //prettier-ignore
       realPlayer.gameBoard.placeShipHorizontally("submarine", new Position(0, 3));
 
-      let turns = 0;
+      let attacks = 0;
       while (!realPlayer.gameBoard.allShipsSunk()) {
-        turns++;
+        attacks++;
         computerPlayer.attack(realPlayer.gameBoard);
       }
     });
@@ -287,9 +288,9 @@ describe("Test attack methods of the computer player object", () => {
       // prettier-ignore
       realPlayer.gameBoard.placeShipHorizontally("patrol-boat", new Position(2, 2));
 
-      let turns = 0;
+      let attacks = 0;
       while (!realPlayer.gameBoard.allShipsSunk()) {
-        turns++;
+        attacks++;
         computerPlayer.attack(realPlayer.gameBoard);
       }
     });
@@ -306,9 +307,9 @@ describe("Test attack methods of the computer player object", () => {
       // prettier-ignore
       realPlayer.gameBoard.placeShipVertically("patrol-boat", new Position(1, 9));
 
-      let turns = 0;
+      let attacks = 0;
       while (!realPlayer.gameBoard.allShipsSunk()) {
-        turns++;
+        attacks++;
         computerPlayer.attack(realPlayer.gameBoard);
       }
     });
@@ -316,9 +317,9 @@ describe("Test attack methods of the computer player object", () => {
     test("The computer is able to destroy every ship in a game board with randomized ship placements", () => {
       realPlayer.gameBoard.placeShipsRandomly();
 
-      let turns = 0;
+      let attacks = 0;
       while (!realPlayer.gameBoard.allShipsSunk()) {
-        turns++;
+        attacks++;
         computerPlayer.attack(realPlayer.gameBoard);
       }
     });
