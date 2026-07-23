@@ -77,7 +77,7 @@ function loadPlayerDisplay(player, number) {
 function loadPlayerStatus(player) {
   const playerStatus = createElement("div", "player-status");
 
-  const isAttacking = GameHandler.getAttackingPlayer();
+  const isAttacking = GameHandler.getAttackingPlayer() === player;
 
   const playerIcon =
     isAttacking && GameHandler.isGameOver()
