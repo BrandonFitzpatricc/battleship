@@ -80,6 +80,8 @@ class GameBoard {
       const row = orientation === "horizontal" ? headPosition.row : headPosition.row + i;
       const column = orientation === "vertical" ? headPosition.column : headPosition.column + i;
       this.#board[row][column].push(ship)
+      if(i === 0) this.#board[row][column].push("head");
+      if(i === ship.length - 1) this.#board[row][column].push("tail");
     }
 
     this.#unplacedShips.splice(this.#unplacedShips.indexOf(ship), 1);

@@ -53,6 +53,12 @@ describe("Test placeShip method", () => {
     // prettier-ignore
     expect(gameBoard.placeShipVertically("battleship", new Position(7, 0))).toBe(false);
   });
+
+  test("The head and tail of a placed ship are correctly marked", () => {
+    gameBoard.placeShipHorizontally("carrier", new Position(0, 5));
+    expect(gameBoard.board[0][5][2]).toBe("head");
+    expect(gameBoard.board[0][9][2]).toBe("tail");
+  });
 });
 
 describe("Test placeShip + receiveAttack methods", () => {
