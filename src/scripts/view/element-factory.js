@@ -1,5 +1,7 @@
 import { Attribute } from "./attribute";
 
+import { miscIcons } from "./icon-manager";
+
 const createElement = (type, className, ...attributes) => {
   const element = document.createElement(type);
   element.className = className;
@@ -29,6 +31,15 @@ const createPlayerIcon = (icon, dimensions) => {
   const playerIconContainer = createElement("div", "player-icon-container");
   // prettier-ignore
   playerIconContainer.appendChild(createIcon("player icon", icon.src, icon.alt, dimensions));
+  return playerIconContainer;
+};
+
+const createWinningPlayerIcon = (icon, dimensions) => {
+  const playerIconContainer = createPlayerIcon(icon, dimensions);
+  const crownIcon = miscIcons["crown"];
+  playerIconContainer.prepend(
+    createIcon("player-crown icon", crownIcon.src, crownIcon.alt, dimensions),
+  );
   return playerIconContainer;
 };
 
@@ -79,5 +90,6 @@ export {
   createTextElement,
   createIconBtn,
   createPlayerIcon,
+  createWinningPlayerIcon,
   createGameBoardDisplay,
 };

@@ -2,6 +2,7 @@ import {
   createElement,
   createTextElement,
   createPlayerIcon,
+  createWinningPlayerIcon,
   createGameBoardDisplay,
 } from "./element-factory.js";
 
@@ -75,7 +76,10 @@ function loadPlayerDisplay(player, number) {
 function loadPlayerStatus(player) {
   const playerStatus = createElement("div", "player-status");
 
-  const playerIcon = createPlayerIcon(player.icon, 70);
+  const playerIcon =
+    player === GameHandler.getAttackingPlayer() && GameHandler.isGameOver()
+      ? createWinningPlayerIcon(player.icon, 70)
+      : createPlayerIcon(player.icon, 70);
 
   const shipsRemaining = createElement("div", "ships-remaining");
 

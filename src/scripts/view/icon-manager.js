@@ -9,6 +9,8 @@ import trash from "../../icons/button-icons/trash.svg";
 import rotate from "../../icons/button-icons/rotate.svg";
 import play from "../../icons/button-icons/play.svg";
 
+import crown from "../../icons/misc-icons/crown.svg";
+
 import { Icon } from "./icon";
 
 const playerIcons = {
@@ -26,4 +28,8 @@ const buttonIcons = {
   play: new Icon(play, "play icon"),
 };
 
-export { playerIcons, buttonIcons };
+const miscIcons = {
+  crown: new Icon(crown, "icon of a crown"),
+};
+
+export { playerIcons, buttonIcons, miscIcons };
