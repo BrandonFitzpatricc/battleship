@@ -24,6 +24,7 @@ const initializeIconSelectMenu = (players) => {
 
   document.querySelector("#confirm").addEventListener("click", () => {
     players[0].icon = selectedIcon;
+    players[1].icon = selectRandomIcon();
     initializeShipPlacementMenu(players, new GameBoard());
   });
 
