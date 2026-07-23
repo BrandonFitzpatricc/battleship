@@ -1,6 +1,10 @@
 import { loadShipPlacementMenu } from "../view/ship-placement-menu.js";
 
 import { Position } from "../model/position.js";
+import { GameBoard } from "../model/game-board.js";
+import { GameHandler } from "../model/game-handler.js";
+
+import { initializeGameScreen } from "./game-screen-controller.js";
 
 const initializeShipPlacementMenu = (players, gameBoard) => {
   loadShipPlacementMenu(players[0], gameBoard);
@@ -196,6 +200,17 @@ const initializeShipPlacementMenu = (players, gameBoard) => {
       rotate: () => {
         gameBoard.rotateShip(gameBoard.selectedShip);
         initializeShipPlacementMenu(players, gameBoard);
+      },
+
+      play: () => {
+        players[0].gameBoard = gameBoard;
+
+        const computerBoard = new GameBoard();
+        computerBoard.placeShipsRandomly();
+        players[1].gameBoard = computerBoard;
+
+        GameHandler.startNewGame(players);
+        initializeGameScreen();
       },
     };
 
