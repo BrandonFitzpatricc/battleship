@@ -127,6 +127,9 @@ class ComputerPlayer extends Player {
           );
         }
       }
+
+      return new Position(attackRow, attackColumn);
+      // prettier-ignore
     } else {
       // This is a safeguard to prevent unique cases where the computer gets stuck repeatedly
       // attacking a position where an attack has failed while targeting a ship.
