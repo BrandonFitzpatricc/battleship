@@ -2,28 +2,30 @@ import {
   createElement,
   createTextElement,
   createPlayerIcon,
-  createGameBoard,
+  createGameBoardDisplay,
 } from "./element-factory.js";
 
 import { Attribute } from "./attribute.js";
 
-import { playerIcons } from "./icon-manager.js";
+import { GameHandler } from "../model/game-handler.js";
 
 const loadGameScreen = () => {
   document.body.textContent = "";
 
   const mainContainer = createElement("div", "game-screen");
 
-  const header = loadHeader();
-  const playerOneDisplay = loadPlayerDisplay("one");
-  const playerTwoDisplay = loadPlayerDisplay("two");
+  const header = loadHeader(GameHandler.getAttackingPlayer());
+  // prettier-ignore
+  const playerOneDisplay = loadPlayerDisplay(GameHandler.getPlayers()[0], "one");
+  // prettier-ignore
+  const playerTwoDisplay = loadPlayerDisplay(GameHandler.getPlayers()[1], "two");
 
   mainContainer.append(header, playerOneDisplay, playerTwoDisplay);
 
   document.body.appendChild(mainContainer);
 };
 
-function loadHeader() {
+function loadHeader(attackingPlayer) {
   const header = createElement("div", "header");
 
   const backToMenuBtn = createTextElement(
@@ -38,11 +40,7 @@ function loadHeader() {
     "Play Again",
   );
 
-  const playerIcon = createPlayerIcon(
-    playerIcons["boxing-glove"].src,
-    playerIcons["boxing-glove"].alt,
-    60,
-  );
+  const playerIcon = createPlayerIcon(attackingPlayer.icon, 60);
 
   playerIcon.className += " selected";
 
@@ -58,40 +56,35 @@ function loadHeader() {
   return header;
 }
 
-function loadPlayerDisplay(playerNumber) {
+function loadPlayerDisplay(player, number) {
   const playerDisplay = createElement(
     "div",
-    `player-display ${playerNumber}`,
-    new Attribute("id", `player-${playerNumber}`),
+    `player-display ${number}`,
+    new Attribute("id", `player-${number}`),
   );
 
-  const playerStatus = loadPlayerStatus();
+  const playerStatus = loadPlayerStatus(player);
 
-  const gameBoard = createGameBoard();
+  const gameBoard = createGameBoardDisplay(player.gameBoard);
 
   playerDisplay.append(playerStatus, gameBoard);
 
   return playerDisplay;
 }
 
-function loadPlayerStatus() {
+function loadPlayerStatus(player) {
   const playerStatus = createElement("div", "player-status");
 
-  const playerIcon = createPlayerIcon(
-    playerIcons["boxing-glove"].src,
-    playerIcons["boxing-glove"].alt,
-    70,
-  );
+  const playerIcon = createPlayerIcon(player.icon, 70);
 
   const shipsRemaining = createElement("div", "ships-remaining");
 
-  ["carrier", "battleship", "destroyer", "submarine", "patrol-boat"].forEach(
-    (shipName) => {
-      // prettier-ignore
-      const ship = createElement("div", `ship ${shipName}`, new Attribute("id", shipName));
-      shipsRemaining.appendChild(ship);
-    },
-  );
+  player.gameBoard.placedShips.forEach((ship) => {
+    // prettier-ignore
+    const shipElement = createElement("div", `ship ${ship.name}`, new Attribute("id", ship.name));
+    if (ship.isSunk()) shipElement.className += " sunk";
+    shipsRemaining.appendChild(shipElement);
+  });
 
   playerStatus.append(playerIcon, shipsRemaining);
 
