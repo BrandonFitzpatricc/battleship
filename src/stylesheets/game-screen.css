@@ -128,8 +128,6 @@
       height: 675px;
 
       &.active {
-        outline: 3px solid var(--dark-gray);
-
         & .square {
           pointer-events: auto;
           cursor: pointer;
