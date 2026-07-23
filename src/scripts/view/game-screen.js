@@ -78,10 +78,14 @@ function loadPlayerDisplay(player, number) {
 function loadPlayerStatus(player) {
   const playerStatus = createElement("div", "player-status");
 
+  const isAttacking = GameHandler.getAttackingPlayer();
+
   const playerIcon =
-    player === GameHandler.getAttackingPlayer() && GameHandler.isGameOver()
+    isAttacking && GameHandler.isGameOver()
       ? createWinningPlayerIcon(player.icon, 70)
       : createPlayerIcon(player.icon, 70);
+
+  if (isAttacking) playerIcon.className += " selected";
 
   const shipsRemaining = createElement("div", "ships-remaining");
 
