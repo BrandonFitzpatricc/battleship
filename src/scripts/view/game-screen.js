@@ -57,11 +57,7 @@ function loadHeader(attackingPlayer) {
 }
 
 function loadPlayerDisplay(player, number) {
-  const playerDisplay = createElement(
-    "div",
-    `player-display ${number}`,
-    new Attribute("id", `player-${number}`),
-  );
+  const playerDisplay = createElement("div", `player-display ${number}`);
 
   const playerStatus = loadPlayerStatus(player);
 
