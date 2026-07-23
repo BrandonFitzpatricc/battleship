@@ -3,7 +3,7 @@ import {
   createTextElement,
   createPlayerIcon,
   createWinningPlayerIcon,
-  createGameBoardDisplay,
+  createAttackingGameBoard,
 } from "./element-factory.js";
 
 import { Attribute } from "./attribute.js";
@@ -66,7 +66,7 @@ function loadPlayerDisplay(player, number) {
 
   const playerStatus = loadPlayerStatus(player);
 
-  const gameBoard = createGameBoardDisplay(player.gameBoard);
+  const gameBoard = createAttackingGameBoard(player.gameBoard);
 
   playerDisplay.append(playerStatus, gameBoard);
 

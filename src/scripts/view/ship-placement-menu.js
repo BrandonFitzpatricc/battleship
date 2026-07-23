@@ -3,7 +3,7 @@ import {
   createTextElement,
   createIconBtn,
   createPlayerIcon,
-  createGameBoardDisplay,
+  createPlacementGameBoard,
 } from "./element-factory.js";
 
 import { Attribute } from "./attribute.js";
@@ -17,7 +17,7 @@ const loadShipPlacementMenu = (player, gameBoard) => {
 
   const header = loadHeader(player);
   const shipContainer = loadShipContainer(gameBoard.placedShips);
-  const gameBoardDisplay = createGameBoardDisplay(gameBoard);
+  const gameBoardDisplay = createPlacementGameBoard(gameBoard);
   const optionBtns = loadOptionBtns(gameBoard);
 
   mainContainer.append(header, shipContainer, gameBoardDisplay, optionBtns);

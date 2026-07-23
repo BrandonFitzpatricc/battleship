@@ -43,7 +43,15 @@ const createWinningPlayerIcon = (icon, dimensions) => {
   return playerIconContainer;
 };
 
-const createGameBoardDisplay = (gameBoard) => {
+const createPlacementGameBoard = (gameBoard) => {
+  return createGameBoardDisplay(gameBoard, "placement");
+};
+
+const createAttackingGameBoard = (gameBoard) => {
+  return createGameBoardDisplay(gameBoard, "placement");
+};
+
+function createGameBoardDisplay(gameBoard, boardType) {
   const board = gameBoard.board;
 
   const gameBoardDisplay = createElement("div", "game-board");
@@ -57,20 +65,32 @@ const createGameBoardDisplay = (gameBoard) => {
       );
       // prettier-ignore
       const position = board[i][j];
-      if (position.length > 1) {
-        if (gameBoard.selectedShip) {
-          if (position[1].name === gameBoard.selectedShip.name) {
-            square.className = `selected ${square.className}`;
+
+      if (boardType === "placement") {
+        if (position.length > 1) {
+          if (gameBoard.selectedShip) {
+            if (position[1].name === gameBoard.selectedShip.name) {
+              square.className = `selected ${square.className}`;
+            }
           }
+          square.className += ` ship ${position[1].name}`;
         }
-        square.className += ` ship ${position[1].name}`;
+      } else if (boardType === "attacking") {
+        square.className = "square";
+        if (position.length === 0) {
+          if (position[0] === 1) square.className += " miss";
+        } else if (position.length > 1) {
+          square.className += " ship";
+          if (position[0] === 1) square.className += " hit";
+        }
       }
+
       gameBoardDisplay.appendChild(square);
     }
   }
 
   return gameBoardDisplay;
-};
+}
 
 function createIcon(className, src, alt, dimensions) {
   const icon = createElement(
@@ -91,5 +111,6 @@ export {
   createIconBtn,
   createPlayerIcon,
   createWinningPlayerIcon,
-  createGameBoardDisplay,
+  createPlacementGameBoard,
+  createAttackingGameBoard,
 };
