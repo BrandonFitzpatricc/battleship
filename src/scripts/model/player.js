@@ -126,10 +126,6 @@ class ComputerPlayer extends Player {
             attackOrientation,
           );
         }
-
-        if (!gameBoard.allShipsSunk()) {
-          this.attack(gameBoard);
-        }
       }
     } else {
       // This is a safeguard to prevent unique cases where the computer gets stuck repeatedly
