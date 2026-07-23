@@ -131,6 +131,7 @@
         outline: 3px solid var(--dark-gray);
 
         & .square {
+          pointer-events: auto;
           cursor: pointer;
         }
       }
