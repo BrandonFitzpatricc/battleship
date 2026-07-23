@@ -182,6 +182,12 @@ describe("Test placeShipsRandomly method", () => {
 
 describe("Test removeShip method", () => {
   test("All ships on a populated game board can be removed successfully", () => {
+    gameBoard.placeShipVertically("battleship", new Position(2, 1));
+    gameBoard.placeShipVertically("carrier", new Position(2, 7));
+    gameBoard.placeShipHorizontally("destroyer", new Position(8, 3));
+    gameBoard.placeShipHorizontally("submarine", new Position(0, 3));
+    gameBoard.placeShipHorizontally("patrol-boat", new Position(9, 7));
+
     gameBoard.removeShip("battleship");
     gameBoard.removeShip("carrier");
     gameBoard.removeShip("destroyer");
