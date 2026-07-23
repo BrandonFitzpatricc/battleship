@@ -4,7 +4,6 @@ import { SuccessfulAttack } from "./successful-attack.js";
 class Player {
   #icon;
   #gameBoard;
-  #isActive;
 
   get icon() {
     return this.#icon;
@@ -20,14 +19,6 @@ class Player {
 
   set gameBoard(value) {
     this.#gameBoard = value;
-  }
-
-  get isActive() {
-    return this.#isActive;
-  }
-
-  set isActive(value) {
-    this.#isActive = value;
   }
 }
 

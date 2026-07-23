@@ -7,11 +7,9 @@ let computerPlayer;
 beforeEach(() => {
   realPlayer = new Player();
   realPlayer.gameBoard = new GameBoard();
-  realPlayer.isActive = true;
 
   computerPlayer = new ComputerPlayer();
   computerPlayer.gameBoard = new GameBoard();
-  computerPlayer.isActive = false;
 });
 
 describe("Test player object instantiation", () => {
@@ -28,7 +26,6 @@ describe("Test player object instantiation", () => {
       [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
       [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
     ]);
-    expect(realPlayer.isActive).toBe(true);
   });
 
   test("Computer player objects are successfully created", () => {
@@ -44,7 +41,6 @@ describe("Test player object instantiation", () => {
       [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
       [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
     ]);
-    expect(computerPlayer.isActive).toBe(false);
   });
 });
 
