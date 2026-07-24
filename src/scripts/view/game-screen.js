@@ -70,7 +70,9 @@ function loadPlayerDisplay(player, number) {
     : createAttackingGameBoard(player.gameBoard);
 
   gameBoard.className +=
-    player === GameHandler.getTargetedPlayer() ? " active" : " inactive";
+    player === GameHandler.getTargetedPlayer() || GameHandler.isGameOver()
+      ? " active"
+      : " inactive";
 
   playerDisplay.append(playerStatus, gameBoard);
 
