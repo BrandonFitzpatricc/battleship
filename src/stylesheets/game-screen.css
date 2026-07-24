@@ -101,6 +101,10 @@
         gap: 15px;
         border-radius: 15px;
 
+        & .ship {
+          border-radius: 15px;
+        }
+
         & .carrier {
           width: 185px;
           height: 31px;
