@@ -11,10 +11,14 @@ const initializeGameScreen = () => {
   document
     .querySelector(".game-board.active")
     .addEventListener("click", (event) => {
-      // prettier-ignore
-      if (!(GameHandler.getAttackingPlayer() instanceof ComputerPlayer) && !GameHandler.isGameOver()) {
+      // Handling for bug where dragging on the board will trigger a click
+      // event for the board itself.
+      if (!event.target.className.includes("game-board")) {
+        // prettier-ignore
+        if (!(GameHandler.getAttackingPlayer() instanceof ComputerPlayer) && !GameHandler.isGameOver()) {
         realPlayerAttack(event.target.dataset.row, event.target.dataset.column);
         computerPlayerAttack();
+      }
       }
     });
 };
