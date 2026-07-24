@@ -19,22 +19,24 @@ const GameHandler = (function () {
   };
 
   const playRound = (row, column) => {
-    const targetBoard = targetedPlayer.gameBoard;
+    if (!gameOver) {
+      const targetBoard = targetedPlayer.gameBoard;
 
-    if (!(attackingPlayer instanceof ComputerPlayer)) {
-      if (!targetBoard.receiveAttack(row, column)) return;
-    } else {
-      const attackPosition = attackingPlayer.attack(targetBoard);
-      ({ row, column } = attackPosition);
-    }
+      if (!(attackingPlayer instanceof ComputerPlayer)) {
+        if (!targetBoard.receiveAttack(row, column)) return;
+      } else {
+        const attackPosition = attackingPlayer.attack(targetBoard);
+        ({ row, column } = attackPosition);
+      }
 
-    const successfulAttack = targetBoard.board[row][column].length > 1;
-    if (!successfulAttack) {
-      switchPlayers();
-    } else {
-      if (targetBoard.allShipsSunk()) {
-        gameOver = true;
-        return;
+      const successfulAttack = targetBoard.board[row][column].length > 1;
+      if (!successfulAttack) {
+        switchPlayers();
+      } else {
+        if (targetBoard.allShipsSunk()) {
+          gameOver = true;
+          return;
+        }
       }
     }
   };
