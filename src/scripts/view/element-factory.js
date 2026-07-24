@@ -89,7 +89,12 @@ function createGameBoardDisplay(gameBoard, boardType, shipsHidden) {
           if (position[0] === 1) square.className += " miss";
         } else if (position.length > 1) {
           if (!shipsHidden) square.className += " ship";
-          if (position[0] === 1) square.className += " hit";
+
+          if (position[1].isSunk()) {
+            square.className += " sunk";
+          } else if (position[0] === 1) {
+            square.className += " hit";
+          }
         }
       }
 
