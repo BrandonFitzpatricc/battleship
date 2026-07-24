@@ -127,6 +127,7 @@ class ComputerPlayer extends Player {
       targetShip.failedAttackPositions.push(
         new Position(attackRow, attackColumn),
       );
+      return this.attack(gameBoard);
     }
 
     function checkTargetProbability(type, targetShip, offset) {
