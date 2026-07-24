@@ -11,7 +11,7 @@ const initializeGameScreen = () => {
     .querySelector(".game-board.active")
     .addEventListener("click", (event) => {
       // prettier-ignore
-      if (!(GameHandler.getAttackingPlayer() instanceof ComputerPlayer)) {
+      if (!(GameHandler.getAttackingPlayer() instanceof ComputerPlayer) && !GameHandler.isGameOver()) {
         realPlayerAttack(event.target.dataset.row, event.target.dataset.column);
         computerPlayerAttack();
       }
