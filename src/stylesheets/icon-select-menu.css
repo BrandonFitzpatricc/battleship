@@ -32,8 +32,13 @@
       margin-top: 50px;
     }
 
-    &:hover {
+    &:hover:not(:disabled) {
       background-color: var(--dark-beige);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: auto;
     }
   }
 

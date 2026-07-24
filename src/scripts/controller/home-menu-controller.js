@@ -7,11 +7,12 @@ const initializeHomeMenu = () => {
   loadHomeMenu();
 
   document.querySelector(".menu-btns").addEventListener("click", (event) => {
-    if (event.target.id === "one-player") {
-      initializeIconSelectMenu([new Player(), new ComputerPlayer()]);
-    } else if (event.target.id === "two-player") {
-      initializeIconSelectMenu([new Player(), new Player()]);
-    }
+    const players =
+      event.target.id === "one-player"
+        ? [new Player(), new ComputerPlayer()]
+        : [new Player(), new Player()];
+
+    initializeIconSelectMenu(players, players[0]);
   });
 };
 

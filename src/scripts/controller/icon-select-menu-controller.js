@@ -1,18 +1,31 @@
 import { loadIconSelectMenu } from "../view/icon-select-menu.js";
-
 import { playerIcons } from "../view/icon-manager.js";
 
 import { initializeShipPlacementMenu } from "./ship-placement-menu-controller.js";
 
 import { GameBoard } from "../model/game-board.js";
+import { ComputerPlayer } from "../model/player.js";
 
-const initializeIconSelectMenu = (players) => {
+const initializeIconSelectMenu = (players, currentPlayer) => {
   loadIconSelectMenu();
 
-  let selectedIcon = playerIcons["boxing-glove"];
-  document.querySelector("#boxing-glove").className += " selected";
-
   const iconSelectionBtns = document.querySelector(".icon-selection-btns");
+
+  iconSelectionBtns.querySelectorAll(".selection-btn").forEach((iconBtn) => {
+    if (players[0].icon === playerIcons[iconBtn.id]) {
+      iconBtn.disabled = true;
+    }
+  });
+
+  if (currentPlayer instanceof ComputerPlayer) {
+    currentPlayer.icon = selectRandomIcon();
+    initializeShipPlacementMenu(players, new GameBoard());
+    return;
+  }
+
+  let selectedIcon = !document.querySelector("#boxing-glove").disabled
+    ? selectIcon(document.querySelector("#boxing-glove"))
+    : selectIcon(document.querySelector("#butterfly"));
 
   iconSelectionBtns.addEventListener("click", (event) => {
     selectedIcon = selectIcon(event.target);
@@ -23,19 +36,23 @@ const initializeIconSelectMenu = (players) => {
   });
 
   document.querySelector("#confirm").addEventListener("click", () => {
-    players[0].icon = selectedIcon;
-    players[1].icon = selectRandomIcon();
-    initializeShipPlacementMenu(players, new GameBoard());
+    currentPlayer.icon = selectedIcon;
+    if (currentPlayer === players[0]) {
+      initializeIconSelectMenu(players, players[1]);
+    } else {
+      initializeShipPlacementMenu(players, new GameBoard());
+    }
   });
 
-  function selectIcon(icon) {
+  function selectIcon(iconBtn) {
     clearSelectedIcon();
-    icon.className += " selected";
-    return playerIcons[icon.id];
+    iconBtn.className += " selected";
+    return playerIcons[iconBtn.id];
   }
 
   function selectRandomIcon() {
-    const icons = iconSelectionBtns.querySelectorAll(".selection-btn");
+    // prettier-ignore
+    const icons = iconSelectionBtns.querySelectorAll(".selection-btn:not(:disabled)");
     return selectIcon(icons[Math.floor(Math.random() * icons.length)]);
   }
 
