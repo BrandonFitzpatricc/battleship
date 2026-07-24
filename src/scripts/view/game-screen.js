@@ -4,11 +4,13 @@ import {
   createPlayerIcon,
   createWinningPlayerIcon,
   createAttackingGameBoard,
+  createHiddenAttackingGameBoard,
 } from "./element-factory.js";
 
 import { Attribute } from "./attribute.js";
 
 import { GameHandler } from "../model/game-handler.js";
+import { ComputerPlayer } from "../model/player.js";
 
 const loadGameScreen = () => {
   document.body.textContent = "";
@@ -61,7 +63,12 @@ function loadPlayerDisplay(player, number) {
 
   const playerStatus = loadPlayerStatus(player);
 
-  const gameBoard = createAttackingGameBoard(player.gameBoard);
+  const isComputerPlayer = player instanceof ComputerPlayer;
+
+  const gameBoard = isComputerPlayer
+    ? createHiddenAttackingGameBoard(player.gameBoard)
+    : createAttackingGameBoard(player.gameBoard);
+
   gameBoard.className +=
     player === GameHandler.getTargetedPlayer() ? " active" : " inactive";
 

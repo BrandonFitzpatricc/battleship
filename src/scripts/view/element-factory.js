@@ -47,11 +47,15 @@ const createPlacementGameBoard = (gameBoard) => {
   return createGameBoardDisplay(gameBoard, "placement");
 };
 
-const createAttackingGameBoard = (gameBoard) => {
-  return createGameBoardDisplay(gameBoard, "attacking");
+const createAttackingGameBoard = (gameBoard, shipsHidden) => {
+  return createGameBoardDisplay(gameBoard, "attacking", shipsHidden);
 };
 
-function createGameBoardDisplay(gameBoard, boardType) {
+const createHiddenAttackingGameBoard = (gameBoard) => {
+  return createAttackingGameBoard(gameBoard, true);
+};
+
+function createGameBoardDisplay(gameBoard, boardType, shipsHidden) {
   const board = gameBoard.board;
 
   const gameBoardDisplay = createElement("div", "game-board");
@@ -67,7 +71,7 @@ function createGameBoardDisplay(gameBoard, boardType) {
       const position = board[i][j];
 
       // Mark the head/tail of each ship and its orientation with a class
-      if (position.length > 2) {
+      if (position.length > 2 && !shipsHidden) {
         square.className += ` ${position[1].orientation}-${position[2]}`;
       }
 
@@ -84,7 +88,7 @@ function createGameBoardDisplay(gameBoard, boardType) {
         if (position.length === 1) {
           if (position[0] === 1) square.className += " miss";
         } else if (position.length > 1) {
-          square.className += " ship";
+          if (!shipsHidden) square.className += " ship";
           if (position[0] === 1) square.className += " hit";
         }
       }
@@ -117,4 +121,5 @@ export {
   createWinningPlayerIcon,
   createPlacementGameBoard,
   createAttackingGameBoard,
+  createHiddenAttackingGameBoard,
 };
