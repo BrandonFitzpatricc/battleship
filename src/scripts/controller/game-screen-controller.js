@@ -1,4 +1,5 @@
 import { loadGameScreen } from "../view/game-screen";
+import { loadGameOverPrompt } from "../view/game-over-prompt";
 
 import { GameHandler } from "../model/game-handler";
 import { ComputerPlayer } from "../model/player";
@@ -9,6 +10,7 @@ const initializeGameScreen = () => {
   document
     .querySelector(".game-board.active")
     .addEventListener("click", (event) => {
+      // prettier-ignore
       if (!(GameHandler.getAttackingPlayer() instanceof ComputerPlayer)) {
         realPlayerAttack(event.target.dataset.row, event.target.dataset.column);
         computerPlayerAttack();
@@ -18,7 +20,7 @@ const initializeGameScreen = () => {
 
 function realPlayerAttack(row, column) {
   GameHandler.playRound(Number(row), Number(column));
-  initializeGameScreen();
+  updateScreen();
 }
 
 function computerPlayerAttack() {
@@ -26,10 +28,15 @@ function computerPlayerAttack() {
   if (GameHandler.getAttackingPlayer() instanceof ComputerPlayer && !GameHandler.isGameOver()) {
     setTimeout(() => {
       GameHandler.playRound();
-      initializeGameScreen();
+      updateScreen()
       computerPlayerAttack();
     }, 1000);
   }
+}
+
+function updateScreen() {
+  initializeGameScreen();
+  if (GameHandler.isGameOver()) loadGameOverPrompt();
 }
 
 export { initializeGameScreen };
