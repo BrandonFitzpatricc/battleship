@@ -65,9 +65,10 @@ function loadPlayerDisplay(player, number) {
 
   const isComputerPlayer = player instanceof ComputerPlayer;
 
-  const gameBoard = isComputerPlayer
-    ? createHiddenAttackingGameBoard(player.gameBoard)
-    : createAttackingGameBoard(player.gameBoard);
+  const gameBoard =
+    isComputerPlayer && !GameHandler.isGameOver()
+      ? createHiddenAttackingGameBoard(player.gameBoard)
+      : createAttackingGameBoard(player.gameBoard);
 
   gameBoard.className +=
     player === GameHandler.getTargetedPlayer() || GameHandler.isGameOver()
