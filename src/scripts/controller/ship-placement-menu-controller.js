@@ -5,9 +5,20 @@ import { GameBoard } from "../model/game-board.js";
 import { GameHandler } from "../model/game-handler.js";
 
 import { initializeGameScreen } from "./game-screen-controller.js";
+import { ComputerPlayer } from "../model/player.js";
 
-const initializeShipPlacementMenu = (players, gameBoard) => {
-  loadShipPlacementMenu(players[0], gameBoard);
+const initializeShipPlacementMenu = (players, currentPlayer, gameBoard) => {
+  if (currentPlayer instanceof ComputerPlayer) {
+    const computerBoard = new GameBoard();
+    computerBoard.placeShipsRandomly();
+    currentPlayer.gameBoard = computerBoard;
+
+    GameHandler.startNewGame(players);
+    initializeGameScreen();
+    return;
+  }
+
+  loadShipPlacementMenu(currentPlayer, gameBoard);
 
   let shipBeingDragged;
   let distanceFromHead;
@@ -62,7 +73,7 @@ const initializeShipPlacementMenu = (players, gameBoard) => {
         // prettier-ignore
         gameBoard.unplacedShips.find(ship => ship.name === shipName).orientation = "vertical"
       } else {
-        initializeShipPlacementMenu(players, gameBoard);
+        initializeShipPlacementMenu(players, currentPlayer, gameBoard);
       }
     });
 
@@ -166,7 +177,7 @@ const initializeShipPlacementMenu = (players, gameBoard) => {
                 ? event.target.getBoundingClientRect().y
                 : headSquareCoordinates.y;
 
-            initializeShipPlacementMenu(players, gameBoard);
+            initializeShipPlacementMenu(players, currentPlayer, gameBoard);
 
             const shipElement = document.querySelector(`.${shipName}`);
             shipElement.className = `ship ${ship.name} ${ship.orientation}`;
@@ -189,29 +200,29 @@ const initializeShipPlacementMenu = (players, gameBoard) => {
     const optionBtnHandler = {
       randomize: () => {
         gameBoard.placeShipsRandomly();
-        initializeShipPlacementMenu(players, gameBoard);
+        initializeShipPlacementMenu(players, currentPlayer, gameBoard);
       },
 
       trash: () => {
         gameBoard.clearBoard();
-        initializeShipPlacementMenu(players, gameBoard);
+        initializeShipPlacementMenu(players, currentPlayer, gameBoard);
       },
 
       rotate: () => {
         gameBoard.rotateShip(gameBoard.selectedShip);
-        initializeShipPlacementMenu(players, gameBoard);
+        initializeShipPlacementMenu(players, currentPlayer, gameBoard);
       },
 
       play: () => {
         gameBoard.sortPlacedShips();
-        players[0].gameBoard = gameBoard;
+        currentPlayer.gameBoard = gameBoard;
 
-        const computerBoard = new GameBoard();
-        computerBoard.placeShipsRandomly();
-        players[1].gameBoard = computerBoard;
-
-        GameHandler.startNewGame(players);
-        initializeGameScreen();
+        if (currentPlayer === players[0]) {
+          initializeShipPlacementMenu(players, players[1], new GameBoard());
+        } else {
+          GameHandler.startNewGame(players);
+          initializeGameScreen();
+        }
       },
     };
 

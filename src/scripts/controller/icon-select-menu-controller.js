@@ -19,7 +19,7 @@ const initializeIconSelectMenu = (players, currentPlayer) => {
 
   if (currentPlayer instanceof ComputerPlayer) {
     currentPlayer.icon = selectRandomIcon();
-    initializeShipPlacementMenu(players, new GameBoard());
+    initializeShipPlacementMenu(players, players[0], new GameBoard());
     return;
   }
 
@@ -40,7 +40,7 @@ const initializeIconSelectMenu = (players, currentPlayer) => {
     if (currentPlayer === players[0]) {
       initializeIconSelectMenu(players, players[1]);
     } else {
-      initializeShipPlacementMenu(players, new GameBoard());
+      initializeShipPlacementMenu(players, players[0], new GameBoard());
     }
   });
 
