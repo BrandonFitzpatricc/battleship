@@ -39,6 +39,7 @@
 
       &.play-again {
         right: 2px;
+        margin-right: -45px;
       }
     }
   }
