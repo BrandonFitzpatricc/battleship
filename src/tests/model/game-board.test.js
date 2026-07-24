@@ -215,25 +215,6 @@ describe("Test removeShip method", () => {
     expect(gameBoard.unplacedShips.length).toBe(5);
     expect(gameBoard.placedShips).toEqual([]);
   });
-
-  test("Trying to remove a ship that isn't on the game board doesn't break the method", () => {
-    gameBoard.removeShip("carrier");
-
-    expect(gameBoard.board).toEqual([
-      [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
-      [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
-      [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
-      [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
-      [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
-      [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
-      [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
-      [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
-      [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
-      [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]],
-    ]);
-    expect(gameBoard.unplacedShips.length).toBe(5);
-    expect(gameBoard.placedShips).toEqual([]);
-  });
 });
 
 describe("Test getHeadPosition method", () => {

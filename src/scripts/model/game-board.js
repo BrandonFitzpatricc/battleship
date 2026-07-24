@@ -199,7 +199,7 @@ class GameBoard {
     const placedShips = this.#placedShips;
     // prettier-ignore
     const ship = placedShips.splice(placedShips.findIndex(placedShip => placedShip.name === shipName), 1);
-    if (ship[0]) this.#unplacedShips.push(ship[0]);
+    this.#unplacedShips.push(ship[0]);
   }
 
   rotateShip(ship) {
