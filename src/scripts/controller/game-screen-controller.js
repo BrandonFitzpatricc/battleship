@@ -1,8 +1,9 @@
 import { loadGameScreen } from "../view/game-screen";
-import { loadGameOverPrompt } from "../view/game-over-prompt";
 
 import { GameHandler } from "../model/game-handler";
 import { ComputerPlayer } from "../model/player";
+
+import { initializeGameOverPrompt } from "./game-over-prompt-controller";
 
 const initializeGameScreen = () => {
   loadGameScreen();
@@ -36,7 +37,7 @@ function computerPlayerAttack() {
 
 function updateScreen() {
   initializeGameScreen();
-  if (GameHandler.isGameOver()) loadGameOverPrompt();
+  if (GameHandler.isGameOver()) initializeGameOverPrompt();
 }
 
 export { initializeGameScreen };
