@@ -41,7 +41,9 @@ function computerPlayerAttack() {
 
 function updateScreen() {
   initializeGameScreen();
-  if (GameHandler.isGameOver()) initializeGameOverPrompt();
+  if (GameHandler.isGameOver()) {
+    setTimeout(initializeGameOverPrompt, 2000);
+  }
 }
 
 export { initializeGameScreen };
