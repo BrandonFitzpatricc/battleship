@@ -18,12 +18,14 @@ function loadContent() {
     "button",
     "text-btn play-again",
     "Play Again",
+    new Attribute("id", "play-again"),
   );
 
   const backToMenuBtn = createTextElement(
     "button",
     "text-btn back-to-menu",
     "Back to Menu",
+    new Attribute("id", "back-to-menu"),
   );
 
   const closeBtn = createElement(
