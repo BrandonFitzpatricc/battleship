@@ -203,6 +203,7 @@ const initializeShipPlacementMenu = (players, gameBoard) => {
       },
 
       play: () => {
+        gameBoard.sortPlacedShips();
         players[0].gameBoard = gameBoard;
 
         const computerBoard = new GameBoard();

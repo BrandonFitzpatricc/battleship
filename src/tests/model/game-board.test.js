@@ -217,6 +217,25 @@ describe("Test removeShip method", () => {
   });
 });
 
+describe("Test sortPlacedShips method", () => {
+  test("Placed ships are sorted in the order of carrier -> battleship -> destroyer -> submarine -> patrol boat", () => {
+    gameBoard.placeShipVertically("battleship", new Position(2, 1));
+    gameBoard.placeShipVertically("carrier", new Position(2, 7));
+    gameBoard.placeShipHorizontally("destroyer", new Position(8, 3));
+    gameBoard.placeShipHorizontally("submarine", new Position(0, 3));
+    gameBoard.placeShipHorizontally("patrol-boat", new Position(9, 7));
+
+    gameBoard.sortPlacedShips();
+    expect(gameBoard.placedShips.map((ship) => ship.name)).toEqual([
+      "carrier",
+      "battleship",
+      "destroyer",
+      "submarine",
+      "patrol-boat",
+    ]);
+  });
+});
+
 describe("Test getHeadPosition method", () => {
   test("The head position of a ship on the game board is successfully returned", () => {
     gameBoard.placeShipVertically("battleship", new Position(2, 1));

@@ -202,6 +202,20 @@ class GameBoard {
     this.#unplacedShips.push(ship[0]);
   }
 
+  // The placed ships array must be sorted in this order before a game starts, otherwise it will
+  // interfere with the formatting of the display
+  sortPlacedShips() {
+    const sortedPlacedShips = [];
+    ["carrier", "battleship", "destroyer", "submarine", "patrol-boat"].forEach(
+      (shipName) => {
+        sortedPlacedShips.push(
+          this.#placedShips.find((ship) => ship.name === shipName),
+        );
+      },
+    );
+    this.#placedShips = sortedPlacedShips;
+  }
+
   rotateShip(ship) {
     const currentHead = this.getHeadPosition(ship.name);
 
