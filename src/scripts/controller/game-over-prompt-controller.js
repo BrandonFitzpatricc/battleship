@@ -16,7 +16,8 @@ function initializePromptBtns() {
 
   const promptBtnHandler = {
     "play-again": () => {
-      initializeShipPlacementMenu(GameHandler.getPlayers(), new GameBoard());
+      const players = GameHandler.getPlayers();
+      initializeShipPlacementMenu(players, players[0], new GameBoard());
     },
 
     "back-to-menu": () => {
