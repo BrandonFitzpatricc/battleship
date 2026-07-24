@@ -159,6 +159,8 @@
 
     & .sunk {
       background-color: var(--dark-red);
+      border-color: var(--dark-red);
+      outline-color: var(--dark-red);
     }
   }
 }
