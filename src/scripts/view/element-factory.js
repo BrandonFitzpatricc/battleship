@@ -66,6 +66,7 @@ function createGameBoardDisplay(gameBoard, boardType) {
       // prettier-ignore
       const position = board[i][j];
 
+      // Mark the head/tail of each ship and its orientation with a class
       if (position.length > 2) {
         square.className += ` ${position[1].orientation}-${position[2]}`;
       }
