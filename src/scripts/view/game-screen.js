@@ -31,18 +31,6 @@ const loadGameScreen = () => {
 function loadHeader(attackingPlayer) {
   const header = createElement("div", "header");
 
-  const backToMenuBtn = createTextElement(
-    "button",
-    "text-btn back-to-menu hidden",
-    "Back to Menu",
-  );
-
-  const playAgainBtn = createTextElement(
-    "button",
-    "text-btn play-again hidden",
-    "Play Again",
-  );
-
   const playerIcon = createPlayerIcon(attackingPlayer.icon, 60);
 
   playerIcon.className += " selected";
@@ -53,7 +41,7 @@ function loadHeader(attackingPlayer) {
     !GameHandler.isGameOver() ? "Is Firing..." : "Wins!",
   );
 
-  header.append(backToMenuBtn, playAgainBtn, playerIcon, activeMessage);
+  header.append(playerIcon, activeMessage);
 
   return header;
 }
