@@ -59,13 +59,15 @@ function loadPlayerDisplay(player, number) {
 
   const isTargetedPlayer = player === GameHandler.getTargetedPlayer();
 
-  const gameBoard =
+  const isHiddenBoard =
     (isComputerPlayer && !GameHandler.isGameOver()) ||
     (isTargetedPlayer && GameHandler.isTwoPlayerGame()) ||
     GameHandler.isSwitchingPlayers() ||
-    !GameHandler.isActiveGame()
-      ? createHiddenAttackingGameBoard(player.gameBoard)
-      : createAttackingGameBoard(player.gameBoard);
+    !GameHandler.isActiveGame();
+
+  const gameBoard = isHiddenBoard
+    ? createHiddenAttackingGameBoard(player.gameBoard)
+    : createAttackingGameBoard(player.gameBoard);
 
   gameBoard.className +=
     player === GameHandler.getTargetedPlayer() ? " target" : " not-target";
