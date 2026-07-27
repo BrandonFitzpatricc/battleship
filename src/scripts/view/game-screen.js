@@ -68,12 +68,14 @@ function loadPlayerDisplay(player, number) {
       : createAttackingGameBoard(player.gameBoard);
 
   gameBoard.className +=
-    player === GameHandler.getTargetedPlayer() ||
-    GameHandler.isGameOver() ||
-    GameHandler.isSwitchingPlayers() ||
-    !GameHandler.isActiveGame()
-      ? " target"
-      : " not-target";
+    player === GameHandler.getTargetedPlayer() ? " target" : " not-target";
+
+  const inactiveBoard =
+    GameHandler.isSwitchingPlayers() || !GameHandler.isActiveGame();
+
+  if (inactiveBoard) {
+    gameBoard.className += " inactive";
+  }
 
   playerDisplay.append(playerStatus, gameBoard);
 
