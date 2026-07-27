@@ -30,12 +30,13 @@
     }
 
     & .text-btn {
-      width: 290px;
+      width: 300px;
       position: absolute;
       top: -5px;
+      padding: 2px;
 
       &.back-to-menu {
-        left: 2px;
+        left: 0;
       }
 
       &.play-again {
