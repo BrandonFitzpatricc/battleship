@@ -19,6 +19,7 @@ const initializeGameScreen = () => {
 
         const playerCanAttack =
           !(currentAttackingPlayer instanceof ComputerPlayer) &&
+          GameHandler.isActiveGame() &&
           !GameHandler.isGameOver() &&
           !GameHandler.isSwitchingPlayers();
 
@@ -39,6 +40,22 @@ const initializeGameScreen = () => {
         }
       }
     });
+};
+
+const countDownToStart = () => {
+  const header = document.querySelector(".header");
+
+  let countDown = 3;
+
+  header.textContent = `Game Begins In ${countDown--}...`;
+  let timer = setInterval(() => {
+    header.textContent = `Game Begins In ${countDown--}...`;
+    if (countDown < 0) {
+      clearInterval(timer);
+      GameHandler.startNewGame();
+      initializeGameScreen();
+    }
+  }, 1000);
 };
 
 function realPlayerAttack(row, column) {
@@ -67,4 +84,4 @@ function updateScreen() {
   }
 }
 
-export { initializeGameScreen };
+export { initializeGameScreen, countDownToStart };

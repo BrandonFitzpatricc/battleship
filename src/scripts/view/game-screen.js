@@ -62,14 +62,16 @@ function loadPlayerDisplay(player, number) {
   const gameBoard =
     (isComputerPlayer && !GameHandler.isGameOver()) ||
     (isTargetedPlayer && GameHandler.isTwoPlayerGame()) ||
-    GameHandler.isSwitchingPlayers()
+    GameHandler.isSwitchingPlayers() ||
+    !GameHandler.isActiveGame()
       ? createHiddenAttackingGameBoard(player.gameBoard)
       : createAttackingGameBoard(player.gameBoard);
 
   gameBoard.className +=
     player === GameHandler.getTargetedPlayer() ||
     GameHandler.isGameOver() ||
-    GameHandler.isSwitchingPlayers()
+    GameHandler.isSwitchingPlayers() ||
+    !GameHandler.isActiveGame()
       ? " active"
       : " inactive";
 
@@ -88,7 +90,12 @@ function loadPlayerStatus(player) {
       ? createWinningPlayerIcon(player.icon, 70)
       : createPlayerIcon(player.icon, 70);
 
-  if (isAttackingPlayer && !GameHandler.isSwitchingPlayers()) {
+  const playerIsSelected =
+    isAttackingPlayer &&
+    !GameHandler.isSwitchingPlayers() &&
+    GameHandler.isActiveGame();
+
+  if (playerIsSelected) {
     playerIcon.className += " selected";
   }
 

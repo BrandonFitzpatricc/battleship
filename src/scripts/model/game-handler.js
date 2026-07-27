@@ -4,19 +4,27 @@ const GameHandler = (function () {
   let players;
   let attackingPlayer;
   let targetedPlayer;
+  let activeGame;
   let switchingPlayers;
   let gameOver;
 
   const getPlayers = () => players;
   const getAttackingPlayer = () => attackingPlayer;
   const getTargetedPlayer = () => targetedPlayer;
+  const isActiveGame = () => activeGame;
   const isSwitchingPlayers = () => switchingPlayers;
   const endSwitchingPlayers = () => (switchingPlayers = false);
   const isGameOver = () => gameOver;
   const isTwoPlayerGame = () => !(players[1] instanceof ComputerPlayer);
 
-  const startNewGame = (playerArray) => {
+  const loadPlayers = (playerArray) => {
     players = playerArray;
+    attackingPlayer = players[0];
+    targetedPlayer = players[1];
+  };
+
+  const startNewGame = () => {
+    activeGame = true;
     attackingPlayer = players[0];
     targetedPlayer = players[1];
     switchingPlayers = false;
@@ -57,10 +65,12 @@ const GameHandler = (function () {
     getPlayers,
     getAttackingPlayer,
     getTargetedPlayer,
+    isActiveGame,
     isSwitchingPlayers,
     endSwitchingPlayers,
     isGameOver,
     isTwoPlayerGame,
+    loadPlayers,
     startNewGame,
     playRound,
   };

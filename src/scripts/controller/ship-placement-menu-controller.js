@@ -3,9 +3,12 @@ import { loadShipPlacementMenu } from "../view/ship-placement-menu.js";
 import { Position } from "../model/position.js";
 import { GameBoard } from "../model/game-board.js";
 import { GameHandler } from "../model/game-handler.js";
-
-import { initializeGameScreen } from "./game-screen-controller.js";
 import { ComputerPlayer } from "../model/player.js";
+
+import {
+  countDownToStart,
+  initializeGameScreen,
+} from "./game-screen-controller.js";
 
 const initializeShipPlacementMenu = (players, currentPlayer, gameBoard) => {
   if (currentPlayer instanceof ComputerPlayer) {
@@ -13,8 +16,9 @@ const initializeShipPlacementMenu = (players, currentPlayer, gameBoard) => {
     computerBoard.placeShipsRandomly();
     currentPlayer.gameBoard = computerBoard;
 
-    GameHandler.startNewGame(players);
+    GameHandler.loadPlayers(players);
     initializeGameScreen();
+    countDownToStart();
     return;
   }
 
@@ -220,8 +224,9 @@ const initializeShipPlacementMenu = (players, currentPlayer, gameBoard) => {
         if (currentPlayer === players[0]) {
           initializeShipPlacementMenu(players, players[1], new GameBoard());
         } else {
-          GameHandler.startNewGame(players);
+          GameHandler.loadPlayers(players);
           initializeGameScreen();
+          countDownToStart();
         }
       },
     };
