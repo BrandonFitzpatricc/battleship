@@ -71,7 +71,7 @@ function loadPlayerDisplay(player, number) {
     ? createHiddenAttackingGameBoard(player.gameBoard)
     : createAttackingGameBoard(player.gameBoard);
 
-  if (GameHandler.isActiveGame()) {
+  if (GameHandler.isActiveGame() && !GameHandler.isSwitchingPlayers()) {
     gameBoard.className +=
       player === GameHandler.getTargetedPlayer() ? " target" : " not-target";
   }
