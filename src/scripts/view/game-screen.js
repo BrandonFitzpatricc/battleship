@@ -59,13 +59,14 @@ function loadPlayerDisplay(player, number) {
 
   const isTargetedPlayer = player === GameHandler.getTargetedPlayer();
 
-  const isHiddenBoard =
-    (isComputerPlayer && !GameHandler.isGameOver()) ||
-    (isTargetedPlayer &&
-      GameHandler.isTwoPlayerGame() &&
-      !GameHandler.isGameOver()) ||
-    GameHandler.isSwitchingPlayers() ||
-    (!GameHandler.isActiveGame() && !GameHandler.isGameOver());
+  let isHiddenBoard = false;
+  if (!GameHandler.isGameOver()) {
+    isHiddenBoard =
+      isComputerPlayer ||
+      (isTargetedPlayer && GameHandler.isTwoPlayerGame()) ||
+      !GameHandler.isActiveGame() ||
+      GameHandler.isSwitchingPlayers();
+  }
 
   const gameBoard = isHiddenBoard
     ? createHiddenAttackingGameBoard(player.gameBoard)
