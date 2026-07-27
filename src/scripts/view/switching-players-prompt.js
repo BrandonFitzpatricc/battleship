@@ -2,7 +2,10 @@ import { createElement, createTextElement } from "./element-factory.js";
 import { Attribute } from "./attribute.js";
 
 const loadSwitchingPlayersPrompt = () => {
-  const switchingPlayersPrompt = createElement("div", "prompt");
+  const switchingPlayersPrompt = createElement(
+    "div",
+    "prompt switching-players",
+  );
 
   const content = loadContent();
 

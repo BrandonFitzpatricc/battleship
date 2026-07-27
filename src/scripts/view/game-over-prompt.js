@@ -2,7 +2,7 @@ import { createElement, createTextElement } from "./element-factory.js";
 import { Attribute } from "./attribute.js";
 
 const loadGameOverPrompt = () => {
-  const gameOverPrompt = createElement("div", "prompt");
+  const gameOverPrompt = createElement("div", "prompt game-over");
 
   const content = loadContent();
 

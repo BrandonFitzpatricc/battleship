@@ -9,10 +9,17 @@
     outline: none;
   }
 
+  &.game-over > .content {
+    height: 380px;
+  }
+
+  &.switching-players > .content {
+    height: 420px;
+  }
+
   & .content {
     position: relative;
     width: 450px;
-    height: 390px;
     margin: auto;
     background-color: var(--light-beige);
     border: 2px solid var(--darker-beige);
@@ -31,7 +38,7 @@
       width: 300px;
 
       &:first-child {
-        margin: 40px 0 75px 0;
+        margin: 50px 0 60px 0;
       }
     }
 
