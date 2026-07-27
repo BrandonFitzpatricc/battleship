@@ -134,14 +134,14 @@
       width: 675px;
       height: 675px;
 
-      &.active {
+      &.target {
         & .square {
           pointer-events: auto;
           cursor: pointer;
         }
       }
 
-      &.inactive {
+      &.not-target {
         filter: grayscale(75%);
       }
 

@@ -10,7 +10,7 @@ const initializeGameScreen = () => {
   loadGameScreen();
 
   document
-    .querySelector(".game-board.active")
+    .querySelector(".game-board.target")
     .addEventListener("click", (event) => {
       // Handling for bug where dragging on the board will trigger a click
       // event for the board itself.

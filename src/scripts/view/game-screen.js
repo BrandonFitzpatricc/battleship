@@ -72,8 +72,8 @@ function loadPlayerDisplay(player, number) {
     GameHandler.isGameOver() ||
     GameHandler.isSwitchingPlayers() ||
     !GameHandler.isActiveGame()
-      ? " active"
-      : " inactive";
+      ? " target"
+      : " not-target";
 
   playerDisplay.append(playerStatus, gameBoard);
 
