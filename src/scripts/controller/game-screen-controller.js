@@ -17,13 +17,7 @@ const initializeGameScreen = () => {
       if (!event.target.className.includes("game-board")) {
         const currentAttackingPlayer = GameHandler.getAttackingPlayer();
 
-        const playerCanAttack =
-          !(currentAttackingPlayer instanceof ComputerPlayer) &&
-          GameHandler.isActiveGame() &&
-          !GameHandler.isGameOver() &&
-          !GameHandler.isSwitchingPlayers();
-
-        if (playerCanAttack) {
+        if (!(currentAttackingPlayer instanceof ComputerPlayer)) {
           realPlayerAttack(
             event.target.dataset.row,
             event.target.dataset.column,
