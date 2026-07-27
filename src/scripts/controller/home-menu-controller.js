@@ -12,7 +12,7 @@ const initializeHomeMenu = () => {
         ? [new Player(), new ComputerPlayer()]
         : [new Player(), new Player()];
 
-    initializeIconSelectMenu(players, players[0]);
+    initializeIconSelectMenu(players, players[0], "One");
   });
 };
 

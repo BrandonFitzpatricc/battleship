@@ -6,8 +6,8 @@ import { initializeShipPlacementMenu } from "./ship-placement-menu-controller.js
 import { GameBoard } from "../model/game-board.js";
 import { ComputerPlayer } from "../model/player.js";
 
-const initializeIconSelectMenu = (players, currentPlayer) => {
-  loadIconSelectMenu();
+const initializeIconSelectMenu = (players, currentPlayer, playerNumber) => {
+  loadIconSelectMenu(playerNumber);
 
   const iconSelectionBtns = document.querySelector(".icon-selection-btns");
 
@@ -38,7 +38,7 @@ const initializeIconSelectMenu = (players, currentPlayer) => {
   document.querySelector("#confirm").addEventListener("click", () => {
     currentPlayer.icon = selectedIcon;
     if (currentPlayer === players[0]) {
-      initializeIconSelectMenu(players, players[1]);
+      initializeIconSelectMenu(players, players[1], "Two");
     } else {
       initializeShipPlacementMenu(players, players[0], new GameBoard());
     }

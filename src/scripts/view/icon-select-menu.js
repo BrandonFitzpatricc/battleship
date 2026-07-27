@@ -8,12 +8,13 @@ import { Attribute } from "./attribute";
 
 import { playerIcons, buttonIcons } from "./icon-manager";
 
-const loadIconSelectMenu = () => {
+const loadIconSelectMenu = (playerNumber) => {
   document.body.textContent = "";
 
   const mainContainer = createElement("div", "icon-select-menu");
 
-  const header = createTextElement("div", "header", "Choose Your Icon");
+  // prettier-ignore
+  const header = createTextElement("div", "header", `Player ${playerNumber} - Choose Your Icon`);
   const iconSelectionBtns = loadIconSelectionBtns();
 
   const randomBtn = createIconBtn(
