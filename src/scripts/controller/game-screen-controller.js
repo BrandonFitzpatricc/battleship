@@ -26,7 +26,6 @@ const initializeGameScreen = () => {
           if (!GameHandler.isTwoPlayerGame()) {
             computerPlayerAttack();
           } else {
-            // check if the players have switched
             if (GameHandler.isSwitchingPlayers()) {
               initializeSwitchingPlayersPrompt();
             }
