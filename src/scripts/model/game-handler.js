@@ -48,6 +48,7 @@ const GameHandler = (function () {
       } else {
         if (targetBoard.allShipsSunk()) {
           gameOver = true;
+          activeGame = false;
           return;
         }
       }
