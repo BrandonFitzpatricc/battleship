@@ -33,15 +33,19 @@ function loadHeader(attackingPlayer) {
 
   const playerIcon = createPlayerIcon(attackingPlayer.icon, 60);
 
-  playerIcon.className += " selected";
+  playerIcon.className += GameHandler.isSwitchingPlayers()
+    ? " hidden"
+    : " selected";
 
-  const activeMessage = createTextElement(
-    "div",
-    "",
-    !GameHandler.isGameOver() ? "Is Firing..." : "Wins!",
-  );
+  const activeMessage = GameHandler.isSwitchingPlayers()
+    ? "Switching Players..."
+    : !GameHandler.isGameOver()
+      ? "Is Firing..."
+      : "Wins!";
 
-  header.append(playerIcon, activeMessage);
+  const activeMessageElement = createTextElement("div", "", activeMessage);
+
+  header.append(playerIcon, activeMessageElement);
 
   return header;
 }
@@ -53,13 +57,19 @@ function loadPlayerDisplay(player, number) {
 
   const isComputerPlayer = player instanceof ComputerPlayer;
 
+  const isTargetedPlayer = player === GameHandler.getTargetedPlayer();
+
   const gameBoard =
-    isComputerPlayer && !GameHandler.isGameOver()
+    (isComputerPlayer && !GameHandler.isGameOver()) ||
+    (isTargetedPlayer && GameHandler.isTwoPlayerGame()) ||
+    GameHandler.isSwitchingPlayers()
       ? createHiddenAttackingGameBoard(player.gameBoard)
       : createAttackingGameBoard(player.gameBoard);
 
   gameBoard.className +=
-    player === GameHandler.getTargetedPlayer() || GameHandler.isGameOver()
+    player === GameHandler.getTargetedPlayer() ||
+    GameHandler.isGameOver() ||
+    GameHandler.isSwitchingPlayers()
       ? " active"
       : " inactive";
 
@@ -71,14 +81,16 @@ function loadPlayerDisplay(player, number) {
 function loadPlayerStatus(player) {
   const playerStatus = createElement("div", "player-status");
 
-  const isAttacking = GameHandler.getAttackingPlayer() === player;
+  const isAttackingPlayer = GameHandler.getAttackingPlayer() === player;
 
   const playerIcon =
-    isAttacking && GameHandler.isGameOver()
+    isAttackingPlayer && GameHandler.isGameOver()
       ? createWinningPlayerIcon(player.icon, 70)
       : createPlayerIcon(player.icon, 70);
 
-  if (isAttacking) playerIcon.className += " selected";
+  if (isAttackingPlayer && !GameHandler.isSwitchingPlayers()) {
+    playerIcon.className += " selected";
+  }
 
   const shipsRemaining = createElement("div", "ships-remaining");
 
