@@ -17,7 +17,8 @@ const GameHandler = (function () {
   const isGameOver = () => gameOver;
   const isTwoPlayerGame = () => !(players[1] instanceof ComputerPlayer);
 
-  const loadPlayers = (playerArray) => {
+  const setup = (playerArray) => {
+    gameOver = false;
     players = playerArray;
     attackingPlayer = players[0];
     targetedPlayer = players[1];
@@ -71,7 +72,7 @@ const GameHandler = (function () {
     endSwitchingPlayers,
     isGameOver,
     isTwoPlayerGame,
-    loadPlayers,
+    setup,
     startNewGame,
     playRound,
   };

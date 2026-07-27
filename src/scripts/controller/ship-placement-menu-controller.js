@@ -16,7 +16,7 @@ const initializeShipPlacementMenu = (players, currentPlayer, gameBoard) => {
     computerBoard.placeShipsRandomly();
     currentPlayer.gameBoard = computerBoard;
 
-    GameHandler.loadPlayers(players);
+    GameHandler.setup(players);
     initializeGameScreen();
     countDownToStart();
     return;
@@ -224,7 +224,7 @@ const initializeShipPlacementMenu = (players, currentPlayer, gameBoard) => {
         if (currentPlayer === players[0]) {
           initializeShipPlacementMenu(players, players[1], new GameBoard());
         } else {
-          GameHandler.loadPlayers(players);
+          GameHandler.setup(players);
           initializeGameScreen();
           countDownToStart();
         }
