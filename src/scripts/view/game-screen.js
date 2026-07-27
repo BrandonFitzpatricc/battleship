@@ -61,7 +61,9 @@ function loadPlayerDisplay(player, number) {
 
   const isHiddenBoard =
     (isComputerPlayer && !GameHandler.isGameOver()) ||
-    (isTargetedPlayer && GameHandler.isTwoPlayerGame()) ||
+    (isTargetedPlayer &&
+      GameHandler.isTwoPlayerGame() &&
+      !GameHandler.isGameOver()) ||
     GameHandler.isSwitchingPlayers() ||
     (!GameHandler.isActiveGame() && !GameHandler.isGameOver());
 
