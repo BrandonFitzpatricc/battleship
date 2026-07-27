@@ -9,9 +9,9 @@ import { initializeSwitchingPlayersPrompt } from "./switching-players-prompt-con
 const initializeGameScreen = () => {
   loadGameScreen();
 
-  document
-    .querySelector(".game-board.target")
-    .addEventListener("click", (event) => {
+  const targetGameBoard = document.querySelector(".game-board.target");
+  if (targetGameBoard) {
+    targetGameBoard.addEventListener("click", (event) => {
       // Handling for bug where dragging on the board will trigger a click
       // event for the board itself.
       if (!event.target.className.includes("game-board")) {
@@ -33,6 +33,7 @@ const initializeGameScreen = () => {
         }
       }
     });
+  }
 };
 
 const countDownToStart = () => {

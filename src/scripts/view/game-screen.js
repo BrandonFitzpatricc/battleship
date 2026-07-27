@@ -69,8 +69,10 @@ function loadPlayerDisplay(player, number) {
     ? createHiddenAttackingGameBoard(player.gameBoard)
     : createAttackingGameBoard(player.gameBoard);
 
-  gameBoard.className +=
-    player === GameHandler.getTargetedPlayer() ? " target" : " not-target";
+  if (GameHandler.isActiveGame()) {
+    gameBoard.className +=
+      player === GameHandler.getTargetedPlayer() ? " target" : " not-target";
+  }
 
   const inactiveBoard =
     GameHandler.isSwitchingPlayers() || !GameHandler.isActiveGame();
