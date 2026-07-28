@@ -27,7 +27,7 @@ const initializeGameScreen = () => {
             computerPlayerAttack();
           } else {
             if (GameHandler.isSwitchingPlayers()) {
-              initializeSwitchingPlayersPrompt();
+              setTimeout(initializeSwitchingPlayersPrompt, 750);
             }
           }
         }
