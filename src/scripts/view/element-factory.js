@@ -71,7 +71,7 @@ function createGameBoardDisplay(gameBoard, boardType, shipsHidden) {
       const position = board[i][j];
 
       // Mark the head/tail of each ship and its orientation with a class
-      if (position.length > 2 && !shipsHidden) {
+      if (position.length > 2 && (!shipsHidden || position[1].isSunk())) {
         square.className += ` ${position[1].orientation}-${position[2]}`;
       }
 
@@ -88,7 +88,7 @@ function createGameBoardDisplay(gameBoard, boardType, shipsHidden) {
         if (position.length === 1) {
           if (position[0] === 1) square.className += " miss";
         } else if (position.length > 1) {
-          if (!shipsHidden) square.className += " ship";
+          if (!shipsHidden || position[1].isSunk()) square.className += " ship";
 
           if (position[1].isSunk()) {
             square.className += " sunk";
