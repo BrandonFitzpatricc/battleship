@@ -6,6 +6,7 @@
   --dark-beige: #dbd6ac;
   --darker-beige: #aba789;
   --ocean-blue: #9bb7ff;
+  --dark-blue: #145fbb;
   --ship-color: #dad8d8;
   --selected-ship-color: #c9c7c7;
   --red: #ff0000;
@@ -65,15 +66,15 @@ button {
 
 & .game-board {
   background-color: var(--ocean-blue);
-  border: 1px solid var(--dark-gray);
-  outline: 3px solid var(--dark-gray);
+  border: 1px solid var(--dark-blue);
+  outline: 3px solid var(--dark-blue);
   display: grid;
   grid-template-columns: repeat(10, 1fr);
 
   & .square {
     background-color: var(--ocean-blue);
-    border: 1px solid var(--dark-gray);
-    outline: 1px solid var(--dark-gray);
+    border: 1px solid var(--dark-blue);
+    outline: 1px solid var(--dark-blue);
 
     &.ship {
       background-color: var(--ship-color);
