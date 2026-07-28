@@ -38,7 +38,7 @@ button {
 }
 
 & .header {
-  font-family: "Keania One";
+  font-family: "Keania One", "Times New Roman";
   color: var(--darker-beige);
 }
 
@@ -46,7 +46,7 @@ button {
   width: 225px;
   font-size: 40px;
   font-weight: bold;
-  font-family: "Stick No Bills";
+  font-family: "Stick No Bills", "Times New Roman";
   color: var(--darker-beige);
   background-color: var(--dark-beige);
   border: none;
