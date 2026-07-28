@@ -19,6 +19,7 @@ describe("Test game flow", () => {
       player.gameBoard = gameBoard;
     });
 
+    GameHandler.setup([realPlayer, computerPlayer]);
     GameHandler.startNewGame([realPlayer, computerPlayer]);
   });
 
