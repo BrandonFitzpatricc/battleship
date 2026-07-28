@@ -29,7 +29,6 @@ const GameHandler = (function () {
     attackingPlayer = players[0];
     targetedPlayer = players[1];
     switchingPlayers = false;
-    gameOver = false;
   };
 
   const playRound = (row, column) => {
