@@ -136,6 +136,8 @@
       height: 675px;
 
       &.target {
+        outline: 5px solid var(--dark-blue);
+
         & .square {
           pointer-events: auto;
           cursor: pointer;
