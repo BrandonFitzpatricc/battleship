@@ -14,7 +14,8 @@ const loadIconSelectMenu = (playerNumber) => {
   const mainContainer = createElement("div", "icon-select-menu");
 
   // prettier-ignore
-  const header = createTextElement("div", "header", `Player ${playerNumber} - Choose Your Icon`);
+  const headerTop = createTextElement("div", "header", `Player ${playerNumber}`);
+  const headerBottom = createTextElement("div", "header", "Choose Your Icon");
   const iconSelectionBtns = loadIconSelectionBtns();
 
   const randomBtn = createIconBtn(
@@ -31,7 +32,13 @@ const loadIconSelectMenu = (playerNumber) => {
     new Attribute("id", "confirm"),
   );
 
-  mainContainer.append(header, iconSelectionBtns, randomBtn, confirmBtn);
+  mainContainer.append(
+    headerTop,
+    headerBottom,
+    iconSelectionBtns,
+    randomBtn,
+    confirmBtn,
+  );
 
   document.body.appendChild(mainContainer);
 };

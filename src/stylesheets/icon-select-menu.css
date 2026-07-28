@@ -3,8 +3,16 @@
 
   & .header {
     font-size: 80px;
-    margin: 100px 0 40px;
     text-wrap: nowrap;
+
+    &:first-child {
+      margin-top: 50px;
+    }
+
+    & + .header {
+      font-size: 70px;
+      margin-bottom: 40px;
+    }
   }
 
   & .icon-selection-btns {
