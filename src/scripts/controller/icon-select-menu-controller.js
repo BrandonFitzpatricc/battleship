@@ -7,7 +7,8 @@ import { GameBoard } from "../model/game-board.js";
 import { ComputerPlayer } from "../model/player.js";
 
 const initializeIconSelectMenu = (players, currentPlayer, playerNumber) => {
-  loadIconSelectMenu(playerNumber);
+  // prettier-ignore
+  loadIconSelectMenu(playerNumber, !(players[1] instanceof ComputerPlayer));
 
   const iconSelectionBtns = document.querySelector(".icon-selection-btns");
 

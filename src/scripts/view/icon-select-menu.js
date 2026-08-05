@@ -8,7 +8,7 @@ import { Attribute } from "./attribute";
 
 import { playerIcons, buttonIcons } from "./icon-manager";
 
-const loadIconSelectMenu = (playerNumber) => {
+const loadIconSelectMenu = (playerNumber, isTwoPlayerGame) => {
   const mainContent = document.querySelector(".main-content");
 
   mainContent.textContent = "";
@@ -16,8 +16,8 @@ const loadIconSelectMenu = (playerNumber) => {
   const iconSelectMenu = createElement("div", "icon-select-menu");
 
   // prettier-ignore
-  const headerTop = createTextElement("div", "header", `Player ${playerNumber}`);
-  const headerBottom = createTextElement("div", "header", "Choose Your Icon");
+  const playerNumberHeader = createTextElement("div", "header", `Player ${playerNumber}`);
+  const generalHeader = createTextElement("div", "header", "Choose Your Icon");
   const iconSelectionBtns = loadIconSelectionBtns();
 
   const randomBtn = createIconBtn(
@@ -35,12 +35,15 @@ const loadIconSelectMenu = (playerNumber) => {
   );
 
   iconSelectMenu.append(
-    headerTop,
-    headerBottom,
+    generalHeader,
     iconSelectionBtns,
     randomBtn,
     confirmBtn,
   );
+
+  if (isTwoPlayerGame) {
+    iconSelectMenu.prepend(playerNumberHeader);
+  }
 
   mainContent.appendChild(iconSelectMenu);
 };
