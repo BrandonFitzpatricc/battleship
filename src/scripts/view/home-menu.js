@@ -2,16 +2,18 @@ import { createElement, createTextElement } from "./element-factory";
 import { Attribute } from "./attribute";
 
 const loadHomeMenu = () => {
-  document.body.textContent = "";
+  const mainContent = document.querySelector(".main-content");
 
-  const mainContainer = createElement("div", "home-menu");
+  mainContent.textContent = "";
+
+  const homeMenu = createElement("div", "home-menu");
 
   const header = createTextElement("div", "header", "Battleship");
   const menuBtns = loadMenuBtns();
 
-  mainContainer.append(header, menuBtns);
+  homeMenu.append(header, menuBtns);
 
-  document.body.appendChild(mainContainer);
+  mainContent.appendChild(homeMenu);
 };
 
 function loadMenuBtns() {

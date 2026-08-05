@@ -5,12 +5,8 @@
     font-size: 80px;
     text-wrap: nowrap;
 
-    &:first-child {
-      margin-top: 50px;
-    }
-
-    & + .header {
-      font-size: 70px;
+    &:last-of-type {
+      font-size: 75px;
       margin-bottom: 40px;
     }
   }

@@ -4,5 +4,27 @@
     <title>Battleship</title>
   </head>
 
-  <body></body>
+  <body>
+    <div class="main-content"></div>
+
+    <dialog id="switching-players-prompt" class="switching-players prompt">
+      <div class="content">
+        <div class="prompt-text">
+          Pass the device to the other player before continuing. Don't look at
+          their screen!
+        </div>
+        <button id="continue" class="text-btn">Continue</button>
+      </div>
+    </dialog>
+
+    <dialog id="game-over-prompt" class="game-over prompt">
+      <div class="content">
+        <button id="play-again" class="text-btn play-again">Play Again</button>
+        <button id="back-to-menu" class="text-btn back-to-menu">
+          Back to Menu
+        </button>
+        <button id="close-prompt" class="close-btn"></button>
+      </div>
+    </dialog>
+  </body>
 </html>

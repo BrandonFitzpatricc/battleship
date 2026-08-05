@@ -13,9 +13,11 @@ import { GameHandler } from "../model/game-handler.js";
 import { ComputerPlayer } from "../model/player.js";
 
 const loadGameScreen = () => {
-  document.body.textContent = "";
+  const mainContent = document.querySelector(".main-content");
 
-  const mainContainer = createElement("div", "game-screen");
+  mainContent.textContent = "";
+
+  const gameScreen = createElement("div", "game-screen");
 
   const header = loadHeader(GameHandler.getAttackingPlayer());
   // prettier-ignore
@@ -23,9 +25,9 @@ const loadGameScreen = () => {
   // prettier-ignore
   const playerTwoDisplay = loadPlayerDisplay(GameHandler.getPlayers()[1], "two");
 
-  mainContainer.append(header, playerOneDisplay, playerTwoDisplay);
+  gameScreen.append(header, playerOneDisplay, playerTwoDisplay);
 
-  document.body.appendChild(mainContainer);
+  mainContent.appendChild(gameScreen);
 };
 
 function loadHeader(attackingPlayer) {

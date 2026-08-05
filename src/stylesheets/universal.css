@@ -23,7 +23,9 @@ body {
   height: 100%;
   background-color: var(--light-beige);
   text-align: center;
-  padding: 10px 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .hidden {

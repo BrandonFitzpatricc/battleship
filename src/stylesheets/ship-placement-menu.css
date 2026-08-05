@@ -1,11 +1,12 @@
 .ship-placement-menu {
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
-  gap: 25px;
+  grid-template-columns: 1fr 750px 1fr;
+  row-gap: 25px;
+  column-gap: 75px;
 
   & .header {
     grid-column: 1 / -1;
-    margin-top: 20px;
+    margin-top: -40px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -26,6 +27,7 @@
   }
 
   & .ship-container {
+    margin-left: 25px;
     justify-self: end;
     width: 200px;
     height: 750px;
@@ -133,6 +135,7 @@
   & .option-btns {
     display: grid;
     margin-left: -40px;
+    margin-right: 25px;
 
     & .option-btn {
       width: 145px;

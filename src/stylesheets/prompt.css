@@ -1,30 +1,19 @@
 .prompt {
+  border: none;
+  background-color: transparent;
   position: relative;
-  z-index: 1;
-  top: -650px;
-  width: 1500px;
-  margin: auto;
-
-  & * {
-    outline: none;
-  }
-
-  &.game-over > .content {
-    height: 380px;
-  }
-
-  &.switching-players > .content {
-    height: 420px;
-  }
+  justify-self: center;
+  align-self: center;
+  min-width: 1500px;
 
   & .content {
     position: relative;
-    width: 450px;
     margin: auto;
-    background-color: var(--light-beige);
-    border: 2px solid var(--darker-beige);
+    width: 450px;
     padding: 40px;
     border-radius: 10px;
+    background-color: var(--light-beige);
+    border: 2px solid var(--darker-beige);
 
     & .prompt-text {
       font-size: 40px;
@@ -59,4 +48,22 @@
       }
     }
   }
+
+  & * {
+    outline: none;
+  }
+
+  &.game-over > .content {
+    height: 380px;
+  }
+
+  &.switching-players > .content {
+    height: 420px;
+  }
 }
+
+/* @media (max-width: 1550px) {
+  .prompt {
+    min-width: 1550px;
+  }
+} */

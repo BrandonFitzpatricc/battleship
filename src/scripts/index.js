@@ -9,3 +9,8 @@ import "../stylesheets/prompt.css";
 import { initializeHomeMenu } from "./controller/home-menu-controller.js";
 
 initializeHomeMenu();
+
+// things to do:
+// fix bugs involving the play again/back to menu buttons
+// check and make sure none of the new stuff you implemented causes any new bugs
+// remove the "player one" text from 1 player mode icon select menu

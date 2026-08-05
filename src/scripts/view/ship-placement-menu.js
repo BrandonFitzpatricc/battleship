@@ -11,18 +11,20 @@ import { Attribute } from "./attribute.js";
 import { buttonIcons } from "./icon-manager.js";
 
 const loadShipPlacementMenu = (player, gameBoard) => {
-  document.body.textContent = "";
+  const mainContent = document.querySelector(".main-content");
 
-  const mainContainer = createElement("div", "ship-placement-menu");
+  mainContent.textContent = "";
+
+  const shipPlacementMenu = createElement("div", "ship-placement-menu");
 
   const header = loadHeader(player);
   const shipContainer = loadShipContainer(gameBoard.placedShips);
   const gameBoardDisplay = createPlacementGameBoard(gameBoard);
   const optionBtns = loadOptionBtns(gameBoard);
 
-  mainContainer.append(header, shipContainer, gameBoardDisplay, optionBtns);
+  shipPlacementMenu.append(header, shipContainer, gameBoardDisplay, optionBtns);
 
-  document.body.appendChild(mainContainer);
+  mainContent.appendChild(shipPlacementMenu);
 };
 
 function loadHeader(player) {

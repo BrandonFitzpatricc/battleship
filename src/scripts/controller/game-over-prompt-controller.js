@@ -1,18 +1,18 @@
-import { loadGameOverPrompt } from "../view/game-over-prompt";
-
 import { initializeShipPlacementMenu } from "./ship-placement-menu-controller";
 import { initializeHomeMenu } from "./home-menu-controller";
 
 import { GameHandler } from "../model/game-handler";
 import { GameBoard } from "../model/game-board";
 
+const gameOverPrompt = document.querySelector("#game-over-prompt");
+
 const initializeGameOverPrompt = () => {
-  loadGameOverPrompt();
+  gameOverPrompt.showModal();
   initializePromptBtns();
 };
 
 function initializePromptBtns() {
-  const content = document.querySelector(".content");
+  const content = gameOverPrompt.querySelector(".content");
 
   const promptBtnHandler = {
     "play-again": () => {
@@ -26,18 +26,23 @@ function initializePromptBtns() {
 
     "close-prompt": () => {
       content.querySelectorAll(".text-btn").forEach((btn) => {
-        document.querySelector(".header").prepend(btn);
+        const btnClone = btn.cloneNode(true);
+        addPromptBtnEventListener(btnClone);
+        document.querySelector(".header").prepend(btnClone);
       });
-
-      document.body.removeChild(document.querySelector(".prompt"));
     },
   };
 
-  content.querySelectorAll("button").forEach((button) =>
-    button.addEventListener("click", (event) => {
-      promptBtnHandler[event.target.id]();
-    }),
-  );
+  content
+    .querySelectorAll("button")
+    .forEach((button) => addPromptBtnEventListener(button));
+
+  function addPromptBtnEventListener(promptBtn) {
+    promptBtn.addEventListener("click", () => {
+      promptBtnHandler[promptBtn.id]();
+      gameOverPrompt.close();
+    });
+  }
 }
 
 export { initializeGameOverPrompt };

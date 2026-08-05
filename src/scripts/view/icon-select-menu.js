@@ -9,9 +9,11 @@ import { Attribute } from "./attribute";
 import { playerIcons, buttonIcons } from "./icon-manager";
 
 const loadIconSelectMenu = (playerNumber) => {
-  document.body.textContent = "";
+  const mainContent = document.querySelector(".main-content");
 
-  const mainContainer = createElement("div", "icon-select-menu");
+  mainContent.textContent = "";
+
+  const iconSelectMenu = createElement("div", "icon-select-menu");
 
   // prettier-ignore
   const headerTop = createTextElement("div", "header", `Player ${playerNumber}`);
@@ -32,7 +34,7 @@ const loadIconSelectMenu = (playerNumber) => {
     new Attribute("id", "confirm"),
   );
 
-  mainContainer.append(
+  iconSelectMenu.append(
     headerTop,
     headerBottom,
     iconSelectionBtns,
@@ -40,7 +42,7 @@ const loadIconSelectMenu = (playerNumber) => {
     confirmBtn,
   );
 
-  document.body.appendChild(mainContainer);
+  mainContent.appendChild(iconSelectMenu);
 };
 
 function loadIconSelectionBtns() {

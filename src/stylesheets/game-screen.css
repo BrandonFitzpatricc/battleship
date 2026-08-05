@@ -4,16 +4,14 @@
   grid-template-columns: repeat(2, 1fr);
 
   & .header {
-    position: relative;
     grid-column: 1 / -1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    font-size: 55px;
-    margin-top: 5px;
-    margin-right: 50px;
+    justify-self: center;
     height: 90px;
+    font-size: 55px;
+    margin-right: 50px;
+    position: relative;
+    display: flex;
+    gap: 15px;
 
     & .player-icon-container {
       width: 90px;
@@ -30,18 +28,17 @@
     }
 
     & .text-btn {
+      margin-top: -10px;
       width: 300px;
       position: absolute;
-      top: -5px;
       padding: 2px;
 
       &.back-to-menu {
-        left: 0;
+        right: 525px;
       }
 
       &.play-again {
-        right: 2px;
-        margin-right: -45px;
+        left: 560px;
       }
     }
   }
