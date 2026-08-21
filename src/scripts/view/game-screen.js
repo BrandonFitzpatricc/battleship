@@ -5,9 +5,9 @@ import {
   createWinningPlayerIcon,
   createAttackingGameBoard,
   createHiddenAttackingGameBoard,
-} from "./element-factory.js";
+} from "./utilities/element-factory.js";
 
-import { Attribute } from "./attribute.js";
+import { Attribute } from "./utilities/attribute.js";
 
 import { GameHandler } from "../model/game-handler.js";
 import { ComputerPlayer } from "../model/player.js";

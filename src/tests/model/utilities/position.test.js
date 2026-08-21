@@ -1,4 +1,4 @@
-import { Position } from "../../scripts/model/position";
+import { Position } from "../../../scripts/model/utilities/position";
 
 describe("Test position object instantiation", () => {
   test("Position objects are successfully created with the specified row and column values", () => {

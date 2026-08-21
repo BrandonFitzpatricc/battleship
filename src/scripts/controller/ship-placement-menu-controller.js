@@ -1,6 +1,6 @@
 import { loadShipPlacementMenu } from "../view/ship-placement-menu.js";
 
-import { Position } from "../model/position.js";
+import { Position } from "../model/utilities/position.js";
 import { GameBoard } from "../model/game-board.js";
 import { GameHandler } from "../model/game-handler.js";
 import { ComputerPlayer } from "../model/player.js";

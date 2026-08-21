@@ -1,5 +1,5 @@
-import { createElement, createTextElement } from "./element-factory";
-import { Attribute } from "./attribute";
+import { createElement, createTextElement } from "./utilities/element-factory";
+import { Attribute } from "./utilities/attribute";
 
 const loadHomeMenu = () => {
   const mainContent = document.querySelector(".main-content");

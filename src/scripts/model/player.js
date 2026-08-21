@@ -1,5 +1,5 @@
-import { Position } from "./position.js";
-import { SuccessfulAttack } from "./successful-attack.js";
+import { Position } from "./utilities/position.js";
+import { SuccessfulAttack } from "./utilities/successful-attack.js";
 
 class Player {
   #icon;

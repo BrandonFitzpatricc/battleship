@@ -1,5 +1,5 @@
 import { loadIconSelectMenu } from "../view/icon-select-menu.js";
-import { playerIcons } from "../view/icon-manager.js";
+import { playerIcons } from "../view/utilities/icon-manager.js";
 
 import { initializeShipPlacementMenu } from "./ship-placement-menu-controller.js";
 

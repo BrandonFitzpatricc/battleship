@@ -1,5 +1,5 @@
-import { SuccessfulAttack } from "../../scripts/model/successful-attack";
-import { Position } from "../../scripts/model/position";
+import { SuccessfulAttack } from "../../../scripts/model/utilities/successful-attack";
+import { Position } from "../../../scripts/model/utilities/position";
 
 describe("Test successful attack object instantiation", () => {
   test("Successful attack objects are successfully created with the specified row and column values", () => {

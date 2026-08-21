@@ -2,11 +2,11 @@ import {
   createElement,
   createTextElement,
   createIconBtn,
-} from "./element-factory";
+} from "./utilities/element-factory";
 
-import { Attribute } from "./attribute";
+import { Attribute } from "./utilities/attribute";
 
-import { playerIcons, buttonIcons } from "./icon-manager";
+import { playerIcons, buttonIcons } from "./utilities/icon-manager";
 
 const loadIconSelectMenu = (playerNumber, isTwoPlayerGame) => {
   const mainContent = document.querySelector(".main-content");

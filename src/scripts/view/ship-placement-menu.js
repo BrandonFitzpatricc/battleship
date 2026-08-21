@@ -4,11 +4,11 @@ import {
   createIconBtn,
   createPlayerIcon,
   createPlacementGameBoard,
-} from "./element-factory.js";
+} from "./utilities/element-factory.js";
 
-import { Attribute } from "./attribute.js";
+import { Attribute } from "./utilities/attribute.js";
 
-import { buttonIcons } from "./icon-manager.js";
+import { buttonIcons } from "./utilities/icon-manager.js";
 
 const loadShipPlacementMenu = (player, gameBoard) => {
   const mainContent = document.querySelector(".main-content");

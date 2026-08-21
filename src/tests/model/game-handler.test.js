@@ -2,7 +2,7 @@ import { GameBoard } from "../../scripts/model/game-board";
 import { Player } from "../../scripts/model/player";
 import { ComputerPlayer } from "../../scripts/model/player";
 import { GameHandler } from "../../scripts/model/game-handler";
-import { Position } from "../../scripts/model/position";
+import { Position } from "../../scripts/model/utilities/position";
 
 describe("Test one player games", () => {
   beforeEach(() => {

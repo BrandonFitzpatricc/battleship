@@ -1,5 +1,4 @@
 import { Attribute } from "./attribute";
-
 import { miscIcons } from "./icon-manager";
 
 const createElement = (type, className, ...attributes) => {

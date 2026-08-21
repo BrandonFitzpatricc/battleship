@@ -1,5 +1,5 @@
 import { Ship } from "./ship.js";
-import { Position } from "./position.js";
+import { Position } from "./utilities/position.js";
 
 class GameBoard {
   #board;
