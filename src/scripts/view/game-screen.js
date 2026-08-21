@@ -9,8 +9,17 @@ import {
 
 import { Attribute } from "./utilities/attribute.js";
 
-import { GameHandler } from "../model/game-handler.js";
 import { ComputerPlayer } from "../model/player.js";
+
+import {
+  getPlayers,
+  getAttackingPlayer,
+  getTargetedPlayer,
+  isActiveGame,
+  isSwitchingPlayers,
+  isGameOver,
+  isTwoPlayerGame,
+} from "../model/game-handler.js";
 
 const loadGameScreen = () => {
   const mainContent = document.querySelector(".main-content");
@@ -19,11 +28,11 @@ const loadGameScreen = () => {
 
   const gameScreen = createElement("div", "game-screen");
 
-  const header = loadHeader(GameHandler.getAttackingPlayer());
+  const header = loadHeader(getAttackingPlayer());
   // prettier-ignore
-  const playerOneDisplay = loadPlayerDisplay(GameHandler.getPlayers()[0], "one");
+  const playerOneDisplay = loadPlayerDisplay(getPlayers()[0], "one");
   // prettier-ignore
-  const playerTwoDisplay = loadPlayerDisplay(GameHandler.getPlayers()[1], "two");
+  const playerTwoDisplay = loadPlayerDisplay(getPlayers()[1], "two");
 
   gameScreen.append(header, playerOneDisplay, playerTwoDisplay);
 
@@ -35,13 +44,11 @@ function loadHeader(attackingPlayer) {
 
   const playerIcon = createPlayerIcon(attackingPlayer.icon, 60);
 
-  playerIcon.className += GameHandler.isSwitchingPlayers()
-    ? " hidden"
-    : " selected";
+  playerIcon.className += isSwitchingPlayers() ? " hidden" : " selected";
 
-  const activeMessage = GameHandler.isSwitchingPlayers()
+  const activeMessage = isSwitchingPlayers()
     ? "Switching Players..."
-    : !GameHandler.isGameOver()
+    : !isGameOver()
       ? "Is Firing..."
       : "Wins!";
 
@@ -59,28 +66,27 @@ function loadPlayerDisplay(player, number) {
 
   const isComputerPlayer = player instanceof ComputerPlayer;
 
-  const isTargetedPlayer = player === GameHandler.getTargetedPlayer();
+  const isTargetedPlayer = player === getTargetedPlayer();
 
   let isHiddenBoard = false;
-  if (!GameHandler.isGameOver()) {
+  if (!isGameOver()) {
     isHiddenBoard =
       isComputerPlayer ||
-      (isTargetedPlayer && GameHandler.isTwoPlayerGame()) ||
-      !GameHandler.isActiveGame() ||
-      GameHandler.isSwitchingPlayers();
+      (isTargetedPlayer && isTwoPlayerGame()) ||
+      !isActiveGame() ||
+      isSwitchingPlayers();
   }
 
   const gameBoard = isHiddenBoard
     ? createHiddenAttackingGameBoard(player.gameBoard)
     : createAttackingGameBoard(player.gameBoard);
 
-  if (GameHandler.isActiveGame() && !GameHandler.isSwitchingPlayers()) {
+  if (isActiveGame() && !isSwitchingPlayers()) {
     gameBoard.className +=
-      player === GameHandler.getTargetedPlayer() ? " target" : " not-target";
+      player === getTargetedPlayer() ? " target" : " not-target";
   }
 
-  const inactiveBoard =
-    GameHandler.isSwitchingPlayers() || !GameHandler.isActiveGame();
+  const inactiveBoard = isSwitchingPlayers() || !isActiveGame();
 
   if (inactiveBoard) {
     gameBoard.className += " inactive";
@@ -94,17 +100,15 @@ function loadPlayerDisplay(player, number) {
 function loadPlayerStatus(player) {
   const playerStatus = createElement("div", "player-status");
 
-  const isAttackingPlayer = GameHandler.getAttackingPlayer() === player;
+  const isAttackingPlayer = getAttackingPlayer() === player;
 
   const playerIcon =
-    isAttackingPlayer && GameHandler.isGameOver()
+    isAttackingPlayer && isGameOver()
       ? createWinningPlayerIcon(player.icon, 70)
       : createPlayerIcon(player.icon, 70);
 
   const playerIsSelected =
-    isAttackingPlayer &&
-    !GameHandler.isSwitchingPlayers() &&
-    GameHandler.isActiveGame();
+    isAttackingPlayer && !isSwitchingPlayers() && isActiveGame();
 
   if (playerIsSelected) {
     playerIcon.className += " selected";

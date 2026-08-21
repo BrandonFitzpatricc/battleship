@@ -1,8 +1,15 @@
 import { GameBoard } from "../../scripts/model/game-board";
 import { Player } from "../../scripts/model/player";
 import { ComputerPlayer } from "../../scripts/model/player";
-import { GameHandler } from "../../scripts/model/game-handler";
 import { Position } from "../../scripts/model/utilities/position";
+
+import {
+  getAttackingPlayer,
+  isGameOver,
+  setup,
+  startNewGame,
+  playRound,
+} from "../../scripts/model/game-handler";
 
 describe("Test one player games", () => {
   beforeEach(() => {
@@ -19,47 +26,44 @@ describe("Test one player games", () => {
       player.gameBoard = gameBoard;
     });
 
-    GameHandler.setup([realPlayer, computerPlayer]);
-    GameHandler.startNewGame([realPlayer, computerPlayer]);
+    setup([realPlayer, computerPlayer]);
+    startNewGame([realPlayer, computerPlayer]);
   });
 
   test("A full one player game where the real player wins can be completed from start to finish", () => {
-    GameHandler.playRound(2, 1);
-    GameHandler.playRound(3, 1);
-    GameHandler.playRound(4, 1);
-    GameHandler.playRound(5, 1);
+    playRound(2, 1);
+    playRound(3, 1);
+    playRound(4, 1);
+    playRound(5, 1);
 
-    GameHandler.playRound(2, 7);
-    GameHandler.playRound(3, 7);
-    GameHandler.playRound(4, 7);
-    GameHandler.playRound(5, 7);
-    GameHandler.playRound(6, 7);
+    playRound(2, 7);
+    playRound(3, 7);
+    playRound(4, 7);
+    playRound(5, 7);
+    playRound(6, 7);
 
-    GameHandler.playRound(8, 3);
-    GameHandler.playRound(8, 4);
-    GameHandler.playRound(8, 5);
+    playRound(8, 3);
+    playRound(8, 4);
+    playRound(8, 5);
 
-    GameHandler.playRound(0, 3);
-    GameHandler.playRound(0, 4);
-    GameHandler.playRound(0, 5);
+    playRound(0, 3);
+    playRound(0, 4);
+    playRound(0, 5);
 
-    GameHandler.playRound(9, 7);
-    GameHandler.playRound(9, 8);
+    playRound(9, 7);
+    playRound(9, 8);
 
-    expect(GameHandler.isGameOver()).toBe(true);
+    expect(isGameOver()).toBe(true);
     // prettier-ignore
-    expect(GameHandler.getAttackingPlayer() instanceof ComputerPlayer).toBe(false);
+    expect(getAttackingPlayer() instanceof ComputerPlayer).toBe(false);
   });
 
   test("A full one player game where the computer player wins can be completed from start to finish", () => {
-    while (!GameHandler.isGameOver()) {
-      GameHandler.playRound(
-        Math.floor(Math.random() * 10),
-        Math.floor(Math.random() * 10),
-      );
+    while (!isGameOver()) {
+      playRound(Math.floor(Math.random() * 10), Math.floor(Math.random() * 10));
     }
     // prettier-ignore
-    expect(GameHandler.getAttackingPlayer() instanceof ComputerPlayer).toBe(true);
+    expect(getAttackingPlayer() instanceof ComputerPlayer).toBe(true);
   });
 });
 
@@ -78,40 +82,40 @@ describe("Test two player games", () => {
       player.gameBoard = gameBoard;
     });
 
-    GameHandler.setup([player1, player2]);
-    GameHandler.startNewGame([player1, player2]);
+    setup([player1, player2]);
+    startNewGame([player1, player2]);
   });
 
   test("A full two player game can be completed from start to finish", () => {
-    GameHandler.playRound(2, 1);
-    GameHandler.playRound(2, 2);
+    playRound(2, 1);
+    playRound(2, 2);
 
-    GameHandler.playRound(8, 3);
-    GameHandler.playRound(8, 4);
-    GameHandler.playRound(8, 5);
-    GameHandler.playRound(5, 3);
+    playRound(8, 3);
+    playRound(8, 4);
+    playRound(8, 5);
+    playRound(5, 3);
 
-    GameHandler.playRound(3, 1);
-    GameHandler.playRound(4, 1);
-    GameHandler.playRound(5, 1);
+    playRound(3, 1);
+    playRound(4, 1);
+    playRound(5, 1);
 
-    GameHandler.playRound(2, 7);
-    GameHandler.playRound(3, 7);
-    GameHandler.playRound(4, 7);
-    GameHandler.playRound(5, 7);
-    GameHandler.playRound(6, 7);
+    playRound(2, 7);
+    playRound(3, 7);
+    playRound(4, 7);
+    playRound(5, 7);
+    playRound(6, 7);
 
-    GameHandler.playRound(8, 3);
-    GameHandler.playRound(8, 4);
-    GameHandler.playRound(8, 5);
+    playRound(8, 3);
+    playRound(8, 4);
+    playRound(8, 5);
 
-    GameHandler.playRound(0, 3);
-    GameHandler.playRound(0, 4);
-    GameHandler.playRound(0, 5);
+    playRound(0, 3);
+    playRound(0, 4);
+    playRound(0, 5);
 
-    GameHandler.playRound(9, 7);
-    GameHandler.playRound(9, 8);
+    playRound(9, 7);
+    playRound(9, 8);
 
-    expect(GameHandler.isGameOver()).toBe(true);
+    expect(isGameOver()).toBe(true);
   });
 });

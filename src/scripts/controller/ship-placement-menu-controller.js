@@ -2,7 +2,7 @@ import { loadShipPlacementMenu } from "../view/ship-placement-menu.js";
 
 import { Position } from "../model/utilities/position.js";
 import { GameBoard } from "../model/game-board.js";
-import { GameHandler } from "../model/game-handler.js";
+import { setup } from "../model/game-handler.js";
 import { ComputerPlayer } from "../model/player.js";
 
 import {
@@ -16,7 +16,7 @@ const initializeShipPlacementMenu = (players, currentPlayer, gameBoard) => {
     computerBoard.placeShipsRandomly();
     currentPlayer.gameBoard = computerBoard;
 
-    GameHandler.setup(players);
+    setup(players);
     initializeGameScreen();
     countDownToStart();
     return;
@@ -224,7 +224,7 @@ const initializeShipPlacementMenu = (players, currentPlayer, gameBoard) => {
         if (currentPlayer === players[0]) {
           initializeShipPlacementMenu(players, players[1], new GameBoard());
         } else {
-          GameHandler.setup(players);
+          setup(players);
           initializeGameScreen();
           countDownToStart();
         }

@@ -1,7 +1,7 @@
 import { initializeShipPlacementMenu } from "./ship-placement-menu-controller";
 import { initializeHomeMenu } from "./home-menu-controller";
 
-import { GameHandler } from "../model/game-handler";
+import { getPlayers } from "../model/game-handler";
 import { GameBoard } from "../model/game-board";
 
 const gameOverPrompt = document.querySelector("#game-over-prompt");
@@ -16,7 +16,7 @@ function initializePromptBtns() {
 
   const promptBtnHandler = {
     "play-again": () => {
-      const players = GameHandler.getPlayers();
+      const players = getPlayers();
       initializeShipPlacementMenu(players, players[0], new GameBoard());
     },
 

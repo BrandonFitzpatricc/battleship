@@ -1,4 +1,4 @@
-import { GameHandler } from "../model/game-handler";
+import { endSwitchingPlayers } from "../model/game-handler";
 import { initializeGameScreen } from "./game-screen-controller";
 
 const initializeSwitchingPlayersPrompt = () => {
@@ -10,7 +10,7 @@ const initializeSwitchingPlayersPrompt = () => {
   switchingPlayersPrompt
     .querySelector("#continue")
     .addEventListener("click", () => {
-      GameHandler.endSwitchingPlayers();
+      endSwitchingPlayers();
       switchingPlayersPrompt.close();
       initializeGameScreen();
     });
