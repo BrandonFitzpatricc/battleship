@@ -1,17 +1,27 @@
 # Battleship
 
-This is a website that was created using HTML, CSS and JavaScript. It provides an interface for users to play games of Battleship, with support for either one player games against a bot, or two player games where the device is passed between players.
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS](https://img.shields.io/badge/CSS-563d7c?&style=for-the-badge)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![npm](https://img.shields.io/badge/npm-CB3837?style=for-the-badge&labelColor=CB3837&logoColor=CB3837)
+![Webpack](https://img.shields.io/badge/Webpack-529ac7?style=for-the-badge&labelColor=8DD6F9&logoColor=226ea9&logo=webpack)
+![Jest](https://img.shields.io/badge/Jest-C21325?style=for-the-badge&labelColor=ffffff&logoColor=C21325&logo=jest)
+![Figma](https://img.shields.io/badge/Figma-7e65ee?&style=for-the-badge)
 
-Users are initially presented with a menu prompting them to select the number of players. Next, they will be prompted to select an icon to represent themselves within the game, then will be prompted to place their ships. Each of these two prompts will occur twice if there are two players - otherwise the icon and game board of the bot player will be decided randomly.
+This is a web application that was built using the MVC architectural pattern and the Test-Driven Development methodology. It provides an interface for users to play games of Battleship, with support for either one player games against a bot, or two player games where the device is passed between players.
 
-Ships are placed through a drag and drop menu with various placement options. Users can drag a ship onto any open position within the game board, pick up a placed ship and move it elsewhere, clear the board of all placed ships, and randomize the placement of all ships. The placed ship that was most recently interacted with will be marked as selected, and users will have the option to rotate this ship. Once every ship has been placed, the user will be able to start the game.
+</b>NOTE:</b> This application only officially supports desktop and laptop devices. Official support for mobile devices will come in a future patch.
 
-The game screen contains two main displays - one for each player. These displays contain the player's icon and the current status of their ships, placed directly above their game board. The player whose currently attacking is marked by header text at the top of the screen, in addition to their icon being highlighted. The game board that's not currently being targeted will be grayed out. In one player mode, the user's ships will always be visible, whereas the bot's ships will never be visible before/during the game. In two player mode, ship visibility will dynamically change depending on who is attacking and who is being attacked. Once the game ends, all ships on each game board become visible. The winner is marked by header text and a crown icon over their player icon.
+## Features
+- Icon selection for uniquely identifying players
+- Drag and drop functionality for placing ships onto the game board
+- Randomize game board ship placements
+- Clear the game board entirely while placing ships
+- Rotate and reposition ships that have already been placed
+- Bot player algorithm that uses probability to attack positions that are statistically the most likely to have a ship
+- Distinct handling of one player games versus two player games (e.g. bot will pause before attacking to simulate a real player, two player games will swap which game board has hidden ships depending on whose attacking)
 
-After a three second countdown to start, players can start attacking each other's game boards. The player that's currently attacking will continue to attack until they miss a ship, then the next player will start to attack, and the cycle will repeat until all of the ships on either game board have been sunk. Positions with missed attacks, damaged ships, or sunk ships are all uniquely marked.
-
-In one player mode, the bot player uses a probability based algorithm to attack the position which is most likely to contain a ship. No randomization is used within any of its decision making. The algorithm works as follows:
-
+## Bot Attacking Algorithm
 - In the case where the bot is looking for a ship:
   - A probability map is created - a two-dimensional array with the same dimensions as the game board, initially containing the value 0 in every position.
 
@@ -32,16 +42,5 @@ In one player mode, the bot player uses a probability based algorithm to attack 
 - In the case where a new ship is hit while targeting a different ship:
   - Throughout the targeting process, every ship that has been hit is pushed into a queue. The bot will target the ship at the front of the queue until it is destroyed, then dequeue it and target the next ship in the queue (if there is one).
 
-In two player mode, each time the attacking player switches, the user will be prompted to pass the device to the other player before continuing. While this prompt is up, the ships on each game board are hidden. The prompt can be dismissed with a continue button once the device has been passed to the second player.
-
-Once a game ends, users have the options to play again - bringing them straight back to the ship placement screen, return to the starting menu, or view the final state of each game board from the recently finished game.
-
-This project demonstrates strong foundations in front-end web development, in addition to the following principles of programming:
-
-- The separation of application and user-interface components, the two of which are bridged together by controller components through the use of the Model-View-Controller architectural pattern.
-
-- The ability to design and implement a complex, dynamic algorithm step-by-step.
-
-- Extensive utilization of the Jest testing framework through the adherence of Test-Driven development throughout the development cycle of application components.
-
-- Utilization of various dependencies to enhance developer workflow and productivity, including ESLint to enforce proper coding practices, Prettier to eliminate the need for manual formatting, and Webpack to bundle every program component together into a single file for deployment.
+## Author
+I'm <a href="https://github.com/BrandonFitzpatricc">Brandon Fitzpatrick</a>, the designer and programmer behind this application. The highlight of creating this application, and my sole motivator for doing so, was designing and implementing the bot attacking algorithm outlined above. It was my first time ever writing an algorithm to simulate the decision making of a real person; I spent hours researching high level Battleship strategies and how they could be translated into code. The end result is an algorithm based entirely off probability and statistics - without a single use of Math.random() throughout. I'm extremely happy with the outcome, and I'm certain it will give even experienced players a good challenge.
